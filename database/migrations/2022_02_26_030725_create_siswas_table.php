@@ -19,11 +19,11 @@ class CreateSiswasTable extends Migration
             $table->string('name');
             $table->text('alamat');
             $table->string('no_telp');
-            $table->string('id_romble');
-            $table->string('usrename');
+            $table->string('id_rombel');
+            $table->string('username');
             $table->string('password');
-            $table->strinf('id_ortu');
-            $table->string('id_rtayon');
+            $table->string('id_ortu');
+            $table->string('id_rayon');
             $table->string('id_guru');
             $table->timestamps();
         });

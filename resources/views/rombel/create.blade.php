@@ -29,6 +29,7 @@
                   <div class="col-sm-10">
                     <input type="text" name="rombel" id="rombel" class="form-control">
                   </div>
+                </div>
                 
 
                 <div class="row mb-3">

@@ -59,4 +59,26 @@ route::get('kode/edit/{id}', [KodeController::class, 'edit'])->name('kode.edit')
 route::post('kode/update/{id}', [KodeController::class, 'update'])->name('kode.update');
 route::get('kode/delete/{id}', [KodeController::class, 'destroy'])->name('kode.delete');
 
+//Route Orang tua
+route::get('ortu',[OrtuController::class, 'index'])->name('ortu.index');
+route::get('ortu/create', [OrtuController::class, 'create'])->name('ortu.create');
+route::post('ortu/store', [OrtuController::class, 'store'])->name('ortu.store');
+route::get('ortu/edit/{id}', [OrtuController::class, 'edit'])->name('ortu.edit');
+route::post('ortu/update/{id}', [OrtuController::class, 'update'])->name('ortu.update');
+route::get('ortu/delete/{id}', [OrtuController::class, 'destroy'])->name('ortu.delete');
 
+//Route Siswa
+route::get('siswa',[SiswaController::class, 'index'])->name('siswa.index');
+route::get('siswa/create', [SiswaController::class, 'create'])->name('siswa.create');
+route::post('siswa/store', [SiswaController::class, 'store'])->name('siswa.store');
+route::get('siswa/edit/{id}', [SiswaController::class, 'edit'])->name('siswa.edit'); 
+route::post('siswa/update/{id}', [SiswaController::class, 'update'])->name('siswa.update');
+route::get('siswa/delete/{id}', [SiswaController::class, 'destroy'])->name('siswa.delete');
+
+//Route Monitoring
+route::get('monitoring',[MonitoringController::class, 'index'])->name('monitoring.index');
+route::get('monitoring/create', [MonitoringController::class, 'create'])->name('monitoring.create');
+route::post('monitoring/store', [MonitoringController::class, 'store'])->name('monitoring.store');
+route::get('monitoring/edit/{id}', [MonitoringController::class, 'edit'])->name('monitoring.edit'); 
+route::post('monitoring/update/{id}', [MonitoringController::class, 'update'])->name('monitoring.update');
+route::get('monitoring/delete/{id}', [MonitoringController::class, 'destroy'])->name('monitoring.delete');

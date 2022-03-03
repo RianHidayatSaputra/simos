@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\OrangtuasModel;
+use App\Repositories\OrangtuaRepository;
 
 class OrtuController extends Controller
 {
@@ -13,7 +15,8 @@ class OrtuController extends Controller
      */
     public function index()
     {
-        //
+        $data['ortu'] = OrangtuasModel::latest();
+        return view('ortu.index', $data);
     }
 
     /**
@@ -23,7 +26,7 @@ class OrtuController extends Controller
      */
     public function create()
     {
-        //
+        return view('ortu.create');
     }
 
     /**
@@ -34,7 +37,8 @@ class OrtuController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        OrangtuaRepository::adddata($request);
+        return redirect('ortu');
     }
 
     /**
@@ -56,7 +60,8 @@ class OrtuController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data['ortu'] = OrangtuasModel::findById($id);
+        return view('ortu.edit',$data);
     }
 
     /**
@@ -68,7 +73,8 @@ class OrtuController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        OrangtuaRepository::updatedata($request);
+        return redirect('ortu');
     }
 
     /**
@@ -79,6 +85,7 @@ class OrtuController extends Controller
      */
     public function destroy($id)
     {
-        //
+        OrangtuaRepository::deletedata($id);
+        return redirect('ortu');
     }
 }

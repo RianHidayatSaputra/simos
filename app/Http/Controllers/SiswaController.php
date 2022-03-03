@@ -3,6 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\SiswasModel;
+use App\Models\RombelsModel;
+use App\Models\OrangtuasModel;
+use App\Models\RayonsModel;
+use App\Models\GurusModel;
+use App\Models\Rombel;
+use App\Models\Orangtua;
+use App\Models\Rayon;
+use App\Models\Guru;
+use App\Repositories\SiswaRepository;
 
 class SiswaController extends Controller
 {
@@ -13,7 +23,8 @@ class SiswaController extends Controller
      */
     public function index()
     {
-        //
+        $data['siswa'] = SiswaRepository::getAll();
+        return view('siswa.index',$data);
     }
 
     /**
@@ -23,7 +34,11 @@ class SiswaController extends Controller
      */
     public function create()
     {
-        //
+        $data['rombel'] = RombelsModel::latest();
+        $data['ortu'] = OrangtuasModel::latest();
+        $data['rayon'] = RayonsModel::latest();
+        $data['guru'] = GurusModel::latest();
+        return view('siswa.create',$data);
     }
 
     /**
@@ -34,7 +49,8 @@ class SiswaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        SiswaRepository::adddata($request);
+        return redirect('siswa');
     }
 
     /**
@@ -56,7 +72,18 @@ class SiswaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data['siswa'] = SiswasModel::findById($id);
+        $data['rombel'] = Rombel::get();
+        $data['ortu'] = Orangtua::get();
+        $data['rayon'] = Rayon::get();
+        $data['guru'] = Guru::get();
+
+        // $data['rombel'] = RombelsModel::latest();
+        // $data['ortu'] = OrangtuasModel::latest();
+        // $data['rayon'] = RayonsModel::latest();
+        // $data['guru'] = GurusModel::latest();
+        // dd($data);
+        return view('siswa.edit',$data);
     }
 
     /**
@@ -68,7 +95,8 @@ class SiswaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        SiswaRepository::updatedata($request);
+        return redirect('siswa');
     }
 
     /**
@@ -79,6 +107,7 @@ class SiswaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        SiswaRepository::deletedata($id);
+        return redirect('siswa');
     }
 }

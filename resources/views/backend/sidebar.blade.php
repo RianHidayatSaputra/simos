@@ -142,13 +142,13 @@
         </a>
       </li><!-- End Profile Page Nav -->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="users-profile.html">
+        <a class="nav-link collapsed" href="{{route('siswa.index')}}">
           <i class="bi bi-person"></i>
           <span>Siswa</span>
         </a>
       </li><!-- End Profile Page Nav -->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="users-profile.html">
+        <a class="nav-link collapsed" href="{{route('ortu.index')}}">
           <i class="bi bi-person"></i>
           <span>Ortu/Wali</span>
         </a>
@@ -158,24 +158,14 @@
           <i class="bi bi-person"></i>
           <span>Pembimbing Rayon</span>
         </a>
-      </li><!-- End Profile Page Nav -->
+      </li>
       <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#components-nav1" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-menu-button-wide"></i><span>Monitoring</span><i class="bi bi-chevron-down ms-auto"></i>
+        <a class="nav-link collapsed" href="{{route('monitoring.index')}}">
+          <i class="bi bi-person"></i>
+          <span>Monitoring</span>
         </a>
-        <ul id="components-nav1" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-          <li>
-            <a href="components-alerts.html">
-              <i class="bi bi-circle"></i><span>Prestasi</span>
-            </a>  
-          </li>
-          <li>
-            <a href="components-accordion.html">
-              <i class="bi bi-circle"></i><span>Pelanggaran</span>
-            </a>
-          </li>
-        </ul>
-      </li><!-- End Components Nav -->
+      </li><!-- End Profile Page Nav -->
+      <!-- End Components Nav -->
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#components-nav2" data-bs-toggle="collapse" href="#">
           <i class="bi bi-menu-button-wide"></i><span>Laporan</span><i class="bi bi-chevron-down ms-auto"></i>

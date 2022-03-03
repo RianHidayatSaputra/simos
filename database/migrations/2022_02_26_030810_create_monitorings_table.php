@@ -15,7 +15,7 @@ class CreateMonitoringsTable extends Migration
     {
         Schema::create('monitorings', function (Blueprint $table) {
             $table->id();
-            $table->string('nis');
+            $table->string('id_siswa');
             $table->string('id_kode');
             $table->string('tgl');
             $table->text('keterangan');

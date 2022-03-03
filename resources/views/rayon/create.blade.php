@@ -29,6 +29,7 @@
                   <div class="col-sm-10">
                     <input type="text" name="rayon" id="rayon" class="form-control">
                   </div>
+                </div>
                 
 
                 <div class="row mb-3">

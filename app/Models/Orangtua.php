@@ -8,4 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Orangtua extends Model
 {
     use HasFactory;
+protected $table = 'orangtuas';
+    protected $fillable = [ 'rayon' ,
+        'nama_ortu',
+        'alamat',
+        'no_telp',
+        'username',
+        'password',
+
+    ];
+
 }

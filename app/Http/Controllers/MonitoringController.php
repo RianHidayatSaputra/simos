@@ -3,6 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Repositories\MonitoringRepository;
+use App\Models\SiswasModel;
+use App\Models\KodesModel;
+use App\Models\Siswas;
+use App\Models\Kodes;
 
 class MonitoringController extends Controller
 {
@@ -13,7 +18,8 @@ class MonitoringController extends Controller
      */
     public function index()
     {
-        //
+        $data['monitoring'] = MonitoringRepository::getAll();
+        return view('monitoring.index',$data);
     }
 
     /**
@@ -23,7 +29,9 @@ class MonitoringController extends Controller
      */
     public function create()
     {
-        //
+        $data['siswa'] = SiswasModel::latest();
+        $data['kode'] = KodesModel::latest();
+        return view('monitoring.create',$data);
     }
 
     /**
@@ -34,7 +42,8 @@ class MonitoringController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        MonitoringRepository::adddata($request);
+        return redirect('monitoring');
     }
 
     /**
