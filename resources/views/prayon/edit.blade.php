@@ -22,15 +22,15 @@
               <h5 class="card-title">General Form Monitoring</h5>
 
               <!-- General Form Monitoring -->
-              <form action="{{route('monitoring.update',$monitoring->id)}}" method="POST">
+              <form action="{{route('prayon.update',$prayon->id)}}" method="POST">
                 {{csrf_field()}}
                 <div class="row mb-3">
                   <label class="col-sm-2 col-form-label">Select</label>
                   <div class="col-sm-10">
-                    <select name="id_siswa" id="id_siswa" class="form-select  " aria-label="Default select example">
+                    <select name="id_rayon" id="id_rayon" class="form-select  " aria-label="Default select example">
                       <option selected>Options Nis</option>
-                      <?php foreach($siswa as $row):?>
-                      <option value="<?php echo $row['id'];?>"<?php if($row['id'] == $monitoring->id_siswa) echo 'selected="selected"' ?>><?php echo $row['nis']; ?></option>
+                      <?php foreach($rayon as $row):?>
+                      <option value="<?php echo $row['id'];?>"<?php if($row['id'] == $prayon->id_rayon) echo 'selected="selected"' ?>><?php echo $row['rayon']; ?></option>
                       <?php endforeach?>
                     </select>
                   </div>
@@ -38,30 +38,12 @@
                 <div class="row mb-3">
                   <label class="col-sm-2 col-form-label">Select</label>
                   <div class="col-sm-10">
-                    <select name="id_kode" id="id_kode" class="form-select" aria-label="Default select example">
+                    <select name="id_guru" id="id_guru" class="form-select" aria-label="Default select example">
                       <option selected>Options Kode</option>
-                      <?php foreach($kode as $row):?>
-                      <option value="<?php echo $row['id'];?>"<?php if($row['id'] == $monitoring->id_kode) echo 'selected="selected"' ?>><?php echo $row['kode']; ?></option>
+                      <?php foreach($guru as $row):?>
+                      <option value="<?php echo $row['id'];?>"<?php if($row['id'] == $prayon->id_guru) echo 'selected="selected"' ?>><?php echo $row['name']; ?></option>
                       <?php endforeach?>
                     </select>
-                  </div>
-                </div>
-                <div class="row mb-3">
-                  <label for="inputText" class="col-sm-2 col-form-label">Kode Skor</label>
-                  <div class="col-sm-10">
-                    <input type="text" name="skor" id="skor" disabled class="form-control">
-                  </div>
-                </div>
-                <div class="row mb-3">
-                  <label for="inputText" class="col-sm-2 col-form-label">Tanggal</label>
-                  <div class="col-sm-10">
-                    <input type="text" name="tgl" id="tgl" value="{{$monitoring->tgl}}" class="form-control">
-                  </div>
-                </div>
-                <div class="row mb-3">
-                  <label for="inputNumber" class="col-sm-2 col-form-label">Keterangan</label>
-                  <div class="col-sm-10">
-                    <input type="text" name="keterangan" id="keterangan" value="{{$monitoring->keterangan}}" class="form-control">
                   </div>
                 </div>
                 

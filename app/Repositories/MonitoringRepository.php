@@ -25,4 +25,17 @@ class MonitoringRepository extends MonitoringsModel
 
         ]);
     }
+
+    public static function updatedata(Request $request){
+        DB::table('monitorings')->where('id', $request->id)->update([
+            'id_siswa' => $request->id_siswa,
+            'id_kode' => $request->id_kode,
+            'tgl' => $request->tgl,
+            'keterangan' => $request->keterangan,
+        ]);
+    }
+
+    public static function deletedata($id){
+        DB::table('monitorings')->where('id',$id)->delete();
+    }
 }

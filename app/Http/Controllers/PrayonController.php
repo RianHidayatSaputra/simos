@@ -3,10 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\KodesModel;
-use App\Repositories\KodeRepository;
-use App\Models\Kode;
-class KodeController extends Controller
+use App\Repositories\PrayonRepository;
+
+class PrayonController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +14,9 @@ class KodeController extends Controller
      */
     public function index()
     {
-        $data['kode'] = KodesModel::latest();
-        return view('kode.index', $data);
+        $data['prayon'] = PrayonRepository::getAll();
+        // dd($data);
+        return view('prayon.index',$data);
     }
 
     /**
@@ -26,7 +26,8 @@ class KodeController extends Controller
      */
     public function create()
     {
-        return view('kode.create');
+        $data = PrayonRepository::reladd();
+        return view('prayon.create',$data);
     }
 
     /**
@@ -37,8 +38,8 @@ class KodeController extends Controller
      */
     public function store(Request $request)
     {
-        KodeRepository::adddata($request);
-        return redirect('kode');
+        PrayonRepository::adddata($request);
+        return redirect('prayon');
     }
 
     /**
@@ -60,8 +61,8 @@ class KodeController extends Controller
      */
     public function edit($id)
     {
-        $data['kode'] = KodesModel::findById($id);
-        return view('kode.edit', $data);
+        $data = PrayonRepository::relupdate($id);
+        return view('prayon.edit',$data);
     }
 
     /**
@@ -73,8 +74,8 @@ class KodeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        KodeRepository::updatedata($request);
-        return redirect('kode');
+        PrayonRepository::updatedata($request);
+        return redirect('prayon');
     }
 
     /**
@@ -85,15 +86,7 @@ class KodeController extends Controller
      */
     public function destroy($id)
     {
-        KodeRepository::deletedata($id);
-        return redirect('kode');
-    }
-    public function kode($id){
-        $kode = Kode::FindOrFail($id);
-        return $kode;
-    }
-    public static function kodedata($id){
-        $kode = Kode::FindOrFail($id);
-        return $kode;
+        PrayonRepository::deletedata($id);
+        return redirect('prayon');
     }
 }

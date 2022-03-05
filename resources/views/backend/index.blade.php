@@ -281,7 +281,7 @@
   <script src="{{asset('backend/assets/vendor/simple-datatables/simple-datatables.js')}}"></script>
   <script src="{{asset('backend/assets/vendor/tinymce/tinymce.min.js')}}"></script>
   <script src="{{asset('backend/assets/vendor/php-email-form/validate.js')}}"></script>
-
+@stack('js')
   <!-- Template Main JS File -->
   <script src="{{asset('backend/assets/js/main.js')}}"></script>
 </body>

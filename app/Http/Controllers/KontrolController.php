@@ -3,10 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\KodesModel;
-use App\Repositories\KodeRepository;
-use App\Models\Kode;
-class KodeController extends Controller
+
+class KontrolController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +13,7 @@ class KodeController extends Controller
      */
     public function index()
     {
-        $data['kode'] = KodesModel::latest();
-        return view('kode.index', $data);
+        //
     }
 
     /**
@@ -26,7 +23,7 @@ class KodeController extends Controller
      */
     public function create()
     {
-        return view('kode.create');
+        //
     }
 
     /**
@@ -37,8 +34,7 @@ class KodeController extends Controller
      */
     public function store(Request $request)
     {
-        KodeRepository::adddata($request);
-        return redirect('kode');
+        //
     }
 
     /**
@@ -60,8 +56,7 @@ class KodeController extends Controller
      */
     public function edit($id)
     {
-        $data['kode'] = KodesModel::findById($id);
-        return view('kode.edit', $data);
+        //
     }
 
     /**
@@ -73,8 +68,7 @@ class KodeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        KodeRepository::updatedata($request);
-        return redirect('kode');
+        //
     }
 
     /**
@@ -85,15 +79,6 @@ class KodeController extends Controller
      */
     public function destroy($id)
     {
-        KodeRepository::deletedata($id);
-        return redirect('kode');
-    }
-    public function kode($id){
-        $kode = Kode::FindOrFail($id);
-        return $kode;
-    }
-    public static function kodedata($id){
-        $kode = Kode::FindOrFail($id);
-        return $kode;
+        //
     }
 }

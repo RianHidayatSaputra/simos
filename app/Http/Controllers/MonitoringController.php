@@ -4,10 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Repositories\MonitoringRepository;
+use App\Models\MonitoringsModel;
 use App\Models\SiswasModel;
 use App\Models\KodesModel;
-use App\Models\Siswas;
-use App\Models\Kodes;
+use App\Models\Siswa;
+use App\Models\Kode;
 
 class MonitoringController extends Controller
 {
@@ -65,7 +66,10 @@ class MonitoringController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data['monitoring'] = MonitoringsModel::findById($id);
+        $data['siswa'] = Siswa::get();
+        $data['kode'] = Kode::get();
+        return view('monitoring.edit', $data);
     }
 
     /**
@@ -77,7 +81,8 @@ class MonitoringController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        MonitoringRepository::updatedata($request);
+        return redirect('monitoring');
     }
 
     /**
@@ -88,6 +93,9 @@ class MonitoringController extends Controller
      */
     public function destroy($id)
     {
-        //
+        MonitoringRepository::deletedata($id);
+        return redirect('monitoring');
     }
+
+    
 }

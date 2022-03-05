@@ -3,14 +3,12 @@ namespace App\Models;
 
 use Crocodic\LaravelModel\Core\Model;
 
-class MonitoringsModel extends Model
+class PrayonsModel extends Model
 {
     
 	public $id;
-	public $id_siswa;
-	public $id_kode;
-	public $tgl;
-	public $keterangan;
+	public $id_rombel;
+	public $id_guru;
 	public $created_at;
 	public $updated_at;
 

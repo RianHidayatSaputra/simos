@@ -110,4 +110,8 @@ class SiswaController extends Controller
         SiswaRepository::deletedata($id);
         return redirect('siswa');
     }
+    public function siswa($id){
+        $siswa = Siswa::FindOrFail($id);
+        return $siswa;
+    }
 }

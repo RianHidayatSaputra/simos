@@ -8,6 +8,7 @@ use App\Http\Controllers\KodeController;
 use App\Http\Controllers\MonitoringController;
 use App\Http\Controllers\OrtuController;
 use App\Http\Controllers\SiswaController;
+use App\Http\Controllers\PrayonController;
 
 
 /*
@@ -58,6 +59,9 @@ route::post('kode/store', [KodeController::class, 'store'])->name('kode.store');
 route::get('kode/edit/{id}', [KodeController::class, 'edit'])->name('kode.edit');
 route::post('kode/update/{id}', [KodeController::class, 'update'])->name('kode.update');
 route::get('kode/delete/{id}', [KodeController::class, 'destroy'])->name('kode.delete');
+route::get('kode/data/{id?}', [KodeController::class, 'kode'])->name('kode.data');
+route::get('kode/editdata/{id?}', [KodeController::class, 'kodedata'])->name('editdata.kodedata');
+
 
 //Route Orang tua
 route::get('ortu',[OrtuController::class, 'index'])->name('ortu.index');
@@ -74,6 +78,8 @@ route::post('siswa/store', [SiswaController::class, 'store'])->name('siswa.store
 route::get('siswa/edit/{id}', [SiswaController::class, 'edit'])->name('siswa.edit'); 
 route::post('siswa/update/{id}', [SiswaController::class, 'update'])->name('siswa.update');
 route::get('siswa/delete/{id}', [SiswaController::class, 'destroy'])->name('siswa.delete');
+route::get('siswa/data/{id?}', [SiswaController::class, 'monitoring'])->name('siswa.data');
+
 
 //Route Monitoring
 route::get('monitoring',[MonitoringController::class, 'index'])->name('monitoring.index');
@@ -82,3 +88,12 @@ route::post('monitoring/store', [MonitoringController::class, 'store'])->name('m
 route::get('monitoring/edit/{id}', [MonitoringController::class, 'edit'])->name('monitoring.edit'); 
 route::post('monitoring/update/{id}', [MonitoringController::class, 'update'])->name('monitoring.update');
 route::get('monitoring/delete/{id}', [MonitoringController::class, 'destroy'])->name('monitoring.delete');
+
+//Route prayon
+route::get('prayon',[PrayonController::class, 'index'])->name('prayon.index');
+route::get('prayon/create', [PrayonController::class, 'create'])->name('prayon.create');
+route::post('prayon/store', [PrayonController::class, 'store'])->name('prayon.store');
+route::get('prayon/edit/{id}', [PrayonController::class, 'edit'])->name('prayon.edit'); 
+route::post('prayon/update/{id}', [PrayonController::class, 'update'])->name('prayon.update');
+route::get('prayon/delete/{id}', [PrayonController::class, 'destroy'])->name('prayon.delete');
+

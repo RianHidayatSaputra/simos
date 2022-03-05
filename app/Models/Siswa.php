@@ -13,6 +13,21 @@ class Siswa extends Model
 {
     use HasFactory;
 
+    protected $table = 'siswas';
+
+    protected $fillable = [
+        'nis',
+        'name',
+        'alamat',
+        'no_telp',
+        'id_rombel',
+        'username',
+        'password',
+        'id_ortu',
+        'id_rayon',
+        'id_guru',
+    ];
+
     public function rombel(){
         return $this->belongsTo(Rombel::class, 'id_rombel', 'id');
     }

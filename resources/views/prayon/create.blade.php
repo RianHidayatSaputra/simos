@@ -22,15 +22,15 @@
               <h5 class="card-title">General Form Siswa</h5>
 
               <!-- General Form Siswa -->
-              <form action="{{route('monitoring.store')}}" method="POST">
+              <form action="{{route('prayon.store')}}" method="POST">
               	{{csrf_field()}}
                 <div class="row mb-3">
                   <label class="col-sm-2 col-form-label">Select Nis</label>
                   <div class="col-sm-10">
-                    <select name="id_siswa" id="id_siswa" class="form-select" aria-label="Default select example">
+                    <select name="id_rayon" id="id_rayon" class="form-select" aria-label="Default select example">
                       <option selected>Options Nis</option>
-                      @foreach($siswa as $row)
-                      <option value="{{$row->id}}">{{$row->nis}}</option>
+                      @foreach($rayon as $row)
+                      <option value="{{$row->id}}">{{$row->rayon}}</option>
                       @endforeach
                     </select>
                   </div>
@@ -38,30 +38,12 @@
                 <div class="row mb-3">
                   <label class="col-sm-2 col-form-label">Select Kode</label>
                   <div class="col-sm-10">
-                    <select name="id_kode" id="id_kode" class="form-select" aria-label="Default select example">
+                    <select name="id_guru" id="id_guru" class="form-select" aria-label="Default select example">
                       <option selected>Options Kode</option>
-                      @foreach($kode as $row)
-                      <option value="{{$row->id}}">{{$row->kode}}</option>
+                      @foreach($guru as $row)
+                      <option value="{{$row->id}}">{{$row->name}}</option>
                       @endforeach
                     </select>
-                  </div>
-                </div>
-                <div class="row mb-3">
-                  <label for="inputText" class="col-sm-2 col-form-label">Kode Skor</label>
-                  <div class="col-sm-10">
-                    <input type="text" name="skor" id="skor" class="form-control">
-                  </div>
-                </div>
-                <div class="row mb-3">
-                  <label for="inputText" class="col-sm-2 col-form-label">Tanggal</label>
-                  <div class="col-sm-10">
-                    <input type="text" name="tgl" value="<?php echo date('d-M-y'); ?>" id="tgl"  class="form-control">
-                  </div>
-                </div>
-                <div class="row mb-3">
-                  <label for="inputText" class="col-sm-2 col-form-label">Keterangan</label>
-                  <div class="col-sm-10">
-                    <input type="text" name="keterangan" id="keterangan" class="form-control">
                   </div>
                 </div>
                 
