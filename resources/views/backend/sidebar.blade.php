@@ -172,7 +172,7 @@
         </a>
         <ul id="components-nav2" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a href="components-alerts.html">
+            <a href="{{route('kontrol.index')}}">
               <i class="bi bi-circle"></i><span>Kontrol</span>
             </a>  
           </li>

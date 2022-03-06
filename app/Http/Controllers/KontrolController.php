@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Repositories\KontrolRepository;
+use App\Models\Siswa;
 
 class KontrolController extends Controller
 {
@@ -13,8 +15,9 @@ class KontrolController extends Controller
      */
     public function index()
     {
-        //
-    }
+        $data['kontrol'] = KontrolRepository::indexdata();
+        return view('kontrol.index',$data);
+    } 
 
     /**
      * Show the form for creating a new resource.
@@ -23,7 +26,8 @@ class KontrolController extends Controller
      */
     public function create()
     {
-        //
+        $data = KontrolRepository::createdata();
+        return view('kontrol.create',$data);
     }
 
     /**
@@ -34,7 +38,8 @@ class KontrolController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        KontrolRepository::adddata($request);
+        return redirect('kontrol');
     }
 
     /**
@@ -80,5 +85,10 @@ class KontrolController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public static function kontrol($id){
+        $kontrol = Siswa::FindOrFail($id);
+        return $kontrol;
     }
 }

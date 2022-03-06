@@ -9,6 +9,7 @@ use App\Http\Controllers\MonitoringController;
 use App\Http\Controllers\OrtuController;
 use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\PrayonController;
+use App\Http\Controllers\KontrolController;
 
 
 /*
@@ -96,4 +97,14 @@ route::post('prayon/store', [PrayonController::class, 'store'])->name('prayon.st
 route::get('prayon/edit/{id}', [PrayonController::class, 'edit'])->name('prayon.edit'); 
 route::post('prayon/update/{id}', [PrayonController::class, 'update'])->name('prayon.update');
 route::get('prayon/delete/{id}', [PrayonController::class, 'destroy'])->name('prayon.delete');
+
+//Route kontrol
+route::get('kontrol',[KontrolController::class, 'index'])->name('kontrol.index');
+route::get('kontrol/create', [KontrolController::class, 'create'])->name('kontrol.create');
+route::post('kontrol/store', [KontrolController::class, 'store'])->name('kontrol.store');
+route::get('kontrol/edit/{id}', [KontrolController::class, 'edit'])->name('kontrol.edit'); 
+route::post('kontrol/update/{id}', [KontrolController::class, 'update'])->name('kontrol.update');
+route::get('kontrol/delete/{id}', [KontrolController::class, 'destroy'])->name('kontrol.delete');
+route::get('kontrol/data/{id?}', [KontrolController::class, 'kontrol'])->name('kontrol.data');
+
 
