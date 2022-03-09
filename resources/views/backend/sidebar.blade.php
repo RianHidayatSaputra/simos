@@ -180,6 +180,14 @@
         </a>
         <ul id="components-nav2" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
+<<<<<<< HEAD
+=======
+            <a href="{{route('kontrol.index')}}">
+              <i class="bi bi-circle"></i><span>Kontrol</span>
+            </a>  
+          </li>
+          <li>
+>>>>>>> 5b97afaff48f1bb31fcece06fba09d08afa33ae7
             <a href="components-alerts.html">
               <i class="bi bi-circle"></i><span>Prestasi</span>
             </a>  

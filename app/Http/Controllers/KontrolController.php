@@ -94,4 +94,9 @@ class KontrolController extends Controller
         $kontrol = Siswa::FindOrFail($id);
         return $kontrol;
     }
+
+    public static function kontrol($id){
+        $kontrol = Siswa::FindOrFail($id);
+        return $kontrol;
+    }
 }
