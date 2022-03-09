@@ -72,7 +72,7 @@
                   </div>
                 </div>
                 <div class="row mb-3">
-                  <label class="col-sm-2 col-form-label">Select</label>
+                  <label class="col-sm-2 col-form-label">Select Ortu</label>
                   <div class="col-sm-10">
                     <select name="id_ortu" id="id_ortu" class="form-select" aria-label="Default select example">
                       <option selected>Name Orang Tua</option>
@@ -83,7 +83,7 @@
                   </div>
                 </div>
                 <div class="row mb-3">
-                  <label class="col-sm-2 col-form-label">Select</label>
+                  <label class="col-sm-2 col-form-label">Select Rayon </label>
                   <div class="col-sm-10">
                     <select name="id_rayon" id="id_rayon" class="form-select" aria-label="Default select example">
                       <option selected>Options Rayon</option>
@@ -94,7 +94,7 @@
                   </div>
                 </div>
                 <div class="row mb-3">
-                  <label class="col-sm-2 col-form-label">Select</label>
+                  <label class="col-sm-2 col-form-label">Select Guru</label>
                   <div class="col-sm-10">
                     <select name="id_guru" id="id_guru" class="form-select" aria-label="Default select example">
                       <option selected>Name Guru</option>

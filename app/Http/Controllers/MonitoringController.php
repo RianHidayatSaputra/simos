@@ -9,6 +9,8 @@ use App\Models\SiswasModel;
 use App\Models\KodesModel;
 use App\Models\Siswa;
 use App\Models\Kode;
+use App\Models\Monitoring;
+use Illuminate\Support\Facades\DB;
 
 class MonitoringController extends Controller
 {
@@ -19,7 +21,13 @@ class MonitoringController extends Controller
      */
     public function index()
     {
+        
+        // $data = Monitoring::with('siswas')->get()->toArray();
+        // $data = Monitoring::kode()->get();
         $data['monitoring'] = MonitoringRepository::getAll();
+        $data['details'] = MonitoringRepository::shownis();
+        // $data['monitoring'] = Monitoring::all();
+        // dd($data);
         return view('monitoring.index',$data);
     }
 
@@ -53,9 +61,11 @@ class MonitoringController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($nis)
     {
-        //
+        $detail['details'] = MonitoringRepository::details($nis);
+        // dd($detail);
+        return view('monitoring.detail',$detail);
     }
 
     /**

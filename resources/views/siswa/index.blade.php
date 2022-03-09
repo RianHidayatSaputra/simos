@@ -8,7 +8,7 @@
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="{{route('simos')}}">Home</a></li>
           <li class="breadcrumb-item">Tables</li>
-          <li class="breadcrumb-item active">Data</li>
+          <li class="breadcrumb-item active">Siswa</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
@@ -19,7 +19,7 @@
 
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Datatables</h5>
+              <h5 class="card-title">Siswa</h5>
               <div class="icon" style="float: right; margin-top: -5%; width: 10%;">
                 <a href="{{route('siswa.create')}}"><i class="fa-100x ri-add-box-line ml-3 mt-2"></i></a>
               </div>

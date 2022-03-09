@@ -7,5 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Kontrol extends Model
 {
-    use HasFactory;
+    // use HasFactory;
+
+    protected $table = 'kontrols';
+    protected $fillable = [
+            'id_siswa',
+            'catatan',
+            'image',
+    ];
 }

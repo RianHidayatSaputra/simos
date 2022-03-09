@@ -142,17 +142,18 @@
         </a>
       </li><!-- End Profile Page Nav -->
       <li class="nav-item">
+        <a class="nav-link collapsed" href="{{route('ortu.index')}}">
+          <i class="bi bi-person"></i>
+          <span>Ortu/Wali</span>
+        </a>
+      </li>
+      <li class="nav-item">
         <a class="nav-link collapsed" href="{{route('siswa.index')}}">
           <i class="bi bi-person"></i>
           <span>Siswa</span>
         </a>
       </li><!-- End Profile Page Nav -->
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="{{route('ortu.index')}}">
-          <i class="bi bi-person"></i>
-          <span>Ortu/Wali</span>
-        </a>
-      </li><!-- End Profile Page Nav -->
+      <!-- End Profile Page Nav -->
       <li class="nav-item">
         <a class="nav-link collapsed" href="{{route('prayon.index')}}">
           <i class="bi bi-person"></i>
@@ -165,17 +166,19 @@
           <span>Monitoring</span>
         </a>
       </li><!-- End Profile Page Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{{route('kontrol.index')}}">
+          <i class="bi bi-person"></i>
+          <span>Kontrol</span>
+        </a>
+      </li><!-- End Profile Page Nav -->
       <!-- End Components Nav -->
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#components-nav2" data-bs-toggle="collapse" href="#">
           <i class="bi bi-menu-button-wide"></i><span>Laporan</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="components-nav2" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-          <li>
-            <a href="components-alerts.html">
-              <i class="bi bi-circle"></i><span>Kontrol</span>
-            </a>  
-          </li>
           <li>
             <a href="components-alerts.html">
               <i class="bi bi-circle"></i><span>Prestasi</span>
