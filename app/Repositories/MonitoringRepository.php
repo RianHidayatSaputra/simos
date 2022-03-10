@@ -66,7 +66,7 @@ class MonitoringRepository extends MonitoringsModel
         // return $detail;
 
         return Kode::query()
-    ->selectRaw('siswas.nis, siswas.name as name, sum(kodes.skor) as skor,monitorings.*')
+    ->selectRaw('siswas.nis, siswas.name as name, sum(kodes.skor) as skor,monitorings.*,kodes.jenis')
     ->join(
         'monitorings',
         'monitorings.id_kode',
@@ -79,7 +79,7 @@ class MonitoringRepository extends MonitoringsModel
         '=',
         'monitorings.id_siswa'
     )
-    ->groupBy('siswas.nis')
+    ->groupBy('siswas.nis','kodes.jenis')
     ->get();
     }
     public static function updatedata(Request $request){

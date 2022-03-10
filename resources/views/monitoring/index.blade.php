@@ -30,6 +30,7 @@
                     <th scope="col">Name</th>
                     <th scope="col">Skor</th>
                     <th scope="col">Tanggal</th>
+                    <th scope="col">Jenis</th>
                     <th scope="col">Status</th>
                     <th scope="col">Action</th>
                   </tr>
@@ -42,18 +43,35 @@
                     <td>{{$row->name}}</td>
                     <td>{{$row->skor}}</td>
                     <td>{{$row->tgl}}</td>
-                    @if($row->skor <= 500)
-                    <td class="bg-success text-center text-white">Aman</td>
+                    <td>{{$row->jenis}}</td>
+                    @if( $row->jenis=="pelanggaran")
+                      @if($row->skor <= 500)
+                      <td class="bg-success text-center text-white">Aman</td>
+                      @endif
+                      @if($row->skor >= 500)
+                      <td class="bg-warning text-center text-white">SP 1</td>
+                      @endif
+                      @if($row->skor >= 750)
+                      <td class="bg-danger text-center text-white">SP 2</td>
+                      @endif
+                      @if($row->skor >= 1000)
+                      <td class="bg-dark text-center text-white">Di Keluarkan</td>
+                      @endif
+                    @else($row->jenis=="prestasi")
+                      @if($row->skor <= 1500)
+                      <td class="bg-info text-center text-white">Biasa</td>
+                      @endif
+                      @if($row->skor >= 1500)
+                      <td class="bg-warning text-center text-white">Baik</td>
+                      @endif
+                      @if($row->skor >= 2000)
+                      <td class="bg-success text-center text-white"> Sangat Baik </td>
+                      @endif
+                      @if($row->skor >= 2500)
+                      <td class="bg-primary text-center text-white"> Student Of The Year </td>
+                      @endif
                     @endif
-                    @if($row->skor >= 500)
-                    <td class="bg-warning text-center text-white">SP 1</td>
-                    @endif
-                    @if($row->skor >= 750)
-                    <td class="bg-danger text-center text-white">SP 2</td>
-                    @endif
-                    @if($row->skor >= 1000)
-                    <td class="bg-dark text-center text-white">Di Keluarkan</td>
-                    @endif
+                    
                     <td>
                         <a href="{{route('monitoring.edit',$row->id)}}" class="btn btn-sm btn-primary demo-google-material-icon"><i class="bi bi-pencil"></i></a>
                         <a href="{{route('monitoring.delete',$row->id)}}" onclick="return confirm('apa kamu serius?')" class="btn btn-sm btn-danger demo-google-material-icon"><i class="bi bi-trash"></i>  </a>
