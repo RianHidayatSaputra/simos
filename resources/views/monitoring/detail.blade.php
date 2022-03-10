@@ -27,7 +27,7 @@
                     <th scope="col">#</th>
                     <th scope="col">NIS</th>
                     <th scope="col">Kode</th>
-                    <th scope="col">Skor</th>
+                    <th scope="col">Point</th>
                     <th scope="col">Tanggal</th>
                     <th scope="col">Keterangan</th>
                     <th scope="col">Status</th>

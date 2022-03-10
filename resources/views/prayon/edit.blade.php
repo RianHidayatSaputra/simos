@@ -46,7 +46,17 @@
                     </select>
                   </div>
                 </div>
-                
+                <div class="row mb-3">
+                  <label for="inputText" class="col-sm-2 col-form-label">Username</label>
+                  <div class="col-sm-10">
+                    <input type="text" name="username" value="{{$rayon->username}}" id="username" class="form-control">
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <label for="inputText" class="col-sm-2 col-form-label">Password</label>
+                  <div class="col-sm-10">
+                    <input type="text" name="password" id="password" class="form-control">
+                  </div>
                 
 
                 <div class="row mb-3">

@@ -28,7 +28,7 @@
                     <th scope="col">#</th>
                     <th scope="col">NIS</th>
                     <th scope="col">Name</th>
-                    <th scope="col">Skor</th>
+                    <th scope="col">Total Point</th>
                     <th scope="col">Tanggal</th>
                     <th scope="col">Jenis</th>
                     <th scope="col">Status</th>

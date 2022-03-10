@@ -10,6 +10,9 @@ use App\Http\Controllers\OrtuController;
 use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\PrayonController;
 use App\Http\Controllers\KontrolController;
+use App\Http\Controllers\PrestasiController;
+use App\Http\Controllers\PelanggaranController;
+use App\Http\Controllers\KeseluruhanController;
 
 
 /*
@@ -108,4 +111,11 @@ route::post('kontrol/update/{id}', [KontrolController::class, 'update'])->name('
 route::get('kontrol/delete/{id}', [KontrolController::class, 'destroy'])->name('kontrol.delete');
 route::get('kontrol/data/{id?}', [KontrolController::class, 'kontrol'])->name('kontrol.data');
 
+//Route laporan prestasi
+route::get('laporan/prestasi',[PrestasiController::class, 'index'])->name('laporan.prestasi.index');
 
+//Route laporan Pelanggaran
+route::get('laporan/pelanggaran',[PelanggaranController::class, 'index'])->name('laporan.pelanggaran.index');
+
+//Route laporan Keseluruhan
+route::get('laporan/keseluruhan',[KeseluruhanController::class, 'index'])->name('laporan.keseluruhan.index');

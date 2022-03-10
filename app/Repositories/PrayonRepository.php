@@ -6,6 +6,8 @@ use \Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Guru;
 use App\Models\Rayon;
+use Illuminate\Support\Facades\Hash;
+
 
 class PrayonRepository extends PrayonsModel
 {
@@ -36,6 +38,8 @@ class PrayonRepository extends PrayonsModel
         DB::table('prayons')->insert([
             'id_rayon' => $request->id_rayon,
             'id_guru' => $request->id_guru,
+            'username' => $request->username,
+            'password' => Hash::make($request->password),
         ]);
     }
 
@@ -43,6 +47,8 @@ class PrayonRepository extends PrayonsModel
         DB::table('prayons')->where('id', $request->id)->update([
             'id_rayon' => $request->id_rayon,
             'id_guru' => $request->id_guru,
+            'username' => $request->username,
+            'password' => Hash::make($request->password),
         ]);
         
     }

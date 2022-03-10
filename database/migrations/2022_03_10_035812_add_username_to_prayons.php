@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePrayonsTable extends Migration
+class AddUsernameToPrayons extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,9 @@ class CreatePrayonsTable extends Migration
      */
     public function up()
     {
-        Schema::create('prayons', function (Blueprint $table) {
-            $table->id();
-            $table->string('id_rayon');
-            $table->string('id_guru');
+        Schema::table('prayons', function (Blueprint $table) {
             $table->string('username');
             $table->string('password');
-            $table->timestamps();
         });
     }
 
@@ -30,6 +26,8 @@ class CreatePrayonsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('prayons');
+        Schema::table('prayons', function (Blueprint $table) {
+            $table->dropColumn(['username']);
+        });
     }
 }
