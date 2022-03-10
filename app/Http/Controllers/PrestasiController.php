@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Repositories\MonitoringRepository;
 use Illuminate\Http\Request;
 
 class PrestasiController extends Controller
@@ -13,7 +14,8 @@ class PrestasiController extends Controller
      */
     public function index()
     {
-        //
+        $data['details'] = MonitoringRepository::shownis();
+        return view('laporan.prestasi.index',$data);
     }
 
     /**

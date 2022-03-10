@@ -180,17 +180,17 @@
         </a>
         <ul id="components-nav2" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a href="components-alerts.html">
+            <a href="{{route('laporan.prestasi.index')}}">
               <i class="bi bi-circle"></i><span>Prestasi</span>
             </a>  
           </li>
           <li>
-            <a href="components-accordion.html">
+            <a href="{{route('laporan.pelanggaran.index')}}">
               <i class="bi bi-circle"></i><span>Pelanggaran</span>
             </a>
           </li>
           <li>
-            <a href="components-accordion.html">
+            <a href="{{route('laporan.keseluruhan.index')}}">
               <i class="bi bi-circle"></i><span>Keseluruhan</span>
             </a>
           </li>

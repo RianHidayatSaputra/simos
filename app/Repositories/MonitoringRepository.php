@@ -66,7 +66,7 @@ class MonitoringRepository extends MonitoringsModel
         // return $detail;
 
         return Kode::query()
-    ->selectRaw('siswas.nis, siswas.name as name, sum(kodes.skor) as skor,monitorings.*,kodes.jenis')
+    ->selectRaw('siswas.nis, siswas.name as name, sum(kodes.skor) as skor,monitorings.*,kodes.jenis,kodes.kode')
     ->join(
         'monitorings',
         'monitorings.id_kode',

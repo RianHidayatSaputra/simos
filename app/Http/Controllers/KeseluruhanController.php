@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Repositories\MonitoringRepository;
 use Illuminate\Http\Request;
 
 class KeseluruhanController extends Controller
@@ -13,7 +14,9 @@ class KeseluruhanController extends Controller
      */
     public function index()
     {
-        //
+        $data['details'] = MonitoringRepository::shownis();
+        return view('laporan.keseluruhan.index',$data);
+        
     }
 
     /**
