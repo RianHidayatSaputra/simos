@@ -1,6 +1,7 @@
 <?php
 namespace App\Repositories;
 
+use App\Models\Kode;
 use App\Models\MonitoringsModel;
 use \Illuminate\Http\Request;
 use App\Models\Monitoring;
@@ -10,13 +11,22 @@ class MonitoringRepository extends MonitoringsModel
 {
     // TODO : Make your own query methods
     public static function getAll(){
-       $monitor = DB::table('monitorings')
-        ->join('siswas','siswas.id' , '=' , 'monitorings.id_siswa')
-        ->join('kodes','kodes.id', '=' , 'monitorings.id_kode')
-        ->select('siswas.*','kodes.*','monitorings.*')
-        ->groupBy('siswas.nis')
-        ->get();
-        return $monitor;
+       return Kode::query()
+    ->selectRaw('siswas.nis, siswas.name as name, sum(kodes.skor) as skor,monitorings.*')
+    ->join(
+        'monitorings',
+        'monitorings.id_kode',
+        '=',
+        'kodes.id'
+    )
+    ->join(
+        'siswas',
+        'siswas.id',
+        '=',
+        'monitorings.id_siswa'
+    )
+    ->groupBy('siswas.nis')
+    ->get();
 //     return Monitoring::select(DB::raw('count(*) as count'), 'siswas.nis')
 //   ->join('kodes', 'monitorings.id_kode', '=', 'kodes.id')
 //   ->join('siswas', 'monitorings.id_siswa', '=', 'siswas.id')
@@ -48,12 +58,29 @@ class MonitoringRepository extends MonitoringsModel
         return $detail;
     }
     public static function shownis(){
-        $detail = DB::table('monitorings')
-        ->join('siswas','siswas.id' , '=' , 'monitorings.id_siswa')
-        ->join('kodes','kodes.id', '=' , 'monitorings.id_kode')
-        ->select('siswas.*','kodes.*','monitorings.*')
-        ->get();
-        return $detail;
+        // $detail = DB::table('monitorings')
+        // ->join('siswas','siswas.id' , '=' , 'monitorings.id_siswa')
+        // ->join('kodes','kodes.id', '=' , 'monitorings.id_kode')
+        // ->select('siswas.*','kodes.*','monitorings.*')
+        // ->get();
+        // return $detail;
+
+        return Kode::query()
+    ->selectRaw('siswas.nis, siswas.name as name, sum(kodes.skor) as skor,monitorings.*')
+    ->join(
+        'monitorings',
+        'monitorings.id_kode',
+        '=',
+        'kodes.id'
+    )
+    ->join(
+        'siswas',
+        'siswas.id',
+        '=',
+        'monitorings.id_siswa'
+    )
+    ->groupBy('siswas.nis')
+    ->get();
     }
     public static function updatedata(Request $request){
         DB::table('monitorings')->where('id', $request->id)->update([

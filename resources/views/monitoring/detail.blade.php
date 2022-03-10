@@ -31,7 +31,6 @@
                     <th scope="col">Tanggal</th>
                     <th scope="col">Keterangan</th>
                     <th scope="col">Status</th>
-                    <th>jumlah</th>
                   </tr>
                 </thead>
                 <tbody>

@@ -35,14 +35,25 @@
                   </tr>
                 </thead>
                 <tbody>
-                  @foreach($monitoring as $row)
+                @foreach($details as $row)
                   <tr>
                     <th scope="row">{{$loop->iteration}}</th>
                     <td>{{$row->nis}}</td>
                     <td>{{$row->name}}</td>
-                    <td>Skor</td>
+                    <td>{{$row->skor}}</td>
                     <td>{{$row->tgl}}</td>
-                    <td>Status</td>
+                    @if($row->skor <= 500)
+                    <td class="bg-success text-center text-white">Aman</td>
+                    @endif
+                    @if($row->skor >= 500)
+                    <td class="bg-warning text-center text-white">SP 1</td>
+                    @endif
+                    @if($row->skor >= 750)
+                    <td class="bg-danger text-center text-white">SP 2</td>
+                    @endif
+                    @if($row->skor >= 1000)
+                    <td class="bg-dark text-center text-white">Di Keluarkan</td>
+                    @endif
                     <td>
                         <a href="{{route('monitoring.edit',$row->id)}}" class="btn btn-sm btn-primary demo-google-material-icon"><i class="bi bi-pencil"></i></a>
                         <a href="{{route('monitoring.delete',$row->id)}}" onclick="return confirm('apa kamu serius?')" class="btn btn-sm btn-danger demo-google-material-icon"><i class="bi bi-trash"></i>  </a>
@@ -63,5 +74,6 @@
 @push('js')
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/datejs/1.0/date.min.js" integrity="sha512-/n/dTQBO8lHzqqgAQvy0ukBQ0qLmGzxKhn8xKrz4cn7XJkZzy+fAtzjnOQd5w55h4k1kUC+8oIe6WmrGUYwODA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
+<script>
+</script>
 @endpush
