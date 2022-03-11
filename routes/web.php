@@ -13,7 +13,7 @@ use App\Http\Controllers\KontrolController;
 use App\Http\Controllers\PrestasiController;
 use App\Http\Controllers\PelanggaranController;
 use App\Http\Controllers\KeseluruhanController;
-
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -101,6 +101,14 @@ route::post('prayon/store', [PrayonController::class, 'store'])->name('prayon.st
 route::get('prayon/edit/{id}', [PrayonController::class, 'edit'])->name('prayon.edit'); 
 route::post('prayon/update/{id}', [PrayonController::class, 'update'])->name('prayon.update');
 route::get('prayon/delete/{id}', [PrayonController::class, 'destroy'])->name('prayon.delete');
+
+//Route User
+route::get('user',[UserController::class, 'index'])->name('user.index');
+route::get('user/create', [UserController::class, 'create'])->name('user.create');
+route::post('user/store', [UserController::class, 'store'])->name('user.store');
+route::get('user/edit/{id}', [UserController::class, 'edit'])->name('user.edit'); 
+route::post('user/update/{id}', [UserController::class, 'update'])->name('user.update');
+route::get('user/delete/{id}', [UserController::class, 'destroy'])->name('user.delete');
 
 //Route kontrol
 route::get('kontrol',[KontrolController::class, 'index'])->name('kontrol.index');

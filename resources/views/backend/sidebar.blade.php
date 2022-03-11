@@ -130,7 +130,7 @@
         </ul>
       </li> End Icons Nav -->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="users-profile.html">
+        <a class="nav-link collapsed" href="{{route('user.index')}}">
           <i class="bi bi-person"></i>
           <span>User</span>
         </a>

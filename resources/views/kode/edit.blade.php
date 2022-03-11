@@ -48,7 +48,7 @@
                     <select name="jenis" id="jenis" class="form-select" aria-label="Default select example">
                       <option selected>Option Jenis</option>
                       <option value="prestasi">Prestasi</option>
-                      <option value="pelanggarapn">Pelanggaran</option>
+                      <option value="pelanggaran">Pelanggaran</option>
                     </select>
                   </div>
                 </div>

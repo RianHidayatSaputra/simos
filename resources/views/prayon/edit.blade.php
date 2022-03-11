@@ -25,10 +25,10 @@
               <form action="{{route('prayon.update',$prayon->id)}}" method="POST">
                 {{csrf_field()}}
                 <div class="row mb-3">
-                  <label class="col-sm-2 col-form-label">Select</label>
+                  <label class="col-sm-2 col-form-label">Select Rayon</label>
                   <div class="col-sm-10">
                     <select name="id_rayon" id="id_rayon" class="form-select  " aria-label="Default select example">
-                      <option selected>Options Nis</option>
+                      <option selected>Options Rayon</option>
                       <?php foreach($rayon as $row):?>
                       <option value="<?php echo $row['id'];?>"<?php if($row['id'] == $prayon->id_rayon) echo 'selected="selected"' ?>><?php echo $row['rayon']; ?></option>
                       <?php endforeach?>
@@ -36,10 +36,10 @@
                   </div>
                 </div>
                 <div class="row mb-3">
-                  <label class="col-sm-2 col-form-label">Select</label>
+                  <label class="col-sm-2 col-form-label">Select Guru</label>
                   <div class="col-sm-10">
                     <select name="id_guru" id="id_guru" class="form-select" aria-label="Default select example">
-                      <option selected>Options Kode</option>
+                      <option selected>Options Guru</option>
                       <?php foreach($guru as $row):?>
                       <option value="<?php echo $row['id'];?>"<?php if($row['id'] == $prayon->id_guru) echo 'selected="selected"' ?>><?php echo $row['name']; ?></option>
                       <?php endforeach?>
@@ -49,15 +49,15 @@
                 <div class="row mb-3">
                   <label for="inputText" class="col-sm-2 col-form-label">Username</label>
                   <div class="col-sm-10">
-                    <input type="text" name="username" value="{{$rayon->username}}" id="username" class="form-control">
+                    <input type="text" name="username" value="{{$prayon->username}}" id="username" class="form-control">
                   </div>
                 </div>
                 <div class="row mb-3">
                   <label for="inputText" class="col-sm-2 col-form-label">Password</label>
                   <div class="col-sm-10">
-                    <input type="text" name="password" id="password" class="form-control">
+                    <input type="text" name="password" required id="password" class="form-control">
                   </div>
-                
+                </div>
 
                 <div class="row mb-3">
                   <label class="col-sm-2 col-form-label">Submit Button</label>

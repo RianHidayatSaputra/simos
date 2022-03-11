@@ -62,6 +62,7 @@ class PrayonController extends Controller
     public function edit($id)
     {
         $data = PrayonRepository::relupdate($id);
+        // dd($data);
         return view('prayon.edit',$data);
     }
 

@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\UsersModel;
+use App\Repositories\UsersRepository;
 use Illuminate\Http\Request;
-use App\Repositories\KontrolRepository;
-use App\Models\Siswa;
 
-class KontrolController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +15,9 @@ class KontrolController extends Controller
      */
     public function index()
     {
-        $data['kontrol'] = KontrolRepository::indexdata();
-        return view('kontrol.index',$data);
-    } 
+        $data['user'] = UsersModel::latest();
+        return view('user.index',$data);
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -26,8 +26,7 @@ class KontrolController extends Controller
      */
     public function create()
     {
-        $data = KontrolRepository::createdata();
-        return view('kontrol.create',$data);
+        return view('user.create');
     }
 
     /**
@@ -38,8 +37,8 @@ class KontrolController extends Controller
      */
     public function store(Request $request)
     {
-        KontrolRepository::adddata($request);
-        return redirect('kontrol');
+        UsersRepository::adddata($request);
+        return redirect('user');
     }
 
     /**
@@ -61,8 +60,8 @@ class KontrolController extends Controller
      */
     public function edit($id)
     {
-        $data = KontrolRepository::editdata($id);
-        return view('kontrol.edit',$data);
+        $data['user'] = UsersModel::findById($id);
+        return view('user.edit',$data);
     }
 
     /**
@@ -74,8 +73,8 @@ class KontrolController extends Controller
      */
     public function update(Request $request, $id)
     {
-        KontrolRepository::updatedata($request);
-        return redirect('kontrol');
+        UsersRepository::updatedata($request);
+        return redirect('user');
     }
 
     /**
@@ -86,12 +85,7 @@ class KontrolController extends Controller
      */
     public function destroy($id)
     {
-        KontrolRepository::deletedata($id);
-        return redirect('kontrol');
-    }
-
-    public static function kontrol($id){
-        $kontrol = Siswa::FindOrFail($id);
-        return $kontrol;
+        UsersRepository::deletedata($id);
+        return redirect('user');
     }
 }

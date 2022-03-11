@@ -25,10 +25,10 @@
               <form action="{{route('prayon.store')}}" method="POST">
               	{{csrf_field()}}
                 <div class="row mb-3">
-                  <label class="col-sm-2 col-form-label">Select Nis</label>
+                  <label class="col-sm-2 col-form-label">Select Rayon</label>
                   <div class="col-sm-10">
                     <select name="id_rayon" id="id_rayon" class="form-select" aria-label="Default select example">
-                      <option selected>Options Nis</option>
+                      <option selected>Options Rayon</option>
                       @foreach($rayon as $row)
                       <option value="{{$row->id}}">{{$row->rayon}}</option>
                       @endforeach
@@ -36,10 +36,10 @@
                   </div>
                 </div>
                 <div class="row mb-3">
-                  <label class="col-sm-2 col-form-label">Select Kode</label>
+                  <label class="col-sm-2 col-form-label">Select Guru</label>
                   <div class="col-sm-10">
                     <select name="id_guru" id="id_guru" class="form-select" aria-label="Default select example">
-                      <option selected>Options Kode</option>
+                      <option selected>Options Guru</option>
                       @foreach($guru as $row)
                       <option value="{{$row->id}}">{{$row->name}}</option>
                       @endforeach

@@ -22,7 +22,7 @@
               <h5 class="card-title">General Form Siswa</h5>
 
               <!-- General Form Siswa -->
-              <form action="{{route('kontrol.store')}}" method="POST" enctype="multipart/form-data">
+              <form action="{{route('kontrol.update',$kontrol->id)}}" method="POST" enctype="multipart/form-data">
               	{{csrf_field()}}
                 <div class="row mb-3">
                   <label class="col-sm-2 col-form-label">Select Nis</label>
