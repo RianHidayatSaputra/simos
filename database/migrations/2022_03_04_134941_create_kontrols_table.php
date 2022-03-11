@@ -15,7 +15,8 @@ class CreateKontrolsTable extends Migration
     {
         Schema::create('kontrols', function (Blueprint $table) {
             $table->id();
-            $table->string('id_siswa');
+            $table->unsignedBigInteger('id_siswa');
+            $table->foreign('id_siswa')->references('id')->on('siswas');
             $table->text('catatan');
             $table->string('image');
             $table->timestamps();

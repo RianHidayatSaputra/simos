@@ -15,10 +15,10 @@ class CreatePrayonsTable extends Migration
     {
         Schema::create('prayons', function (Blueprint $table) {
             $table->id();
-            $table->string('id_rayon');
-            $table->string('id_guru');
-            $table->string('username');
-            $table->string('password');
+            $table->unsignedBigInteger('id_rayon');
+            $table->foreign('id_rayon')->references('id')->on('rayons');
+            $table->unsignedBigInteger('id_guru');
+            $table->foreign('id_guru')->references('id')->on('gurus');
             $table->timestamps();
         });
     }

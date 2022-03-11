@@ -15,8 +15,10 @@ class CreateMonitoringsTable extends Migration
     {
         Schema::create('monitorings', function (Blueprint $table) {
             $table->id();
-            $table->string('id_siswa');
-            $table->string('id_kode');
+            $table->unsignedBigInteger('id_siswa');
+            $table->foreign('id_siswa')->references('id')->on('siswas');
+            $table->unsignedBigInteger('id_kode');
+            $table->foreign('id_kode')->references('id')->on('kodes');
             $table->string('tgl');
             $table->text('keterangan');
             $table->timestamps();

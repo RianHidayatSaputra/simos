@@ -19,12 +19,22 @@ class CreateSiswasTable extends Migration
             $table->string('name');
             $table->text('alamat');
             $table->string('no_telp');
-            $table->string('id_rombel');
+
+            $table->unsignedBigInteger('id_rombel');
+            $table->foreign('id_rombel')->references('id')->on('rombels');
+
             $table->string('username');
             $table->string('password');
-            $table->string('id_ortu');
-            $table->string('id_rayon');
-            $table->string('id_guru');
+
+            $table->unsignedBigInteger('id_ortu');
+            $table->foreign('id_ortu')->references('id')->on('orangtuas');
+
+            $table->unsignedBigInteger('id_rayon');
+            $table->foreign('id_rayon')->references('id')->on('rayons');
+
+            $table->unsignedBigInteger('id_guru');
+            $table->foreign('id_guru')->references('id')->on('gurus');
+
             $table->timestamps();
         });
     }
