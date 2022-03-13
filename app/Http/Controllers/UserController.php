@@ -111,9 +111,9 @@ class UserController extends Controller
         $valit = Validator::make($request->all(),$rules,$message);
         $email = $request->input('email');
         $password = $request->input('password');
-        $ortu = DB::table('users')->where(['email'=>$email])->first();
-        if($ortu->email == $email AND Hash::check($password, $ortu->password)){
-            Session::put('email',$ortu->email);
+        $users = DB::table('users')->where(['email'=>$email])->first();
+        if($users->email == $email AND Hash::check($password, $users->password)){
+            Session::put('email',$users->email);
             session::put('login','berhasil login');
         }else{
             return redirect()->route('admin.login')->with('gagal masuk');
