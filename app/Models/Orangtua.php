@@ -9,7 +9,7 @@ class Orangtua extends Model
 {
     use HasFactory;
 protected $table = 'orangtuas';
-    protected $fillable = [ 'rayon' ,
+    protected $fillable = [
         'nama_ortu',
         'alamat',
         'no_telp',

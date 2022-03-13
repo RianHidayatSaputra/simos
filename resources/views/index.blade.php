@@ -53,7 +53,7 @@
           <li><a class="nav-link scrollto" href="#about">Tentang Aplikasi</a></li>
           <li><a class="nav-link scrollto" href="#services">Cara Kerja Aplikasi</a></li>
           <li><a class="nav-link scrollto" href="#portfolio">Prestasi Tertinggi</a></li>
-          <li><a class="getstarted scrollto" href="#about">Login</a></li>
+          <li><a class="getstarted scrollto" href="{{route('guru.login')}}">Login</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->

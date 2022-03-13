@@ -62,9 +62,9 @@ Route::get('logout/admin',[UserController::class,'adminLogout'])->name('admin.lo
 
 
 
-// Route::get('/simos', function () {
-//     return view('backend.dashboard');
-// })->name('simos');
+Route::get('/simos', function () {
+    return view('backend.dashboard');
+})->name('simos');
 //Route Guru
 route::get('guru', [GuruController::class, 'index'])->name('guru.index');
 route::get('guru/create', [GuruController::class, 'create'])->name('guru.create');
@@ -116,6 +116,8 @@ route::get('siswa/edit/{id}', [SiswaController::class, 'edit'])->name('siswa.edi
 route::post('siswa/update/{id}', [SiswaController::class, 'update'])->name('siswa.update');
 route::get('siswa/delete/{id}', [SiswaController::class, 'destroy'])->name('siswa.delete');
 route::get('siswa/data/{id?}', [SiswaController::class, 'monitoring'])->name('siswa.data');
+route::post('siswa/import', [SiswaController::class, 'import'])->name('siswa.import');
+route::get('siswa/export', [SiswaController::class, 'export'])->name('siswa.export');
 
 
 //Route Monitoring

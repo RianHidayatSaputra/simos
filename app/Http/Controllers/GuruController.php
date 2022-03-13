@@ -124,41 +124,31 @@ class GuruController extends Controller
         $rules = ['username' => 'required','password' => 'required'];
         $message = ['username.required'=>'Username Wajib Di Isi','password.required' =>'Password Wajib Di Isi'];
         $valit = Validator::make($request->all(),$rules,$message);
-        // if($valit->fails()){
-        //     return redirect()->back()->withError($valit)->withInput($request->all());
-        // }
-        // $data = [
-        //     'username' => $request->input('username'),
-        //     'password' => $request->input('password'),
-        // ];
-        // Auth::guard('gurus')->attempt($data);
-        // if(Auth::check())
-        // {
-        //     return redirect()->route('simos');
-        // }else{
-        //     Session::flash('error','Email atau password salah');
-        //     return redirect()
-		// 			->route('login')
-		// 			->with('status','gagal untuk login, tunggu beberapa saat lagi');
-        // }
         $username = $request->input('username');
         $password = $request->input('password');
+
+        // dd($username);
         $guru = DB::table('gurus')->where(['username'=> $username])->first();
-        // if($guru == 0){
-        //     return back()->with('status','gagal login');
-        // }else
-        // if($guru == ''){
-        //     return back()->with('status','gagal login');
-        // }else
+        $siswa = DB::table('siswas')->where(['username'=>$username])->first();
+        $ortu = DB::table('orangtuas')->where(['username'=>$username])->first();
+
         if($guru->username == $username AND Hash::check($password, $guru->password)){
             Session::put('username',$guru->username);
             Session::put('login','Berhasil login');
             return redirect()->route('guru.dashboard');
+        }else if($siswa->username == $username AND Hash::check($password, $siswa->password)){
+            Session::put('username',$siswa->username);
+            session::put('login','berhasil login');
+            return redirect()->route('siswa.dashboard');
+        } else if($ortu->username == $username AND Hash::check($password, $ortu->password)){
+            Session::put('username',$ortu->username);
+            session::put('login','berhasil login');
+            return redirect()->route('ortu.dashboard');
         }else{
             return redirect()->route('guru.login')->with('gagal masuk');
         }
-        // if(count($guru)){
-        // }
+
+
     }
     public function getGuruDashboard()
     {
@@ -175,6 +165,5 @@ class GuruController extends Controller
         Session::flush();
         return redirect()->route('guru.login');
     }
-    // ---------------------------------
 
 }

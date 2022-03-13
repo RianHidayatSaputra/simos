@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\SiswaExport;
+use App\Imports\SiswaImport;
 use Illuminate\Http\Request;
 use App\Models\SiswasModel;
 use App\Models\Siswa; // add
@@ -18,6 +20,7 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
+use Maatwebsite\Excel\Facades\Excel;
 
 class SiswaController extends Controller
 {
@@ -114,6 +117,16 @@ class SiswaController extends Controller
     {
         SiswaRepository::deletedata($id);
         return redirect('siswa');
+    }
+    public function import(Request $request) 
+    {
+        Excel::import(new SiswaImport, $request->file('file'));
+        
+        return redirect('siswa')->with('success', 'All good!');
+    }
+    public function export() 
+    {
+        return Excel::download(new SiswaExport, 'siswa.xlsx');
     }
     public function siswa($id){
         $siswa = Siswa::FindOrFail($id);
