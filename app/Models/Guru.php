@@ -4,11 +4,15 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Guru extends Model
+// class Guru extends Model
+class Guru extends Authenticatable
 {
     use HasFactory;
-protected $table = 'gurus';
+    protected $guard = 'gurus';
+    protected $table = 'gurus';
+    protected $primaryKey = 'id';
     protected $fillable = [
         'name',
         'alamat',

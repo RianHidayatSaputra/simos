@@ -4,8 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\GurusModel;
 use App\Repositories\GuruRepository;
-
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\DB;
+use Illuminate\support\Facades\Hash;
 
 class GuruController extends Controller
 {
@@ -99,4 +103,78 @@ class GuruController extends Controller
         GuruRepository::deletedata($id);
         return redirect('guru');
     }
+
+    /**
+     * ---------------------------------
+     * login controller
+     * ---------------------------------
+     * dashboard too
+     */
+    public function getLoginGuru()
+    {
+        // if(Session::)
+        // {
+        //     return redirect()->route('simos');
+        // }else{
+        // }
+        return view('guru.login');
+    }
+    public function getGuruAction(Request $request)
+    {
+        $rules = ['username' => 'required','password' => 'required'];
+        $message = ['username.required'=>'Username Wajib Di Isi','password.required' =>'Password Wajib Di Isi'];
+        $valit = Validator::make($request->all(),$rules,$message);
+        // if($valit->fails()){
+        //     return redirect()->back()->withError($valit)->withInput($request->all());
+        // }
+        // $data = [
+        //     'username' => $request->input('username'),
+        //     'password' => $request->input('password'),
+        // ];
+        // Auth::guard('gurus')->attempt($data);
+        // if(Auth::check())
+        // {
+        //     return redirect()->route('simos');
+        // }else{
+        //     Session::flash('error','Email atau password salah');
+        //     return redirect()
+		// 			->route('login')
+		// 			->with('status','gagal untuk login, tunggu beberapa saat lagi');
+        // }
+        $username = $request->input('username');
+        $password = $request->input('password');
+        $guru = DB::table('gurus')->where(['username'=> $username])->first();
+        // if($guru == 0){
+        //     return back()->with('status','gagal login');
+        // }else
+        // if($guru == ''){
+        //     return back()->with('status','gagal login');
+        // }else
+        if($guru->username == $username AND Hash::check($password, $guru->password)){
+            Session::put('username',$guru->username);
+            Session::put('login','Berhasil login');
+            return redirect()->route('guru.dashboard');
+        }else{
+            return redirect()->route('guru.login')->with('gagal masuk');
+        }
+        // if(count($guru)){
+        // }
+    }
+    public function getGuruDashboard()
+    {
+        $cek = Session::get('username');
+        if($cek != null){
+            $dataLogin['dataLogin'] = DB::table('gurus')->where('username', $cek)->get();
+            return view('guru.dashboard.dashboard',$dataLogin);
+        }else{
+            return back();
+        };
+    }
+    public function guruLogout()
+    {
+        Session::flush();
+        return redirect()->route('guru.login');
+    }
+    // ---------------------------------
+
 }

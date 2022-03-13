@@ -29,9 +29,42 @@ use App\Http\Controllers\UserController;
 Route::get('/', function () {
     return view('index');
 });
-Route::get('/simos', function () {
-    return view('backend.dashboard');
-})->name('simos');
+
+/**
+ * ------------------------------------------------------------------------
+ * login 
+ * ------------------------------------------------------------------------
+ */
+Route::get('login/guru',[GuruController::class,'getLoginGuru'])->name('guru.login');
+Route::post('login/guru/action',[GuruController::class,'getGuruAction'])->name('guru.post');
+Route::get('dashboard/guru',[GuruController::class,'getGuruDashboard'])->name('guru.dashboard');
+Route::get('logout/guru',[GuruController::class,'guruLogout'])->name('guru.logout');
+
+Route::get('login/ortu',[OrtuController::class,'getLoginOrtu'])->name('ortu.login');
+Route::post('login/ortu/action',[OrtuController::class,'getOrtuAction'])->name('ortu.post');
+Route::get('dashboard/ortu',[OrtuController::class,'getOrtuDashboard'])->name('ortu.dashboard');
+Route::get('logout/ortu',[OrtuController::class,'ortuLogout'])->name('ortu.logout');
+
+Route::get('login/siswa',[SiswaController::class,'getLoginSiswa'])->name('siswa.login');
+Route::post('login/siswa/action',[SiswaController::class,'getSiswaAction'])->name('siswa.post');
+Route::get('dashboard/siswa',[SiswaController::class,'getSiswaDashboard'])->name('siswa.dashboard');
+Route::get('logout/siswa',[SiswaController::class,'siswaLogout'])->name('siswa.logout');
+
+Route::get('login/rayon',[RayonController::class,'getLoginRayon'])->name('rayon.login');
+Route::post('login/rayon/action',[RayonController::class,'getRayonAction'])->name('rayon.post');
+Route::get('dashboard/rayon',[RayonController::class,'getRayonDashboard'])->name('rayon.dashboard');
+Route::get('logout/rayon',[RayonController::class,'rayonLogout'])->name('rayon.logout');
+
+Route::get('login/admin',[UserController::class,'getLoginAdmin'])->name('admin.login');
+Route::post('login/admin/action',[UserController::class,'getAdminAction'])->name('admin.post');
+Route::get('dashboard/admin',[UserController::class,'getAdminDashboard'])->name('admin.dashboard');
+Route::get('logout/admin',[UserController::class,'adminLogout'])->name('admin.logout');
+
+
+
+// Route::get('/simos', function () {
+//     return view('backend.dashboard');
+// })->name('simos');
 //Route Guru
 route::get('guru', [GuruController::class, 'index'])->name('guru.index');
 route::get('guru/create', [GuruController::class, 'create'])->name('guru.create');

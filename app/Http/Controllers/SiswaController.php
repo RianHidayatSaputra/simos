@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\SiswasModel;
+use App\Models\Siswa; // add
 use App\Models\RombelsModel;
 use App\Models\OrangtuasModel;
 use App\Models\RayonsModel;
@@ -13,6 +14,10 @@ use App\Models\Orangtua;
 use App\Models\Rayon;
 use App\Models\Guru;
 use App\Repositories\SiswaRepository;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\DB;
 
 class SiswaController extends Controller
 {
@@ -113,5 +118,47 @@ class SiswaController extends Controller
     public function siswa($id){
         $siswa = Siswa::FindOrFail($id);
         return $siswa;
+    }
+
+        /**
+     * ---------------------------------
+     * login controller
+     * ---------------------------------
+     * dashboard too
+     */
+    public function getLoginSiswa()
+    {
+        return view('siswa.login');
+    }
+
+    public function getSiswaAction(Request $request)
+    {
+        $rules = ['username'=>'required','password'=>'required'];
+        $message = ['username.required'=>'Username Wajib Di Isi','password.required'=>'Password wajib Di Isi'];
+        $valit = Validator::make($request->all(),$rules,$message);
+        $username = $request->input('username');
+        $password = $request->input('password');
+        $siswa = DB::table('siswas')->where(['username'=>$username])->first();
+        if($siswa->username == $username AND Hash::check($password, $siswa->password)){
+            Session::put('username',$siswa->username);
+            session::put('login','berhasil login');
+        }else{
+            return redirect()->route('siswa.login')->with('gagal masuk');
+        }
+    }
+    public function getSiswaDashboard()
+    {
+        $cek = session::get('username');
+        if($cek != null){
+            $dataLogin['dataLogin'] = DB::table('siswas')->where('username',$cek)->get();
+            return view('siswa.dashboard.dashboard',$dataLogin);
+        }else{
+            return back();
+        }
+    }
+    public function siswaLogout()
+    {
+        Session::flush();
+        return redirect()->route('siswa.login');
     }
 }

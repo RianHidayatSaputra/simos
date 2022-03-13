@@ -4,7 +4,7 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <li class="nav-item">
-        <a class="nav-link " href="{{route('simos')}}">
+        <a class="nav-link " href="{{route('admin.dashboard')}}">
           <i class="bi bi-grid"></i>
           <span>Dashboard</span>
         </a>
@@ -196,6 +196,12 @@
           </li>
         </ul>
       </li><!-- End Components Nav -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{{route('admin.index')}}">
+          <i class="bi bi-person"></i>
+          <span>Logout</span>
+        </a>
+      </li><!-- End Profile Page Nav -->
       
 
     </ul>

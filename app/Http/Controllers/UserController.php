@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\UsersModel;
 use App\Repositories\UsersRepository;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
@@ -87,5 +91,47 @@ class UserController extends Controller
     {
         UsersRepository::deletedata($id);
         return redirect('user');
+    }
+
+        /**
+     * ---------------------------------
+     * login controller
+     * ---------------------------------
+     * dashboard too
+     */
+    public function getLoginAdmin()
+    {
+        return view('backend.login');
+    }
+
+    public function getAdminAction(Request $request)
+    {
+        $rules = ['email'=>'required','password'=>'required'];
+        $message = ['email.required'=>'email Wajib Di Isi','password.required'=>'Password wajib Di Isi'];
+        $valit = Validator::make($request->all(),$rules,$message);
+        $email = $request->input('email');
+        $password = $request->input('password');
+        $ortu = DB::table('users')->where(['email'=>$email])->first();
+        if($ortu->email == $email AND Hash::check($password, $ortu->password)){
+            Session::put('email',$ortu->email);
+            session::put('login','berhasil login');
+        }else{
+            return redirect()->route('admin.login')->with('gagal masuk');
+        }
+    }
+    public function getAdminDashboard()
+    {
+        $cek = session::get('email');
+        if($cek != null){
+            $dataLogin['dataLogin'] = DB::table('users')->where('email',$cek)->get();
+            return view('backend.dashboard',$dataLogin);
+        }else{
+            return back();
+        }
+    }
+    public function adminLogout()
+    {
+        Session::flush();
+        return redirect()->route('admin.login');
     }
 }
