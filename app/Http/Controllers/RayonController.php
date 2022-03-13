@@ -115,6 +115,7 @@ class RayonController extends Controller
         if($rayon->username == $username AND Hash::check($password, $rayon->password)){
             Session::put('username',$rayon->username);
             session::put('login','berhasil login');
+            return redirect()->route('rayon.dashboard');
         }else{
             return redirect()->route('rayon.login')->with('gagal masuk');
         }

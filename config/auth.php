@@ -40,15 +40,6 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
-        'gurus' => [
-            'driver' => 'session',
-            'provider' => 'gurus',
-        ],
-
-        // 'gurus' => [
-        //     'driver' => 'session',
-        //     'providers' => 'guru',
-        // ],
     ],
 
     /*
@@ -72,10 +63,6 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
-        ],
-        'gurus' => [
-            'driver' => 'eloquent',
-            'model' => App\Models\Guru::class,
         ],
 
         // 'users' => [
@@ -106,12 +93,7 @@ return [
             'expire' => 60,
             'throttle' => 60,
         ],
-        'gurus' => [
-            'provider' => 'gurus',
-            'table' => 'password_resets',
-            'expire' => 60,
-            'throttle' => 60,
-        ],
+
     ],
 
     /*
