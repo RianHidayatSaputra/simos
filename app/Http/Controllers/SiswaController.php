@@ -142,6 +142,7 @@ class SiswaController extends Controller
         if($siswa->username == $username AND Hash::check($password, $siswa->password)){
             Session::put('username',$siswa->username);
             session::put('login','berhasil login');
+            return redirect()->route('siswa.dashboard');
         }else{
             return redirect()->route('siswa.login')->with('gagal masuk');
         }

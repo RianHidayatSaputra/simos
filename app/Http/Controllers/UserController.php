@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -115,9 +116,41 @@ class UserController extends Controller
         if($users->email == $email AND Hash::check($password, $users->password)){
             Session::put('email',$users->email);
             session::put('login','berhasil login');
+            return redirect()->route('admin.dashboard');
         }else{
             return redirect()->route('admin.login')->with('gagal masuk');
         }
+        // if($valit->fails())
+        // {
+        //     return redirect()
+		// 			->back()
+		// 			->withErrors($valit)
+		// 			->withInput($request->all());
+            
+        // }
+
+        // // data input
+        // $data = 
+        // [
+        //     'email' => $request->input('email'),
+        //     'password' => $request->input('password'),
+        // ];
+
+        // // check login
+        // Auth::guard('web')->attempt($data);
+
+        // // login check 
+        // if(Auth::check())
+        // {
+        //     return redirect()->route('admin.dashboard');
+        // }
+        // else
+        // {
+        //     Session::flash('error','Email atau password salah');
+        //     return redirect()
+		// 			->route('login')
+		// 			->with('status','gagal untuk login, tunggu beberapa saat lagi');
+        // }
     }
     public function getAdminDashboard()
     {
@@ -128,10 +161,21 @@ class UserController extends Controller
         }else{
             return back();
         }
+        // if(Auth::check())
+    	// {
+    	// 	return redirect()
+		// 			->route('admin.dashboard');
+    	// }
+    	// else
+    	// {
+    	// 	return view('backend.dashboard');
+    	// }
     }
     public function adminLogout()
     {
         Session::flush();
         return redirect()->route('admin.login');
+        // Auth::logout();
+        // return redirect()->route('login');
     }
 }

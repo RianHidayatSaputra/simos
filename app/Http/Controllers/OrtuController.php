@@ -115,6 +115,7 @@ class OrtuController extends Controller
         if($ortu->username == $username AND Hash::check($password, $ortu->password)){
             Session::put('username',$ortu->username);
             session::put('login','berhasil login');
+            return redirect()->route('ortu.dashboard');
         }else{
             return redirect()->route('ortu.login')->with('gagal masuk');
         }
