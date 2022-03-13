@@ -93,6 +93,8 @@ route::get('monitoring/edit/{id}', [MonitoringController::class, 'edit'])->name(
 route::post('monitoring/update/{id}', [MonitoringController::class, 'update'])->name('monitoring.update');
 route::get('monitoring/delete/{id}', [MonitoringController::class, 'destroy'])->name('monitoring.delete');
 route::get('monitoring/detail/{nis}', [MonitoringController::class, 'show'])->name('monitoring.detail');
+route::get('monitoring/data/{tgl}', [MonitoringController::class, 'monitoring'])->name('monitoring.data');
+Route::post('monitoring/fetch_data', [MonitoringController::class, 'fetch_data'])->name('monitoring.fetch_data');
 
 //Route prayon
 route::get('prayon',[PrayonController::class, 'index'])->name('prayon.index');
@@ -127,3 +129,4 @@ route::get('laporan/pelanggaran',[PelanggaranController::class, 'index'])->name(
 
 //Route laporan Keseluruhan
 route::get('laporan/keseluruhan',[KeseluruhanController::class, 'index'])->name('laporan.keseluruhan.index');
+// route::get('laporan/keseluruhan',[KeseluruhanController::class, 'serchtgl'])->name('laporan.keseluruhan.serchtgl');
