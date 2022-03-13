@@ -12,7 +12,7 @@ class MonitoringRepository extends MonitoringsModel
     // TODO : Make your own query methods
     public static function getAll(){
        return Kode::query()
-    ->selectRaw('siswas.nis, siswas.name as name, sum(kodes.skor) as skor,monitorings.*')
+    ->selectRaw('siswas.nis, siswas.name as name, sum(kodes.skor) as skor,monitorings.*,kodes.jenis')
     ->join(
         'monitorings',
         'monitorings.id_kode',
@@ -27,16 +27,6 @@ class MonitoringRepository extends MonitoringsModel
     )
     ->groupBy('siswas.nis')
     ->get();
-//     return Monitoring::select(DB::raw('count(*) as count'), 'siswas.nis')
-//   ->join('kodes', 'monitorings.id_kode', '=', 'kodes.id')
-//   ->join('siswas', 'monitorings.id_siswa', '=', 'siswas.id')
-//   ->select('siswas.*')
-//   ->groupBy('siswas.nis')
-//   ->get();
-
-        // Monitoring::select("*", DB::raw("count(*) as monitoring_count"))
-        //                 ->groupBy('id_siswa')
-        //                 ->get();
     }
 
     public static function adddata(Request $request){
@@ -94,4 +84,23 @@ class MonitoringRepository extends MonitoringsModel
     public static function deletedata($id){
         DB::table('monitorings')->where('id',$id)->delete();
     }
+    public static function monitor(){
+        return Kode::query()
+     ->selectRaw('siswas.nis, siswas.name as name, sum(kodes.skor) as skor,monitorings.*')
+     ->join(
+         'monitorings',
+         'monitorings.id_kode',
+         '=',
+         'kodes.id'
+     )
+     ->join(
+         'siswas',
+         'siswas.id',
+         '=',
+         'monitorings.id_siswa'
+     )
+     ->groupBy('siswas.nis')
+     ->get();
+     }
+     
 }

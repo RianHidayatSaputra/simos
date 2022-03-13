@@ -84,4 +84,8 @@ class KeseluruhanController extends Controller
     {
         //
     }
+    public static function serchtgl(){
+        $data['details'] = MonitoringRepository::monitor();
+        return $data;
+    }
 }
