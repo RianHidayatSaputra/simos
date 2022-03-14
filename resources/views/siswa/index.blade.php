@@ -16,29 +16,26 @@
     <section class="section">
       <div class="row">
         <div class="col-lg-12">
-          <form action="{{route('siswa.import')}}" method="post" enctype="multipart/form-data">
-          {{csrf_field()}}
-                <div class="row mb-3">
-                  <label for="inputText" class="col-sm-2 col-form-label">import</label>
-                  <div class="col-sm-10">
-                    <input type="file" name="file"  id="file"  class="form-control">
-                  </div>
-                </div>
-
-                <div class="row mb-3">
-                  <label class="col-sm-2 col-form-label">Submit Button</label>
-                  <div class="col-sm-10">
-                    <button type="submit" class="btn btn-primary">Submit Form</button>
-                  </div>
-                </div>
-                <a href="{{route('siswa.export')}}"><i class="fa-100x ri-add-box-line ml-3 mt-2"></i></a>
-
-          </form>
           <div class="card">
+            {{-- <div class="card-header">
+              {{-- dfjksldf --}}
+              {{-- <h5 class="card-title">Siswa</h5>
+              <div class="card-tools" style="float: right;">
+                <a href="{{route('siswa.create')}}" class=""><i class="fa-100x ri-add-box-line"></i>create</a>
+              </div> --}}
+            {{-- </div> --}}
             <div class="card-body">
               <h5 class="card-title">Siswa</h5>
               <div class="icon" style="float: right; margin-top: -5%; width: 10%;">
-                <a href="{{route('siswa.create')}}"><i class="fa-100x ri-add-box-line ml-3 mt-2"></i></a>
+                {{-- <a href="{{route('siswa.create')}}"><i class="fa-100x ri-add-box-line ml-3 mt-2"></i></a> --}}
+                <div class="btn-group">
+                  <a href="{{route('siswa.create')}}" class="btn btn-primary" ><i class="ri-add-box-line ml-3 mt-2"></i></a>
+                  <a href="{{route('siswa.export')}}" class="btn btn-primary"><i class="bi bi-download"></i></a>
+                  <a href="" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#basicModal"><i class="bi bi-upload"></i></a>
+                  {{-- <button class="btn btn-primary"><i class="bi bi-upload"></i></button> --}}
+                  {{-- <a href="{{route('siswa.create')}}"><i class="bi bi-add"></i></a> --}}
+                </div>
+                
               </div>
              <!--  <p>Add lightweight datatables to your project with using the <a href="https://github.com/fiduswriter/Simple-DataTables" target="_blank">Simple DataTables</a> library. Just add <code>.datatable</code> class name to any table you wish to conver to a datatable</p> -->
               
@@ -92,4 +89,35 @@
     </section>
 
   </main><!-- End #main -->
+  <div class="modal fade" id="basicModal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Import Data</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form action="{{route('siswa.import')}}" method="post" enctype="multipart/form-data">
+          {{csrf_field()}}
+          <div class="modal-body">
+                    {{-- <div class="row mb-3">
+                      <label for="inputText" class="col-sm-2 col-form-label">import</label>
+                      <div class="col-sm-10">
+                        <input type="file" name="file"  id="file"  class="form-control">
+                      </div>
+                    </div> --}}
+                    <div class="row mb-3">
+                      <label for="inputText" class="col-sm-2 col-form-label">Import</label>
+                      <div class="col-sm-10">
+                        <input type="file" name="file"  id="file" class="form-control">
+                      </div>
+                    </div>
+            </div>
+            <div class="modal-footer">
+              <a href="" class="btn btn-secondary" data-bs-dismiss="modal">Close</a>
+              <button type="button" class="btn btn-primary">Import</button>
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
 @endsection
