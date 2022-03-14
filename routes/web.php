@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GuruController;
 use App\Http\Controllers\RombelController;
@@ -62,9 +63,7 @@ Route::get('logout/admin',[UserController::class,'adminLogout'])->name('admin.lo
 
 
 
-Route::get('/simos', function () {
-    return view('backend.dashboard');
-})->name('simos');
+Route::get('/simos', [DashboardController::class, 'index'])->name('simos');
 //Route Guru
 route::get('guru', [GuruController::class, 'index'])->name('guru.index');
 route::get('guru/create', [GuruController::class, 'create'])->name('guru.create');
