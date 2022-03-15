@@ -3,7 +3,7 @@
 <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Data Tables</h1>
+      <h1>Data Siswa</h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="{{route('simos')}}">Home</a></li>
@@ -18,18 +18,19 @@
         <div class="col-lg-12">
           <div class="card">
             {{-- <div class="card-header">
-              {{-- dfjksldf --}}
               {{-- <h5 class="card-title">Siswa</h5>
               <div class="card-tools" style="float: right;">
-                <a href="{{route('siswa.create')}}" class=""><i class="fa-100x ri-add-box-line"></i>create</a>
+                <button type="button" class="btn btn-primary text-white">
+                  <a href="{{route('siswa.create')}}" class="text-white">Add Data</a>                
+                </button>
               </div> --}}
             {{-- </div> --}}
             <div class="card-body">
               <h5 class="card-title">Siswa</h5>
-              <div class="icon" style="float: right; margin-top: -5%; width: 10%;">
-                {{-- <a href="{{route('siswa.create')}}"><i class="fa-100x ri-add-box-line ml-3 mt-2"></i></a> --}}
+              <div class="icon" style="float: right; margin-right:10%; margin-top: -5%; width: 10%;">
+                {{-- <a href="{{route('siswa.create')}}">Add Data</a> --}}
                 <div class="btn-group">
-                  <a href="{{route('siswa.create')}}" class="btn btn-primary" ><i class="ri-add-box-line ml-3 mt-2"></i></a>
+                  <a href="{{route('siswa.create')}}" class="btn btn-primary" >Add</a>
                   <a href="{{route('siswa.export')}}" class="btn btn-primary"><i class="bi bi-download"></i></a>
                   <a href="" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#basicModal"><i class="bi bi-upload"></i></a>
                   {{-- <button class="btn btn-primary"><i class="bi bi-upload"></i></button> --}}
@@ -114,7 +115,7 @@
             </div>
             <div class="modal-footer">
               <a href="" class="btn btn-secondary" data-bs-dismiss="modal">Close</a>
-              <button type="button" class="btn btn-primary">Import</button>
+              <button type="submit" class="btn btn-primary">Import</button>
             </div>
         </form>
       </div>

@@ -2,7 +2,7 @@
 @section('content')
 <main id="main" class="main">
     <div class="pagetitle">
-      <h1>Data Tables</h1>
+      <h1>Data Pembimbing Rayon</h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="{{route('simos')}}">Home</a></li>
@@ -18,6 +18,9 @@
             <div class="card-body">
               <h5 class="card-title">Pembimbing Rayon</h5>
               <div class="icon" style="float: right; margin-top: -5%; width: 10%;">
+                <button type="button" class="btn btn-primary text-white">
+                  <a href="{{route('prayon.create')}}" class="text-white">Add data</a>
+                </button>
                 <a href="{{route('prayon.create')}}"><i class="fa-100x ri-add-box-line ml-3 mt-2"></i></a>
               </div>
              <!--  <p>Add lightweight datatables to your project with using the <a href="https://github.com/fiduswriter/Simple-DataTables" target="_blank">Simple DataTables</a> library. Just add <code>.datatable</code> class name to any table you wish to conver to a datatable</p> -->

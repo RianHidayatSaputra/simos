@@ -36,7 +36,7 @@ Route::get('/', function () {
  * login 
  * ------------------------------------------------------------------------
  */
-Route::get('login/guru',[GuruController::class,'getLoginGuru'])->name('guru.login');
+Route::get('login',[GuruController::class,'getLoginGuru'])->name('guru.login');
 Route::post('login/guru/action',[GuruController::class,'getGuruAction'])->name('guru.post');
 Route::get('dashboard/guru',[GuruController::class,'getGuruDashboard'])->name('guru.dashboard');
 Route::get('logout/guru',[GuruController::class,'guruLogout'])->name('guru.logout');
