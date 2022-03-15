@@ -21,12 +21,8 @@ class MonitoringController extends Controller
      */
     public function index()
     {
-        
-        // $data = Monitoring::with('siswas')->get()->toArray();
-        // $data = Monitoring::kode()->get();
         $data['monitoring'] = MonitoringRepository::getAll();
         $data['details'] = MonitoringRepository::shownis();
-        // $data['monitoring'] = Monitoring::all();
         // dd($data);
         return view('monitoring.index',$data);
     }

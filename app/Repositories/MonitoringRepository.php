@@ -13,18 +13,8 @@ class MonitoringRepository extends MonitoringsModel
     public static function getAll(){
        return Kode::query()
     ->selectRaw('siswas.nis, siswas.name as name, sum(kodes.skor) as skor,monitorings.*,kodes.jenis')
-    ->join(
-        'monitorings',
-        'monitorings.id_kode',
-        '=',
-        'kodes.id'
-    )
-    ->join(
-        'siswas',
-        'siswas.id',
-        '=',
-        'monitorings.id_siswa'
-    )
+    ->join( 'monitorings','monitorings.id_kode', '=','kodes.id')
+    ->join( 'siswas','siswas.id','=','monitorings.id_siswa')
     ->groupBy('siswas.nis')
     ->get();
     }
@@ -48,12 +38,6 @@ class MonitoringRepository extends MonitoringsModel
         return $detail;
     }
     public static function shownis(){
-        // $detail = DB::table('monitorings')
-        // ->join('siswas','siswas.id' , '=' , 'monitorings.id_siswa')
-        // ->join('kodes','kodes.id', '=' , 'monitorings.id_kode')
-        // ->select('siswas.*','kodes.*','monitorings.*')
-        // ->get();
-        // return $detail;
 
         return Kode::query()
     ->selectRaw('siswas.nis, siswas.name as name, sum(kodes.skor) as skor,monitorings.*,kodes.jenis,kodes.kode')

@@ -196,12 +196,7 @@
           </li>
         </ul>
       </li><!-- End Components Nav -->
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="{{route('admin.logout')}}">
-          <i class="bi bi-person"></i>
-          <span>Logout</span>
-        </a>
-      </li><!-- End Profile Page Nav -->
+     <!-- End Profile Page Nav -->
       
 
     </ul>
