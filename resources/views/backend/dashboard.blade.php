@@ -324,9 +324,90 @@
 
           </div>
         </div><!-- End Left side columns -->
+        <div class="col-lg-12">
+          <div class="card">
+            <div class="card-header">
+              {{-- <form action="">
+                <div class="row">
+                  <div class="col-lg-2 mb-3">
+                    <label for="inputText" class="col-form-label">NIS</label>
+                    <div class="col-sm-12">
+                      <input type="text" class="form-control">
+                    </div>
+                  </div>
+                  <div class="col-lg-2 mb-3">
+                    <label for="inputText" class="col-form-label">Rombel</label>
+                    <div class="col-sm-12">
+                      <input type="text" class="form-control">
+                    </div>
+                  </div>
+                  <div class="col-lg-2 mb-3">
+                    <label for="inputText" class="col-form-label">Tgl Awal</label>
+                    <div class="col-sm-12">
+                      <input type="date" class="form-control">
+                    </div>
+                  </div>
+                  <div class="col-lg-2 mb-3">
+                    <label for="inputText" class="col-form-label">Tgl Akhir</label>
+                    <div class="col-sm-12">
+                      <input type="date" class="form-control">
+                    </div>
+                  </div>
+                  <div class="col-lg-2 mb-3">
+                    <label for="" class="col-form-label" >Action</label>
+                    <div class="col-sm-10">
+                      <button class="btn btn-primary btn-sm">Cari</button>
+                      <a href="" class="btn btn-success btn-sm">Cetak</a>
+                    </div>
+                  </div>
+                </div>
+              </form> --}}
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Pie Chart</h5>
+
+              <!-- Pie Chart -->
+              <canvas id="pieChart" style="max-height: 400px;"></canvas>
+              {{-- @foreach($diagdata as $pie) --}}
+              <script>
+                document.addEventListener("DOMContentLoaded", () => {
+                  new Chart(document.querySelector('#pieChart'), {
+                    type: 'pie',
+                    data: {
+                      // labels: [
+                      //   'pelanggaran',
+                      //   'prestasi',
+                      //   // 'Yellow'
+                      // ],
+                      labels: {!! json_encode($dataJenisPie) !!},
+                      datasets: [{
+                        label: 'My First Dataset',
+                        // data: [
+                        //   100,
+                        //   100, 
+                        //   // 100
+                        // ],
+                        data:{!! json_encode($dataSkorPie) !!},
+                        backgroundColor: [
+                          'rgb(255, 99, 132)',
+                          'rgb(54, 162, 235)',
+                          // 'rgb(255, 205, 86)'
+                        ],
+                        hoverOffset: 4
+                      }]
+                    }
+                  });
+                });
+              </script>
+              {{-- @endforeach --}}
+              <!-- End Pie CHart -->
+
+            </div>
+          </div>
+        </div>
 
         <!-- Right side columns -->
-        <div class="col-lg-4">
+        <div class="col-lg-3">
 
           <!-- Recent Activity -->
           <div class="card">

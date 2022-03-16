@@ -164,3 +164,6 @@ route::get('laporan/pelanggaran',[PelanggaranController::class, 'index'])->name(
 //Route laporan Keseluruhan
 route::get('laporan/keseluruhan',[KeseluruhanController::class, 'index'])->name('laporan.keseluruhan.index');
 // route::get('laporan/keseluruhan',[KeseluruhanController::class, 'serchtgl'])->name('laporan.keseluruhan.serchtgl');
+
+// example
+Route::get('/test',[DashboardController::class,'test'])->name('script.dashboard.test');

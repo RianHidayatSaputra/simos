@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+// use Illuminate\Database\Query\BuilderselectRaw();
 
 class UserController extends Controller
 {
@@ -157,7 +158,19 @@ class UserController extends Controller
         $cek = session::get('email');
         if($cek != null){
             $dataLogin['dataLogin'] = DB::table('users')->where('email',$cek)->get();
-            return view('backend.dashboard',$dataLogin);
+            $kodeModel = DB::table('kodes')->select('jenis')->groupBy('jenis')->get();
+            $kodeModelSkor = UsersRepository::queryPie();
+            $arrayPieJenis = [];
+            $arrayPieSkor = [];
+            foreach($kodeModel as $itemData){
+                $arrayPieJenis[] = $itemData->jenis;
+            }
+
+            foreach($kodeModelSkor as $skorData){
+                $arrayPieSkor[] = $skorData->skor;
+            }
+
+            return view('backend.dashboard',$dataLogin, ['dataJenisPie' => $arrayPieJenis,'dataSkorPie'=>$arrayPieSkor]);
         }else{
             return back();
         }
