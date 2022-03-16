@@ -113,6 +113,7 @@ class UserController extends Controller
         $email = $request->input('email');
         $password = $request->input('password');
         $users = DB::table('users')->where(['email'=>$email])->first();
+        
         if($users->email == $email AND Hash::check($password, $users->password)){
             Session::put('email',$users->email);
             session::put('login','berhasil login');
@@ -157,7 +158,9 @@ class UserController extends Controller
         $cek = session::get('email');
         if($cek != null){
             $dataLogin['dataLogin'] = DB::table('users')->where('email',$cek)->get();
-            return view('backend.dashboard',$dataLogin);
+            $data = UsersRepository::hitung();
+            // dd($data);
+            return view('backend.dashboard',$dataLogin,$data);
         }else{
             return back();
         }

@@ -30,7 +30,6 @@
                     <th scope="col">Point</th>
                     <th scope="col">Tanggal</th>
                     <th scope="col">Keterangan</th>
-                    <th scope="col">Status</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -42,7 +41,6 @@
                     <td>{{$row->skor}}</td>
                     <td>{{$row->tgl}}</td>
                     <td>{{$row->keterangan}}</td>
-                    <td>Status</td>
                     <td></td>
                   </tr>
                   @endforeach

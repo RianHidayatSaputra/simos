@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\GurusModel;
 use App\Repositories\GuruRepository;
+use App\Repositories\UsersRepository;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -134,6 +135,8 @@ class GuruController extends Controller
         $siswa = DB::table('siswas')->where(['username'=>$username])->first();
         $ortu = DB::table('orangtuas')->where(['username'=>$username])->first();
         $users = DB::table('users')->where(['email'=>$email])->first();
+        $data = UsersRepository::hitung();
+        dd($data);
 
         if($users->email == $email AND Hash::check($password, $users->password)){
             Session::put('email',$users->email);

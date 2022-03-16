@@ -43,7 +43,7 @@
                       <i class="bi bi-person"></i>
                     </div>
                     <div class="ps-3">
-                      <h6>250</h6>
+                      <h6>{{$siswa}}</h6>
 
                     </div>
                   </div>
@@ -77,7 +77,7 @@
                       <i class="bi bi-person"></i>
                     </div>
                     <div class="ps-3">
-                      <h6>50</h6>
+                      <h6>{{$guru}}</h6>
 
                     </div>
                   </div>
@@ -109,7 +109,7 @@
                       <i class="bi bi-person"></i>
                     </div>
                     <div class="ps-3">
-                      <h6>250</h6>
+                      <h6>{{$ortu}}</h6>
 
                     </div>
                   </div>
@@ -141,7 +141,7 @@
                       <i class="bi bi-person"></i>
                     </div>
                     <div class="ps-3">
-                      <h6>7</h6>
+                      <h6>{{$prayon}}</h6>
 
                     </div>
                   </div>
@@ -173,8 +173,7 @@
                       <i class="bi bi-menu-button-wide"></i>
                     </div>
                     <div class="ps-3">
-                      <h6>10</h6>
-
+                        <h6>{{$prestasi}}</h6>
                     </div>
                   </div>
                 </div>
@@ -205,7 +204,9 @@
                       <i class="bi bi-menu-button-wide"></i>
                     </div>
                     <div class="ps-3">
-                      <h6>10</h6>
+                    @foreach($pelanggaran as $row)
+                      <h6>{{$row->jenis=="pelanggaran"}}</h6>
+                      @endforeach
 
                     </div>
                   </div>
@@ -241,16 +242,26 @@
 
                   <script>
                     document.addEventListener("DOMContentLoaded", () => {
+                      var siswas = <?= $siswa?>;
                       new ApexCharts(document.querySelector("#reportsChart"), {
                         series: [{
-                          name: 'Sales',
-                          data: [31, 40, 28, 51, 42, 82, 56],
+                          name: 'siswa',
+                          data: [<?= $siswa?>],
                         }, {
-                          name: 'Revenue',
-                          data: [11, 32, 45, 32, 34, 52, 41]
+                          name: 'Pembimbing Rayon',
+                          data: [<?= $prayon?>]
                         }, {
-                          name: 'Customers',
-                          data: [15, 11, 32, 18, 9, 24, 11]
+                          name: 'Guru',
+                          data: [<?= $guru?>]
+                        }, {
+                          name: 'Orang Tua/Wali',
+                          data: [<?= $ortu?>]
+                        }, {
+                          name: 'Prestasi',
+                          data: [<?= $prestasi?>]
+                        }, {
+                          name: 'Orang Tua/Wali',
+                          data: [<?= $ortu?>]
                         }],
                         chart: {
                           height: 350,
@@ -262,7 +273,7 @@
                         markers: {
                           size: 4
                         },
-                        colors: ['#4154f1', '#2eca6a', '#ff771d'],
+                        colors: ['#4154f1', '#2eca6a', '#ff771d', '#24d6ca'],
                         fill: {
                           type: "gradient",
                           gradient: {
