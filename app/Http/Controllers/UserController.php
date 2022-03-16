@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Monitoring;
+use App\Models\Kode;
 // use Illuminate\Database\Query\BuilderselectRaw();
 
 class UserController extends Controller
@@ -122,42 +124,27 @@ class UserController extends Controller
         }else{
             return redirect()->route('admin.login')->with('gagal masuk');
         }
-        // if($valit->fails())
-        // {
-        //     return redirect()
-		// 			->back()
-		// 			->withErrors($valit)
-		// 			->withInput($request->all());
-            
-        // }
-
-        // // data input
-        // $data = 
-        // [
-        //     'email' => $request->input('email'),
-        //     'password' => $request->input('password'),
-        // ];
-
-        // // check login
-        // Auth::guard('web')->attempt($data);
-
-        // // login check 
-        // if(Auth::check())
-        // {
-        //     return redirect()->route('admin.dashboard');
-        // }
-        // else
-        // {
-        //     Session::flash('error','Email atau password salah');
-        //     return redirect()
-		// 			->route('login')
-		// 			->with('status','gagal untuk login, tunggu beberapa saat lagi');
-        // }
     }
     public function getAdminDashboard()
     {
         $cek = session::get('email');
         if($cek != null){
+            // $data = UsersRepository::hitung();
+            $siswa = DB::table('siswas')->count();
+            $guru = DB::table('gurus')->count();
+            $ortu = DB::table('orangtuas')->count();
+            $prayon = DB::table('prayons')->count();
+            $pelanggaran = Kode::query()
+            ->selectRaw('siswas.nis, siswas.name as name, sum(kodes.skor) as skor,monitorings.*,kodes.jenis')
+            ->join( 'monitorings','monitorings.id_kode', '=','kodes.id')
+            ->join( 'siswas','siswas.id','=','monitorings.id_siswa')
+            ->groupBy('kodes.jenis')
+            ->get();
+            $prestasi = Monitoring::query()
+            ->join( 'kodes','kodes.id', '=','monitorings.id_kode')
+            ->join( 'siswas','siswas.id','=','monitorings.id_siswa')
+            ->select('kodes.jenis as prestasi')
+            ->count();
             $dataLogin['dataLogin'] = DB::table('users')->where('email',$cek)->get();
             $kodeModel = DB::table('kodes')->select('jenis')->groupBy('jenis')->get();
             $kodeModelSkor = UsersRepository::queryPie();
@@ -171,10 +158,17 @@ class UserController extends Controller
                 $arrayPieSkor[] = $skorData->skor;
             }
 
-            return view('backend.dashboard',$dataLogin, ['dataJenisPie' => $arrayPieJenis,'dataSkorPie'=>$arrayPieSkor]);
-            $data = UsersRepository::hitung();
             // dd($data);
-            return view('backend.dashboard',$dataLogin,$data);
+            return view('backend.dashboard',['dataJenisPie' => $arrayPieJenis,
+                                            'dataSkorPie'=>$arrayPieSkor,
+                                            'siswa' => $siswa,
+                                            'guru' => $guru,
+                                            'ortu' => $ortu,
+                                            'prayon' => $prayon,
+                                            'pelanggaran' => $pelanggaran,
+                                            'prestasi' => $prestasi,
+                                        ]);
+            // return view('backend.dashboard',$dataLogin,$data);
         }else{
             return back();
         }
