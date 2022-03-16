@@ -3,8 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+<<<<<<< HEAD
 use App\Models\Kode;
 use App\Models\Siswa;
+=======
+use App\Repositories\UsersRepository;
+>>>>>>> e9f288e9eaa6d0449cbe1665ef4367b1742e6545
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -12,13 +16,15 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $year = ['2015','2016','2017','2018','2019','2020'];
+        // $year = ['2015','2016','2017','2018','2019','2020'];
 
-        $user = [];
-        foreach ($year as $key => $value) {
-            $user[] = User::where(DB::raw("DATE_FORMAT(created_at, '%Y')"),$value)->count();
-        }
+        // $user = [];
+        // foreach ($year as $key => $value) {
+        //     $user[] = User::where(DB::raw("DATE_FORMAT(created_at, '%Y')"),$value)->count();
+        // }
+        // ->with('year',json_encode($year,JSON_NUMERIC_CHECK))->with('user',json_encode($user,JSON_NUMERIC_CHECK))
 
+<<<<<<< HEAD
         // $dataQuery['diagdata'] = Kode::query()->select('jenis','sum(kodes.skor) as skor')->groupBy('jenis');
         // $dataJenis['kodeJenis'] = Kode::selectRaw('kodes.jenis')->groupBy('kodes.jenis')->get();
         // $dataJenis = Kode::select('jenis')->groupBy('jenis')->get();
@@ -60,5 +66,11 @@ class DashboardController extends Controller
             $array[] = $itemData->jenis;
         }
         dd(json_encode($array));
+=======
+        $data = UsersRepository::hitung();
+        dd($data);
+
+    	return view('backend.dashboard',$data);
+>>>>>>> e9f288e9eaa6d0449cbe1665ef4367b1742e6545
     }
 }
