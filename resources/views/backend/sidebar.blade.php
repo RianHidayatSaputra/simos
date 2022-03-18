@@ -194,6 +194,11 @@
               <i class="bi bi-circle"></i><span>Keseluruhan</span>
             </a>
           </li>
+          <li>
+            <a href="{{route('laporan.pie.index')}}">
+            <i class="bi bi-circle"></i><span>Data Pie</span>
+            </a>
+          </li>
         </ul>
       </li><!-- End Components Nav -->
      <!-- End Profile Page Nav -->

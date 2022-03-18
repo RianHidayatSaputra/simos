@@ -15,6 +15,7 @@ use App\Http\Controllers\PrestasiController;
 use App\Http\Controllers\PelanggaranController;
 use App\Http\Controllers\KeseluruhanController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\LaporanPieController as laporanpiecontroller;
 
 /*
 |--------------------------------------------------------------------------
@@ -155,15 +156,23 @@ route::post('kontrol/update/{id}', [KontrolController::class, 'update'])->name('
 route::get('kontrol/delete/{id}', [KontrolController::class, 'destroy'])->name('kontrol.delete');
 route::get('kontrol/data/{id?}', [KontrolController::class, 'kontrol'])->name('kontrol.data');
 
+/**
+ * --------------------------------
+ * laporan
+ * --------------------------------
+ */
+
 //Route laporan prestasi
 route::get('laporan/prestasi',[PrestasiController::class, 'index'])->name('laporan.prestasi.index');
-
 //Route laporan Pelanggaran
 route::get('laporan/pelanggaran',[PelanggaranController::class, 'index'])->name('laporan.pelanggaran.index');
-
 //Route laporan Keseluruhan
 route::get('laporan/keseluruhan',[KeseluruhanController::class, 'index'])->name('laporan.keseluruhan.index');
 // route::get('laporan/keseluruhan',[KeseluruhanController::class, 'serchtgl'])->name('laporan.keseluruhan.serchtgl');
+// laporan pie 
+Route::get('laporan/pie',[laporanpiecontroller::class,'getIndex'])->name('laporan.pie.index');
+Route::get('laporan/pie/cari',[LaporanPieController::class,'searchData'])->name('laporan.search.pie');
+
 
 // example
 Route::get('/test',[DashboardController::class,'test'])->name('script.dashboard.test');
