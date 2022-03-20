@@ -22,7 +22,7 @@
               <h5 class="card-title">General Form Siswa</h5>
 
               <!-- General Form Siswa -->
-              <form action="{{route('kontrol.update',$kontrol->id)}}" method="POST" enctype="multipart/form-data">
+              <form action="{{route('kontrol.store')}}" method="POST" enctype="multipart/form-data">
               	{{csrf_field()}}
                 <div class="row mb-3">
                   <label class="col-sm-2 col-form-label">Select Nis</label>
@@ -56,9 +56,9 @@
                 
 
                 <div class="row mb-3">
-                  <label class="col-sm-2 col-form-label">Submit Button</label>
+                  <label class="col-sm-2 col-form-label">Tombol Kirim</label>
                   <div class="col-sm-10">
-                    <button type="submit" class="btn btn-primary">Submit Form</button>
+                    <button type="submit" class="btn btn-primary">Kirim Halaman</button>
                   </div>
                 </div>
 

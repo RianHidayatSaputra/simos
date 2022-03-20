@@ -234,11 +234,11 @@
                   </ul>
                 </div>
 
-                <div class="card-body">
-                  <h5 class="card-title">Reports <span>/Today</span></h5>
+                <!-- <div class="card-body"> -->
+                  <!-- <h5 class="card-title">Reports <span>/Today</span></h5> -->
 
                   <!-- Line Chart -->
-                  <div id="reportsChart"></div>
+                  <!-- <div id="reportsChart"></div> -->
 
                   <script>
                     document.addEventListener("DOMContentLoaded", () => {
@@ -304,7 +304,7 @@
                   </script>
                   <!-- End Line Chart -->
 
-                </div>
+                <!-- </div> -->
 
               </div>
             </div><!-- End Reports -->

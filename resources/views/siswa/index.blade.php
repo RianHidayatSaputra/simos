@@ -21,14 +21,14 @@
               {{-- <h5 class="card-title">Siswa</h5>
               <div class="card-tools" style="float: right;">
                 <button type="button" class="btn btn-primary text-white">
-                  <a href="{{route('siswa.create')}}" class="text-white">Add Data</a>                
+                  <a href="{{route('siswa.create')}}" class="text-white">Add</a>                
                 </button>
               </div> --}}
             {{-- </div> --}}
             <div class="card-body">
               <h5 class="card-title">Siswa</h5>
               <div class="icon" style="float: right; margin-right:10%; margin-top: -5%; width: 10%;">
-                {{-- <a href="{{route('siswa.create')}}">Add Data</a> --}}
+                {{-- <a href="{{route('siswa.create')}}">Add</a> --}}
                 <div class="btn-group">
                   <a href="{{route('siswa.create')}}" class="btn btn-primary" >Add</a>
                   <a href="{{route('siswa.export')}}" class="btn btn-primary"><i class="bi bi-download"></i></a>

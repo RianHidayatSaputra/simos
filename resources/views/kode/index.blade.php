@@ -22,7 +22,7 @@
               <h5 class="card-title">Kode Prilaku</h5>
               <div class="icon" style="float: right; margin-top: -5%; width: 10%;">
               <button type="button" class="btn btn-primary text-white">
-                <a href="{{route('kode.create')}}" class="text-white">Add Data</a>                
+                <a href="{{route('kode.create')}}" class="text-white">Add</a>                
               </button>
                 
               </div>

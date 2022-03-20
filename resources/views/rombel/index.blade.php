@@ -22,7 +22,7 @@
               <h5 class="card-title">Rombel</h5>
               <div class="icon" style="float: right; margin-top: -5%; width: 10%;">
                 <button type="button" class="btn btn-primary text-white">
-                  <a href="{{route('rombel.create')}}" class="text-white">Add Data</a>                
+                  <a href="{{route('rombel.create')}}" class="text-white">Add</a>                
                 </button>
               </div>
              <!--  <p>Add lightweight datatables to your project with using the <a href="https://github.com/fiduswriter/Simple-DataTables" target="_blank">Simple DataTables</a> library. Just add <code>.datatable</code> class name to any table you wish to conver to a datatable</p> -->

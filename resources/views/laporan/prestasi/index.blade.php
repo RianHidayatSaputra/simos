@@ -2,11 +2,11 @@
 @section('content')
 <main id="main" class="main">
     <div class="pagetitle">
-      <h1>Data Detail</h1>
+      <h1>Laporan Prestasi</h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="{{route('simos')}}">Home</a></li>
-          <li class="breadcrumb-item">Detail</li>
+          <li class="breadcrumb-item">Laporan</li>
           <li class="breadcrumb-item active">Prestasi</li>
         </ol>
       </nav>
@@ -16,7 +16,7 @@
         <div class="col-lg-12">
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Detail Prestasi</h5>
+              <h5 class="card-title">Laporan Prestasi</h5>
               <div class="icon" style="float: right; margin-top: -5%; width: 10%;">
               </div>
              <!--  <p>Add lightweight datatables to your project with using the <a href="https://github.com/fiduswriter/Simple-DataTables" target="_blank">Simple DataTables</a> library. Just add <code>.datatable</code> class name to any table you wish to conver to a datatable</p> -->

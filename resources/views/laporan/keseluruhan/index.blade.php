@@ -2,12 +2,12 @@
 @section('content')
 <main id="main" class="main">
     <div class="pagetitle">
-      <h1>Data Detail</h1>
+      <h1>Laporan Keseluruhan</h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="{{route('simos')}}">Home</a></li>
-          <li class="breadcrumb-item">Detail</li>
-          <li class="breadcrumb-item active">Pelanggaran</li>
+          <li class="breadcrumb-item">Laporan</li>
+          <li class="breadcrumb-item active">Keseluruhan</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
@@ -16,7 +16,7 @@
         <div class="col-lg-12">
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Detail Pelanggaran</h5>
+              <h5 class="card-title">Laporan Keseluruhan</h5>
               <div class="icon" style="float: right; margin-top: -5%; width: 10%;">
               </div>
               <div class="input-group input-daterange">

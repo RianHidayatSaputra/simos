@@ -22,7 +22,7 @@
               <h5 class="card-title">Orang Tua</h5>
               <div class="icon" style="float: right; margin-top: -5%; width: 10%;">
                 <button type="button" class="btn btn-primary text-white">
-                  <a href="{{route('ortu.create')}}" class="text-white">Add Data</a>
+                  <a href="{{route('ortu.create')}}" class="text-white">Add</a>
                 </button>
                 <a href="{{route('ortu.create')}}"><i class="fa-100x ri-add-box-line ml-3 mt-2"></i></a>
               </div>

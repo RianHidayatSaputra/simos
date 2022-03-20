@@ -19,7 +19,7 @@
               <h5 class="card-title">Monitoring</h5>
               <div class="icon" style="float: right; margin-top: -5%; width: 10%;">
                 <button type="button" class="btn btn-primary text-white">
-                  <a href="{{route('monitoring.create')}}" class="text-white">Add Data</a>
+                  <a href="{{route('monitoring.create')}}" class="text-white">Add</a>
                 </button>
               </div>
              <!--  <p>Add lightweight datatables to your project with using the <a href="https://github.com/fiduswriter/Simple-DataTables" target="_blank">Simple DataTables</a> library. Just add <code>.datatable</code> class name to any table you wish to conver to a datatable</p> -->
@@ -48,29 +48,45 @@
                     <td>{{$row->jenis}}</td>
                     @if( $row->jenis=="pelanggaran")
                       @if($row->skor <= 500)
-                      <td class="bg-success text-center text-white">Aman</td>
+                      <td>
+                        <span class="badge bg-primary"><i class="bi bi-star me-1"></i> Aman </span>
+                      </td>
                       @endif
                       @if($row->skor >= 500)
-                      <td class="bg-warning text-center text-white">SP 1</td>
+                      <td >
+                        <span class="badge bg-info text-dark"><i class="bi bi-info-circle me-1"></i> SP 1 </span>
+                      </td>
                       @endif
                       @if($row->skor >= 750)
-                      <td class="bg-danger text-center text-white">SP 2</td>
+                      <td >
+                        <span class="badge bg-warning text-dark"><i class="bi bi-exclamation-triangle me-1"></i> SP 2 </span>
+                      </td>
                       @endif
                       @if($row->skor >= 1000)
-                      <td class="bg-dark text-center text-white">Di Keluarkan</td>
+                      <td class="bg-dark text-center text-white">
+                        <span class="badge bg-danger"><i class="bi bi-exclamation-octagon me-1"></i> Di Keluarkan </span>
+                      </td>
                       @endif
                     @else($row->jenis=="prestasi")
                       @if($row->skor <= 1500)
-                      <td class="bg-info text-center text-white">Biasa</td>
+                      <td>
+                        <span class="badge bg-success"><i class="bi bi-check-circle me-1"></i> Biasa </span>
+                      </td>
                       @endif
                       @if($row->skor >= 1500)
-                      <td class="bg-warning text-center text-white">Baik</td>
+                      <td>
+                        <span class="badge bg-primary"><i class="bi bi-star me-1"></i> Baik </span>
+                      </td>
                       @endif
                       @if($row->skor >= 2000)
-                      <td class="bg-success text-center text-white"> Sangat Baik </td>
+                      <td>
+                        <span class="badge bg-primary"><i class="bi bi-star me-1"></i> Sangat Baik </span>
+                      </td>
                       @endif
                       @if($row->skor >= 2500)
-                      <td class="bg-primary text-center text-white"> Student Of The Year </td>
+                      <td>
+                        <span class="badge bg-light text-dark"><i class="bi bi-star me-1"></i> Student Of The Year </span>
+                      </td>
                       @endif
                     @endif
                     

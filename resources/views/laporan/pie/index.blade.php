@@ -45,9 +45,15 @@
                   </div> --}}
                   <div class="col-lg-2 mb-3">
                     <label for="" class="col-form-label" >Action</label>
-                    <div class="col-sm-10">
+                    <!-- <div class="col-sm-10">
                       <button class="btn btn-primary btn-sm">Cari</button>
                       <a href="" class="btn btn-success btn-sm">Cetak</a>
+                    </div> -->
+                    <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                      <button type="button" class="btn btn-primary">Cari</button>
+                      <button type="button" class="btn btn-success">
+                        <a href="" class="text-white">Cetak</a>
+                      </button>
                     </div>
                   </div>
                 </div>

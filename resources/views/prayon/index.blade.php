@@ -19,7 +19,7 @@
               <h5 class="card-title">Pembimbing Rayon</h5>
               <div class="icon" style="float: right; margin-top: -5%; width: 10%;">
                 <button type="button" class="btn btn-primary text-white">
-                  <a href="{{route('prayon.create')}}" class="text-white">Add data</a>
+                  <a href="{{route('prayon.create')}}" class="text-white">Add</a>
                 </button>
                 <a href="{{route('prayon.create')}}"><i class="fa-100x ri-add-box-line ml-3 mt-2"></i></a>
               </div>

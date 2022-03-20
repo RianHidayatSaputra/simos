@@ -136,7 +136,7 @@ class GuruController extends Controller
         $ortu = DB::table('orangtuas')->where(['username'=>$username])->first();
         $users = DB::table('users')->where(['email'=>$email])->first();
         $data = UsersRepository::hitung();
-        dd($data);
+        // dd($data);
 
         if($users->email == $email AND Hash::check($password, $users->password)){
             Session::put('email',$users->email);
