@@ -16,6 +16,7 @@ use App\Http\Controllers\PelanggaranController;
 use App\Http\Controllers\KeseluruhanController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LaporanPieController as laporanpiecontroller;
+use App\Http\Controllers\FrontendController as frontend;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,9 +29,20 @@ use App\Http\Controllers\LaporanPieController as laporanpiecontroller;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+/**
+ * --------------------------------
+ * frontend
+ * --------------------------------
+ * bk script and rout active
+ */
+// Route::get('/', function () {
+//     return view('index');
+// });
+Route::get('/',[frontend::class,'getIndex'])->name('/');
+Route::get('/grafik',[frontend::class,'getGrafik'])->name('frontend.grafik');
+Route::get('/prestasi/tertinggi/',[frontend::class,'highestAchievement'])->name('frontend.prestasi.tertinggi');
+
+
 
 /**
  * ------------------------------------------------------------------------

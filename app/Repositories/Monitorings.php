@@ -46,4 +46,23 @@ class Monitorings extends MonitoringsModel
         ->where('nis',$_GET['nis'])->groupBy('kodes.jenis')->get();
         return $data;
     }
+
+    /**
+     * --------------------------------
+     * get highest achievement
+     * --------------------------------
+     * for frontend data
+     */
+    public static function getHeightAchievement()
+    {
+        return Monitoring::query()
+                ->selectRaw('siswas.nis as nis, siswas.name as name, sum(kodes.skor) as skor')
+                ->join('siswas','siswas.id','=','monitorings.id_siswa')
+                ->join('kodes','kodes.id','=','monitorings.id_kode')
+                ->where('kodes.jenis','prestasi')
+                ->groupBy('siswas.nis')
+                ->orderBy('kodes.skor','asc')
+                ->paginate(3);
+    }
+
 }
