@@ -34,27 +34,34 @@ class MonitoringRepository extends MonitoringsModel
             ->join('kodes','kodes.id', '=' , 'monitorings.id_kode')
             ->select('siswas.*','kodes.*','monitorings.*')
             ->where('siswas.nis','=',$nis)
+            // ->where('jenis',)
             ->get();
         return $detail;
     }
     public static function shownis(){
 
-        return Kode::query()
-            ->selectRaw('siswas.nis, siswas.name as name, sum(kodes.skor) as skor,monitorings.*,kodes.jenis,kodes.kode')
-            ->join(
-                'monitorings',
-                'monitorings.id_kode',
-                '=',
-                'kodes.id'
-            )
-            ->join(
-                'siswas',
-                'siswas.id',
-                '=',
-                'monitorings.id_siswa'
-            )
-            ->groupBy('siswas.nis','kodes.jenis')
-            ->get();
+        // return Kode::query()
+        //     ->selectRaw('siswas.nis, siswas.name as name, sum(kodes.skor) as skor,monitorings.*,kodes.jenis,kodes.kode')
+        //     ->join(
+        //         'monitorings',
+        //         'monitorings.id_kode',
+        //         '=',
+        //         'kodes.id'
+        //     )
+        //     ->join(
+        //         'siswas',
+        //         'siswas.id',
+        //         '=',
+        //         'monitorings.id_siswa'
+        //     )
+        //     ->groupBy('siswas.nis','kodes.jenis')
+        //     ->get();
+        return Monitoring::query()
+                ->selectRaw('siswas.nis as nis, siswas.name as name, sum(kodes.skor)as skor, kodes.jenis, monitorings.*')
+                ->join('siswas','siswas.id','=','monitorings.id_siswa')
+                ->join('kodes','kodes.id','=','monitorings.id_kode')
+                ->groupBy('siswas.nis','kodes.jenis')
+                ->get();
     }
     public static function updatedata(Request $request){
         DB::table('monitorings')->where('id', $request->id)->update([
@@ -87,6 +94,35 @@ class MonitoringRepository extends MonitoringsModel
             ->groupBy('siswas.nis')
             ->get();
     }
+
+    /**
+     * --------------------------------
+     * detail where jenis
+     * --------------------------------
+     * detail where Jenis
+     */
+    // public static function detailWherejenis1($nis)
+    // {
+    //     $detail = DB::table('monitorings')
+    //         ->join('siswas','siswas.id' , '=' , 'monitorings.id_siswa')
+    //         ->join('kodes','kodes.id', '=' , 'monitorings.id_kode')
+    //         ->select('siswas.*','kodes.*','monitorings.*')
+    //         ->where('siswas.nis','=',$nis)
+    //         ->where('jenis','pelanggaran')
+    //         ->get();
+    //     return $detail;
+    // }
+    // public static function detailWherejenis2($nis)
+    // {
+    //     $detail = DB::table('monitorings')
+    //         ->join('siswas','siswas.id' , '=' , 'monitorings.id_siswa')
+    //         ->join('kodes','kodes.id', '=' , 'monitorings.id_kode')
+    //         ->select('siswas.*','kodes.*','monitorings.*')
+    //         ->where('siswas.nis','=',$nis)
+    //         ->where('jenis','pelanggaran')
+    //         ->get();
+    //     return $detail;
+    // }
 
 
 }
