@@ -93,7 +93,11 @@
                     <td>
                         <a href="{{route('monitoring.edit',$row->id)}}" class="btn btn-sm btn-primary demo-google-material-icon"><i class="bi bi-pencil"></i></a>
                         <a href="{{route('monitoring.delete',$row->id)}}" onclick="return confirm('apa kamu serius?')" class="btn btn-sm btn-danger demo-google-material-icon"><i class="bi bi-trash"></i>  </a>
+                        @if($row->jenis == 'pelanggaran')
                         <a href="{{route('monitoring.detail',$row->nis)}}"  class="btn btn-sm btn-primary demo-google-material-icon" ><i class="bi bi-files"></i></a>
+                        @else 
+                        <a href="{{route('monitoring.detail2',$row->nis)}}"  class="btn btn-sm btn-primary demo-google-material-icon" ><i class="bi bi-files"></i></a>
+                        @endif
                         {{-- <a href="" class="btn btn-sm btn-warning" ><i class="bi bi-cloud-download" ></i></a> --}}
                       </td>
                   </tr>

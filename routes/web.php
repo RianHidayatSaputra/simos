@@ -139,7 +139,8 @@ route::post('monitoring/store', [MonitoringController::class, 'store'])->name('m
 route::get('monitoring/edit/{id}', [MonitoringController::class, 'edit'])->name('monitoring.edit'); 
 route::post('monitoring/update/{id}', [MonitoringController::class, 'update'])->name('monitoring.update');
 route::get('monitoring/delete/{id}', [MonitoringController::class, 'destroy'])->name('monitoring.delete');
-route::get('monitoring/detail/{nis}', [MonitoringController::class, 'show'])->name('monitoring.detail');
+route::get('monitoring/detail/{nis}/pelanggaran', [MonitoringController::class, 'show'])->name('monitoring.detail');
+route::get('monitoring/detail/{nis}/prestasi', [MonitoringController::class, 'show2'])->name('monitoring.detail2');
 route::get('monitoring/data/{tgl}', [MonitoringController::class, 'monitoring'])->name('monitoring.data');
 Route::post('monitoring/fetch_data', [MonitoringController::class, 'fetch_data'])->name('monitoring.fetch_data');
 

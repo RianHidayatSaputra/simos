@@ -129,6 +129,7 @@ class GuruController extends Controller
         $username = $request->input('username');
         $password = $request->input('password');
         $email = $request->input('username');
+        $email2 = $request->input('username');
 
         // dd($username);
         $guru = DB::table('gurus')->where(['username'=> $username])->first();
@@ -138,7 +139,7 @@ class GuruController extends Controller
         $data = UsersRepository::hitung();
         // dd($data);
 
-        if($users->email == $email AND Hash::check($password, $users->password)){
+        if($users->email == $email2 AND Hash::check($password, $users->password)){
             Session::put('email',$users->email);
             session::put('login','berhasil login');
             return redirect()->route('admin.dashboard');
