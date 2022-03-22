@@ -57,10 +57,17 @@ class MonitoringRepository extends MonitoringsModel
         //     ->groupBy('siswas.nis','kodes.jenis')
         //     ->get();
         return Monitoring::query()
-                ->selectRaw('siswas.nis as nis, siswas.name as name, sum(kodes.skor)as skor, kodes.jenis, monitorings.*')
+                ->selectRaw('siswas.nis as nis, siswas.name as name, sum(kodes.skor)as skor, kodes.jenis, monitorings.*,kodes.*')
                 ->join('siswas','siswas.id','=','monitorings.id_siswa')
                 ->join('kodes','kodes.id','=','monitorings.id_kode')
                 ->groupBy('siswas.nis','kodes.jenis')
+                ->get();
+    }
+    public static function keseluruhan(){
+        return DB::table('monitorings')
+                ->join('siswas','siswas.id','=','monitorings.id_siswa')
+                ->join('kodes','kodes.id','=','monitorings.id_kode')
+                ->select('monitorings.*','siswas.*','kodes.*')
                 ->get();
     }
     public static function updatedata(Request $request){

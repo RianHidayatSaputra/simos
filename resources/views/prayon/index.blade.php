@@ -21,7 +21,7 @@
                 <button type="button" class="btn btn-primary text-white">
                   <a href="{{route('prayon.create')}}" class="text-white">Add</a>
                 </button>
-                <a href="{{route('prayon.create')}}"><i class="fa-100x ri-add-box-line ml-3 mt-2"></i></a>
+                <!-- <a href="{{route('prayon.create')}}"><i class="fa-100x ri-add-box-line ml-3 mt-2"></i></a> -->
               </div>
              <!--  <p>Add lightweight datatables to your project with using the <a href="https://github.com/fiduswriter/Simple-DataTables" target="_blank">Simple DataTables</a> library. Just add <code>.datatable</code> class name to any table you wish to conver to a datatable</p> -->
               <!-- Table with stripped rows -->

@@ -129,7 +129,6 @@ class GuruController extends Controller
         $username = $request->input('username');
         $password = $request->input('password');
         $email = $request->input('username');
-        $email2 = $request->input('username');
 
         // dd($username);
         $guru = DB::table('gurus')->where(['username'=> $username])->first();
@@ -139,23 +138,23 @@ class GuruController extends Controller
         $data = UsersRepository::hitung();
         // dd($data);
 
-        if($users->email == $email2 AND Hash::check($password, $users->password)){
+        if($users->email == $email AND Hash::check($password, $users->password)){
             Session::put('email',$users->email);
             session::put('login','berhasil login');
             return redirect()->route('admin.dashboard');
-        }else if($guru->username == $username AND Hash::check($password, $guru->password)){
+        } else if($guru->username == $username AND Hash::check($password, $guru->password)){
             Session::put('username',$guru->username);
             Session::put('login','Berhasil login');
             return redirect()->route('guru.dashboard');
-        }else if($siswa->username == $username AND Hash::check($password, $siswa->password)){
+        } else if($siswa->username == $username AND Hash::check($password, $siswa->password)){
             Session::put('username',$siswa->username);
             session::put('login','berhasil login');
             return redirect()->route('siswa.dashboard');
-        } else if($ortu->username == $username AND Hash::check($password, $ortu->password)){
+        }  else  if($ortu->username == $username AND Hash::check($password, $ortu->password)){
             Session::put('username',$ortu->username);
             session::put('login','berhasil login');
             return redirect()->route('ortu.dashboard');
-        }else{
+        } else{
             return redirect()->route('guru.login')->with('gagal masuk');
         }
 

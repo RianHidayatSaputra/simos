@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Repositories\MonitoringRepository;
 use Illuminate\Http\Request;
+use PhpOffice\PhpSpreadsheet\Writer\Pdf;
+// use PDF;
 
 class PrestasiController extends Controller
 {
@@ -18,6 +20,11 @@ class PrestasiController extends Controller
         return view('laporan.prestasi.index',$data);
     }
 
+    // public function print()
+    // {
+    //     $pdf = pdf::loadview('index')->setPaper('A4','potrait');
+    //     return $pdf->stream();
+    // }
     /**
      * Show the form for creating a new resource.
      *
@@ -83,4 +90,5 @@ class PrestasiController extends Controller
     {
         //
     }
+
 }

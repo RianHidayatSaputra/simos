@@ -51,8 +51,8 @@
                     </div> -->
                     <div class="btn-group" role="group" aria-label="Basic mixed styles example">
                       <button type="button" class="btn btn-primary">Cari</button>
-                      <button type="button" class="btn btn-success">
-                        <a href="" class="text-white">Cetak</a>
+                      <button type="button" onclick="window.print()" class="btn btn-success text-white">
+                        Cetak
                       </button>
                     </div>
                   </div>
