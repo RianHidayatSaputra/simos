@@ -14,7 +14,8 @@ class KeseluruhanController extends Controller
      */
     public function index()
     {
-        $data['details'] = MonitoringRepository::shownis();
+        $data['details'] = MonitoringRepository::keseluruhan();
+        // dd($data);
         return view('laporan.keseluruhan.index',$data);
         
     }

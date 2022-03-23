@@ -127,9 +127,11 @@ class MonitoringController extends Controller
        $data = DB::table('monitorings')
         ->join('siswas','siswas.id' , '=' , 'monitorings.id_siswa')
         ->join('kodes','kodes.id', '=' , 'monitorings.id_kode')
-        ->select('siswas.*','kodes.*','monitorings.*')->orderBy('tgl', 'desc')->get();
+        ->select('siswas.*','kodes.*','monitorings.*')
+        ->orderBy('tgl', 'desc')
+        ->get();
       }
-      echo json_encode($data);
+      return json_encode($data);
      }
     }
 

@@ -18,6 +18,7 @@
             <div class="card-body">
               <h5 class="card-title">Laporan Keseluruhan</h5>
               <div class="icon" style="float: right; margin-top: -5%; width: 10%;">
+                
               </div>
               <div class="input-group input-daterange">
                 <div class="col-md-4">
@@ -27,8 +28,11 @@
                 <div class="col-md-4">
                   <input type="text" name="to_date" id="to_date" class="form-control" placeholder="finish date">
                 </div>
-                <button type="button" name="filter" id="filter" class="btn btn-info btn-sm">Filter</button>
-                <button type="button" name="refresh" id="refresh" class="btn btn-warning btn-sm">Refresh</button>
+                <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                      <button type="button"  name="filter" id="filter" class="btn btn-info">Cari</button>
+                      <button type="button"   name="refresh" id="refresh" class="btn btn-warning">Refresh</button>
+                      <button type="button"  onclick="window.print()" class="btn btn-success">Cetak</button>
+                    </div>
               </div>
              <!--  <p>Add lightweight datatables to your project with using the <a href="https://github.com/fiduswriter/Simple-DataTables" target="_blank">Simple DataTables</a> library. Just add <code>.datatable</code> class name to any table you wish to conver to a datatable</p> -->
               <!-- Table with stripped rows -->
@@ -102,7 +106,7 @@
         {
         var output = '';
         $('#total_records').text(data.length);
-        for(var count = 1; count < data.length; count++)
+        for(var count = 0; count < data.length; count++)
         {
           output += '<tr>';
           output += '<td>' + count + '</td>';

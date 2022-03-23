@@ -181,6 +181,7 @@ route::get('kontrol/data/{id?}', [KontrolController::class, 'kontrol'])->name('k
 
 //Route laporan prestasi
 route::get('laporan/prestasi',[PrestasiController::class, 'index'])->name('laporan.prestasi.index');
+route::get('pdf',[PrestasiController::class, 'print'])->name('print');
 //Route laporan Pelanggaran
 route::get('laporan/pelanggaran',[PelanggaranController::class, 'index'])->name('laporan.pelanggaran.index');
 //Route laporan Keseluruhan
