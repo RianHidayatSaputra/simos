@@ -11,7 +11,7 @@
         <li><a class="nav-link scrollto" href="#about">Tentang Aplikasi</a></li>
         <li><a class="nav-link scrollto" href="{{route('frontend.grafik')}}">Grafik</a></li>
         <li><a class="nav-link scrollto" href="{{route('frontend.prestasi.tertinggi')}}">Prestasi Tertinggi</a></li>
-        <li><a class="getstarted scrollto" href="{{route('guru.login')}}">Login</a></li>
+        <li><a class="getstarted scrollto" href="{{route('login.view')}}">Login</a></li>
       </ul>
       <i class="bi bi-list mobile-nav-toggle"></i>
     </nav><!-- .navbar -->

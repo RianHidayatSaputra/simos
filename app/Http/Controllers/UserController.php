@@ -103,31 +103,9 @@ class UserController extends Controller
      * ---------------------------------
      * dashboard too
      */
-    public function getLoginAdmin()
-    {
-        return view('backend.login');
-    }
-
-    public function getAdminAction(Request $request)
-    {
-        $rules = ['email'=>'required','password'=>'required'];
-        $message = ['email.required'=>'email Wajib Di Isi','password.required'=>'Password wajib Di Isi'];
-        $valit = Validator::make($request->all(),$rules,$message);
-        $email = $request->input('email');
-        $password = $request->input('password');
-        $users = DB::table('users')->where(['email'=>$email])->first();
-        
-        if($users->email == $email AND Hash::check($password, $users->password)){
-            Session::put('email',$users->email);
-            session::put('login','berhasil login');
-            return redirect()->route('admin.dashboard');
-        }else{
-            return redirect()->route('admin.login')->with('gagal masuk');
-        }
-    }
     public function getAdminDashboard()
     {
-        $cek = session::get('email');
+        $cek = session::get('username');
         if($cek != null){
             // $data = UsersRepository::hitung();
             $siswa = DB::table('siswas')->count();
@@ -172,21 +150,10 @@ class UserController extends Controller
         }else{
             return back();
         }
-        // if(Auth::check())
-    	// {
-    	// 	return redirect()
-		// 			->route('admin.dashboard');
-    	// }
-    	// else
-    	// {
-    	// 	return view('backend.dashboard');
-    	// }
     }
     public function adminLogout()
     {
         Session::flush();
-        return redirect()->route('admin.login');
-        // Auth::logout();
-        // return redirect()->route('login');
+        return redirect()->route('login.view');
     }
 }

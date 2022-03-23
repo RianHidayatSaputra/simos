@@ -170,9 +170,10 @@ class SiswaController extends Controller
             return back();
         }
     }
+
     public function siswaLogout()
     {
         Session::flush();
-        return redirect()->route('siswa.login');
+        return redirect()->route('login.view');
     }
 }

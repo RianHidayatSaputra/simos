@@ -104,22 +104,23 @@ class OrtuController extends Controller
         return view('ortu.login');
     }
 
-    public function getOrtuAction(Request $request)
-    {
-        $rules = ['username'=>'required','password'=>'required'];
-        $message = ['username.required'=>'Username Wajib Di Isi','password.required'=>'Password wajib Di Isi'];
-        $valit = Validator::make($request->all(),$rules,$message);
-        $username = $request->input('username');
-        $password = $request->input('password');
-        $ortu = DB::table('orangtuas')->where(['username'=>$username])->first();
-        if($ortu->username == $username AND Hash::check($password, $ortu->password)){
-            Session::put('username',$ortu->username);
-            session::put('login','berhasil login');
-            return redirect()->route('ortu.dashboard');
-        }else{
-            return redirect()->route('ortu.login')->with('gagal masuk');
-        }
-    }
+    // public function getOrtuAction(Request $request)
+    // {
+    //     $rules = ['username'=>'required','password'=>'required'];
+    //     $message = ['username.required'=>'Username Wajib Di Isi','password.required'=>'Password wajib Di Isi'];
+    //     $valit = Validator::make($request->all(),$rules,$message);
+    //     $username = $request->input('username');
+    //     $password = $request->input('password');
+    //     $ortu = DB::table('orangtuas')->where(['username'=>$username])->first();
+    //     if($ortu->username == $username AND Hash::check($password, $ortu->password)){
+    //         Session::put('username',$ortu->username);
+    //         session::put('login','berhasil login');
+    //         return redirect()->route('ortu.dashboard');
+    //     }else{
+    //         return redirect()->route('ortu.login')->with('gagal masuk');
+    //     }
+    // }
+
     public function getOrtuDashboard()
     {
         $cek = session::get('username');
@@ -133,7 +134,7 @@ class OrtuController extends Controller
     public function ortuLogout()
     {
         Session::flush();
-        return redirect()->route('ortu.login');
+        return redirect()->route('login.view');
     }
 
 }
