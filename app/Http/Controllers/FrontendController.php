@@ -11,11 +11,7 @@ class FrontendController extends Controller
 {
     public function getIndex()
     {
-        return view('frontend.index');
-    }
-
-    public function getGrafik()
-    {
+        $dataPrestasiTertinggi = monitoringRepo::getHeightAchievement();
         $dataPie= monitoringRepo::dataAll();
         $arrayPieJenis = [];
         foreach($dataPie as $dataJenis){
@@ -25,12 +21,30 @@ class FrontendController extends Controller
         foreach($dataPie as $dataSkor){
             $arrayPieSkor[] = $dataSkor->skor;
         }
-        return view('frontend.grafik.index',['pieJenis'=>$arrayPieJenis,'pieSkor'=>$arrayPieSkor]);
+        return view('frontend.index',[
+            'pieJenis'=>$arrayPieJenis,
+            'pieSkor'=>$arrayPieSkor,
+            'prestasiTertinggi'=>$dataPrestasiTertinggi,
+        ]);
     }
 
-    public function highestAchievement()
-    {
-        $data = monitoringRepo::getHeightAchievement();
-        return view('frontend.prestasi.index',['prestasiTertinggi'=>$data]);
-    }
+    // public function getGrafik()
+    // {
+    //     $dataPie= monitoringRepo::dataAll();
+    //     $arrayPieJenis = [];
+    //     foreach($dataPie as $dataJenis){
+    //         $arrayPieJenis[] = $dataJenis->jenis;
+    //     }
+    //     $arrayPieSkor = [];
+    //     foreach($dataPie as $dataSkor){
+    //         $arrayPieSkor[] = $dataSkor->skor;
+    //     }
+    //     return view('frontend.grafik.index',['pieJenis'=>$arrayPieJenis,'pieSkor'=>$arrayPieSkor]);
+    // }
+
+    // public function highestAchievement()
+    // {
+    //     $data = monitoringRepo::getHeightAchievement();
+    //     return view('frontend.prestasi.index',['prestasiTertinggi'=>$data]);
+    // }
 }

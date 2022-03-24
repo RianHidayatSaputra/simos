@@ -62,7 +62,7 @@ class Monitorings extends MonitoringsModel
                 ->where('kodes.jenis','prestasi')
                 ->groupBy('siswas.nis')
                 ->orderBy('kodes.skor','asc')
-                ->paginate(3);
+                ->paginate(5);
     }
 
 }

@@ -1,9 +1,7 @@
-@extends('frontend.layouts.front')
-@section('titlePage','| Grafik')
-@section('content')
+
 <section id="grafik" class="grafik" >
     <div class="container">
-        <div class="row pt-5">
+        <div class="row">
             <div class="offset-sm-3 col-sm-6">
         
                 <div class="card">
@@ -50,11 +48,4 @@
         </div>
     </div>
 </section>
-@endsection
-
-@push('css')
-@endpush
-
-@push('jsAdd')
 <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.bundle.min.js'></script>
-@endpush

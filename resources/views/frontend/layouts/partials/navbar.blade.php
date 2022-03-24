@@ -7,10 +7,12 @@
 
     <nav id="navbar" class="navbar">
       <ul>
-        <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
+        <li><a class="nav-link scrollto active" href="{{route('/')}}">Home</a></li>
         <li><a class="nav-link scrollto" href="#about">Tentang Aplikasi</a></li>
-        <li><a class="nav-link scrollto" href="{{route('frontend.grafik')}}">Grafik</a></li>
-        <li><a class="nav-link scrollto" href="{{route('frontend.prestasi.tertinggi')}}">Prestasi Tertinggi</a></li>
+        {{-- <li><a class="nav-link scrollto" href="{{route('frontend.grafik')}}">Grafik</a></li> --}}
+        <li><a class="nav-link scrollto" href="#grafik">Grafik</a></li>
+        {{-- <li><a class="nav-link scrollto" href="{{route('frontend.prestasi.tertinggi')}}">Prestasi Tertinggi</a></li> --}}
+        <li><a class="nav-link scrollto" href="#prestasiTertinggi">Prestasi Tertinggi</a></li>
         <li><a class="getstarted scrollto" href="{{route('login.view')}}">Login</a></li>
       </ul>
       <i class="bi bi-list mobile-nav-toggle"></i>

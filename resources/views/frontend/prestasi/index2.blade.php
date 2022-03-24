@@ -1,9 +1,7 @@
-@extends('frontend.layouts.front')
-@section('titlePage','| Prestasi Tertinggi')
-@section('content')
-<section id="prestasi_tertinggi" class="prestasi_tertinggi">
+
+<section id="prestasiTertinggi" class="prestasiTertinggi">
     <div class="container">
-        <div class="row pt-5">
+        <div class="row">
             <div class="col-sm-12">
                 <div class="card">
                     <div class="card-header">
@@ -36,10 +34,3 @@
         </div>
     </div>
 </section>
-@endsection 
-
-@push('css')
-@endpush
-
-@push('jsAdd')
-@endpush

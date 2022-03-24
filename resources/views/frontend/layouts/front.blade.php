@@ -24,7 +24,8 @@
   </header><!-- End Header -->
 
   <!-- ======= Hero Section ======= -->
-  <section id="hero" class="hero d-flex align-items-center">
+
+  {{-- <section id="hero" class="hero d-flex align-items-center">
 
     <div class="container">
       <div class="row">
@@ -46,7 +47,7 @@
       </div>
     </div>
 
-  </section><!-- End Hero -->
+  </section><!-- End Hero --> --}}
 
   <main id="main">
     @yield('content')
