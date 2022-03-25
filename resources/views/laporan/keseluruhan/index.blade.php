@@ -43,8 +43,8 @@
                     <th scope="col">NIS</th>
                     <th scope="col">Kode</th>
                     <th scope="col">Point</th>
-                    <th scope="col">Tanggal</th>
-                    <th scope="col">Keterangan</th>
+                    {{-- <th scope="col">Tanggal</th> --}}
+                    {{-- <th scope="col">Keterangan</th> --}}
                     <th scope="col">Status</th>
                   </tr>
                 </thead>
@@ -55,8 +55,6 @@
                     <td>{{$row->nis}}</td>
                     <td>{{$row->kode}}</td>
                     <td>{{$row->skor}}</td>
-                    <td>{{$row->tgl}}</td>
-                    <td>{{$row->keterangan}}</td>
                     <td>{{$row->jenis}}</td>
                     <td></td>
                   </tr>
@@ -113,8 +111,6 @@
           output += '<td>' + data[count].nis + '</td>';
           output += '<td>' + data[count].kode + '</td>';
           output += '<td>' + data[count].skor + '</td>';
-          output += '<td>' + data[count].keterangan + '</td>';
-          output += '<td>' + data[count].tgl + '</td>';
           output += '<td>' + data[count].jenis + '</td></tr>';
         }
         $('tbody').html(output);

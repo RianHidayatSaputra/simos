@@ -31,20 +31,20 @@
                     <th scope="col">NIS</th>
                     <th scope="col">Name</th>
                     <th scope="col">Total Point</th>
-                    <th scope="col">Tanggal</th>
+                    {{-- <th scope="col">Tanggal</th> --}}
                     <th scope="col">Jenis</th>
                     <th scope="col">Status</th>
                     <th scope="col">Action</th>
                   </tr>
                 </thead>
                 <tbody>
-                @foreach($details as $row)
+                @foreach($monitoring as $row)
                   <tr>
                     <th scope="row">{{$loop->iteration}}</th>
                     <td>{{$row->nis}}</td>
                     <td>{{$row->name}}</td>
                     <td>{{$row->skor}}</td>
-                    <td>{{$row->tgl}}</td>
+                    {{-- <td>{{$row->tgl}}</td> --}}
                     <td>{{$row->jenis}}</td>
                     @if( $row->jenis=="pelanggaran")
                       @if($row->skor <= 500)
