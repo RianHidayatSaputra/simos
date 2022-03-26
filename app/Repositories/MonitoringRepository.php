@@ -80,7 +80,7 @@ class MonitoringRepository extends MonitoringsModel
                 // ->where('kodes.jenis')
                 // ->groupBy('siswas.nis')
                 // ->get();
-                ->selectRaw('siswas.nis as kode,kodes.kode as kode,sum(kodes.skor) as skor,kodes.jenis as jenis')
+                ->selectRaw('siswas.nis as nis,kodes.kode as kode,sum(kodes.skor) as skor,kodes.jenis as jenis')
                 ->join('siswas','siswas.id','=','monitorings.id_siswa')
                 ->join('kodes','kodes.id','=','monitorings.id_kode')
                 // ->where('kodes.jenis')
