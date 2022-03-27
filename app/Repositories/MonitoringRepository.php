@@ -11,11 +11,20 @@ class MonitoringRepository extends MonitoringsModel
 {
     // TODO : Make your own query methods
     public static function getAll(){
-        return Kode::query()
-            ->selectRaw('siswas.nis, siswas.name as name, sum(kodes.skor) as skor,monitorings.*,kodes.jenis')
-            ->join( 'monitorings','monitorings.id_kode', '=','kodes.id')
+        // return Kode::query()
+        //     ->selectRaw('siswas.nis, siswas.name as name, sum(kodes.skor) as skor,monitorings.*,kodes.jenis')
+        //     ->join( 'monitorings','monitorings.id_kode', '=','kodes.id')
+        //     ->join( 'siswas','siswas.id','=','monitorings.id_siswa')
+        //     ->groupBy('siswas.nis')
+        //     ->get();
+        return Monitoring::query()
+        // ->selectRaw('siswas.nis, siswas.name as name, sum(kodes.skor) as skor,monitorings.*,kodes.jenis')
+        ->selectRaw('siswas.id as id,siswas.nis as nis, siswas.name as name, sum(kodes.skor) as skor, kodes.jenis as jenis')
+        // ->join( 'monitorings','monitorings.id_kode', '=','kodes.id')
+            ->join('kodes','kodes.id','=','monitorings.id_kode')
             ->join( 'siswas','siswas.id','=','monitorings.id_siswa')
-            ->groupBy('siswas.nis')
+            // ->where('jenis','kodes.jenis')
+            ->groupBy('siswas.id','siswas.nis','kodes.jenis','siswas.name')
             ->get();
     }
 
@@ -90,11 +99,26 @@ class MonitoringRepository extends MonitoringsModel
     }
     public static function keseluruhan(){
         return Monitoring::query()
+<<<<<<< HEAD
         ->selectRaw('siswas.nis as nis, siswas.name as name, sum(kodes.skor)as skor, kodes.jenis, monitorings.*,kodes.*')
         ->join('siswas','siswas.id','=','monitorings.id_siswa')
         ->join('kodes','kodes.id','=','monitorings.id_kode')
         ->groupBy('siswas.nis','kodes.jenis')
         ->get();
+=======
+                // ->selectRaw('monitorings.*,siswas.*,kodes.*,sum(kodes.skor) as skor,kodes.jenis as jenis')
+                // ->join('siswas','siswas.id','=','monitorings.id_siswa')
+                // ->join('kodes','kodes.id','=','monitorings.id_kode')
+                // ->where('kodes.jenis')
+                // ->groupBy('siswas.nis')
+                // ->get();
+                ->selectRaw('siswas.nis as nis,kodes.kode as kode,sum(kodes.skor) as skor,kodes.jenis as jenis')
+                ->join('siswas','siswas.id','=','monitorings.id_siswa')
+                ->join('kodes','kodes.id','=','monitorings.id_kode')
+                // ->where('kodes.jenis')
+                ->groupBy('siswas.nis','kodes.kode','kodes.jenis')
+                ->get();
+>>>>>>> 19fd31199d64f7910af07826a8de1e1f57a4c5aa
     }
     public static function updatedata(Request $request){
         DB::table('monitorings')->where('id', $request->id)->update([
@@ -111,7 +135,7 @@ class MonitoringRepository extends MonitoringsModel
 
     public static function monitor(){
         return Kode::query()
-            ->selectRaw('siswas.nis, siswas.name as name, sum(kodes.skor) as skor,monitorings.*')
+            ->selectRaw('siswas.nis, siswas.name as name, sum(kodes.skor) as skor,monitorings.tgl as tgl')
             ->join(
                 'monitorings',
                 'monitorings.id_kode',
@@ -124,8 +148,24 @@ class MonitoringRepository extends MonitoringsModel
                 '=',
                 'monitorings.id_siswa'
                 )
-            ->groupBy('siswas.nis')
+            ->groupBy('siswas.nis','siswas.name','kodes.jenis','monitorings.tgl')
             ->get();
+        // return Monitoring::query()
+        //     ->selectRaw('siswas.nis, siswas.name as name, sum(kodes.skor) as skor,monitorings.tgl as tgl, kodes.kode kode')
+        //     ->join(
+        //         'kodes',
+        //         'kodes.id',
+        //         '=',
+        //         'monitorings.id_kode'
+        //         )
+        //     ->join(
+        //         'siswas',
+        //         'siswas.id',
+        //         '=',
+        //         'monitorings.id_siswa'
+        //         )
+        //     ->groupBy('siswas.nis','siswas.name','kodes.jenis','monitorings.tgl','kodes.kode')
+        //     ->get();
     }
 
     /**
