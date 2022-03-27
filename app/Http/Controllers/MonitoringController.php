@@ -111,7 +111,6 @@ class MonitoringController extends Controller
 
     public function fetch_data(Request $request)
     {
-<<<<<<< HEAD
      if($request->ajax())
      {
       if($request->from_date != '' && $request->to_date != '')
@@ -134,27 +133,6 @@ class MonitoringController extends Controller
        ->get();
       }
       return json_encode($data);
-=======
-        if($request->ajax()){
-            if($request->from_date != '' && $request->to_date != ''){
-                $data = DB::table('monitorings')
-                    ->join('siswas','siswas.id' , '=' , 'monitorings.id_siswa')
-                    ->join('kodes','kodes.id', '=' , 'monitorings.id_kode')
-                    ->select('siswas.*','kodes.*','monitorings.*')
-                    ->whereBetween('tgl', array($request->from_date, $request->to_date))
-                    ->get();
-        }else{
-    //    $data = DB::table('monitorings')
-    //     ->join('siswas','siswas.id' , '=' , 'monitorings.id_siswa')
-    //     ->join('kodes','kodes.id', '=' , 'monitorings.id_kode')
-    //     ->select('siswas.*','kodes.*','monitorings.*')
-    //     ->orderBy('tgl', 'desc')
-    //     ->get();
-            $data = MonitoringRepository::keseluruhan();
-        }
-    //   return json_encode($data);
-    // dd($data);
->>>>>>> 19fd31199d64f7910af07826a8de1e1f57a4c5aa
      }
     }
 

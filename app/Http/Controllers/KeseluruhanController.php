@@ -93,7 +93,7 @@ class KeseluruhanController extends Controller
     }
     public function cetak()
     {
-        $data['details'] = MonitoringRepository::keseluruhan();
+        $data['details'] = MonitoringRepository::cetak();
         return view('laporan.keseluruhan.cetak',$data);
     }
 }

@@ -36,10 +36,10 @@ class MonitoringRepository extends MonitoringsModel
             'keterangan' => $request->keterangan,
 
         ]);
-
+        dd($request);
         $data = [
-            'api_key' => 'e6172c750916e85972e09a67785ded13fef2da51',
-            'sender'  => 'Nomor pengirim (pastikan sudah scan)',
+            'api_key' => 'e11ae28af57503455d6b4e37748e6d29f126776f',
+            'sender'  => '6285329623118',
             'number'  => $request->no_telp,
             'message' => 'Pesan nya'
         ];
@@ -99,13 +99,6 @@ class MonitoringRepository extends MonitoringsModel
     }
     public static function keseluruhan(){
         return Monitoring::query()
-<<<<<<< HEAD
-        ->selectRaw('siswas.nis as nis, siswas.name as name, sum(kodes.skor)as skor, kodes.jenis, monitorings.*,kodes.*')
-        ->join('siswas','siswas.id','=','monitorings.id_siswa')
-        ->join('kodes','kodes.id','=','monitorings.id_kode')
-        ->groupBy('siswas.nis','kodes.jenis')
-        ->get();
-=======
                 // ->selectRaw('monitorings.*,siswas.*,kodes.*,sum(kodes.skor) as skor,kodes.jenis as jenis')
                 // ->join('siswas','siswas.id','=','monitorings.id_siswa')
                 // ->join('kodes','kodes.id','=','monitorings.id_kode')
@@ -118,7 +111,14 @@ class MonitoringRepository extends MonitoringsModel
                 // ->where('kodes.jenis')
                 ->groupBy('siswas.nis','kodes.kode','kodes.jenis')
                 ->get();
->>>>>>> 19fd31199d64f7910af07826a8de1e1f57a4c5aa
+    }
+    public static function cetak(){
+        return  $detail = DB::table('monitorings')
+        ->join('siswas','siswas.id' , '=' , 'monitorings.id_siswa')
+        ->join('kodes','kodes.id', '=' , 'monitorings.id_kode')
+        ->select('siswas.*','kodes.*','monitorings.*')
+        // ->where('jenis',)
+        ->get();
     }
     public static function updatedata(Request $request){
         DB::table('monitorings')->where('id', $request->id)->update([
