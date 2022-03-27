@@ -115,24 +115,37 @@ class MonitoringController extends Controller
      {
       if($request->from_date != '' && $request->to_date != '')
       {
-       $data = DB::table('monitorings')
-        ->join('siswas','siswas.id' , '=' , 'monitorings.id_siswa')
-        ->join('kodes','kodes.id', '=' , 'monitorings.id_kode')
-        ->select('siswas.*','kodes.*','monitorings.*')
-        ->whereBetween('tgl', array($request->from_date, $request->to_date))
-        ->get();
+       $data = Monitoring::query()
+       ->selectRaw('siswas.nis as nis, siswas.name as name, sum(kodes.skor)as skor, kodes.jenis, monitorings.*,kodes.*')
+       ->join('siswas','siswas.id','=','monitorings.id_siswa')
+       ->join('kodes','kodes.id','=','monitorings.id_kode')
+       ->groupBy('siswas.nis','kodes.jenis')
+       ->whereBetween('tgl', array($request->from_date, $request->to_date))
+       ->get();
       }
       else
       {
-       $data = DB::table('monitorings')
-        ->join('siswas','siswas.id' , '=' , 'monitorings.id_siswa')
-        ->join('kodes','kodes.id', '=' , 'monitorings.id_kode')
-        ->select('siswas.*','kodes.*','monitorings.*')
-        ->orderBy('tgl', 'desc')
-        ->get();
+       $data = Monitoring::query()
+       ->selectRaw('siswas.nis as nis, siswas.name as name, sum(kodes.skor)as skor, kodes.jenis, monitorings.*,kodes.*')
+       ->join('siswas','siswas.id','=','monitorings.id_siswa')
+       ->join('kodes','kodes.id','=','monitorings.id_kode')
+       ->groupBy('siswas.nis','kodes.jenis')
+       ->get();
       }
       return json_encode($data);
      }
+    }
+
+    public static function siswa($id){
+        // $ortu = Siswa::FindOrFail($id);
+        $ortu = DB::table('siswas')
+                ->join('orangtuas','orangtuas.id','=','siswas.id_ortu')
+                ->select('orangtuas.*')
+                ->where('siswas.id',$id)
+                ->get()
+                ->toJson();
+        // dd($ortu);
+        return $ortu;
     }
 
     

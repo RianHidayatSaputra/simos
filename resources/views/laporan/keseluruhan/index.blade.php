@@ -31,7 +31,10 @@
                 <div class="btn-group" role="group" aria-label="Basic mixed styles example">
                       <button type="button"  name="filter" id="filter" class="btn btn-info">Cari</button>
                       <button type="button"   name="refresh" id="refresh" class="btn btn-warning">Refresh</button>
-                      <button type="button"  onclick="window.print()" class="btn btn-success">Cetak</button>
+                      <button type="button" class="btn btn-primary text-white">
+                        <a href="{{route('laporan.keseluruhan.cetak')}}" class="text-white">Cetak</a>
+                      </button>
+                      <button type="button"  class="btn btn-success">Cetak</button>
                     </div>
               </div>
              <!--  <p>Add lightweight datatables to your project with using the <a href="https://github.com/fiduswriter/Simple-DataTables" target="_blank">Simple DataTables</a> library. Just add <code>.datatable</code> class name to any table you wish to conver to a datatable</p> -->

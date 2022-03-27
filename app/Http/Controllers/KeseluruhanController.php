@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Repositories\MonitoringRepository;
+use Barryvdh\DomPDF\PDF;
+use FontLib\Table\Type\post;
 use Illuminate\Http\Request;
 
 class KeseluruhanController extends Controller
@@ -88,5 +90,10 @@ class KeseluruhanController extends Controller
     public static function serchtgl(){
         $data['details'] = MonitoringRepository::monitor();
         return $data;
+    }
+    public function cetak()
+    {
+        $data['details'] = MonitoringRepository::keseluruhan();
+        return view('laporan.keseluruhan.cetak',$data);
     }
 }
