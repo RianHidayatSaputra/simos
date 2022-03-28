@@ -78,7 +78,7 @@ class LoginController extends Controller
         }elseif($siswa){
             if(Hash::check($password, $siswa->password)){
                 session::put('username',$siswa->username);
-                session::put('nis',$siswa->nis);
+                session::put('nisSiswa',$siswa->nis);
                 // return redirect()->route('siswa.dashboard');
                 return redirect()->route('admin.dashboard');
             }else{
