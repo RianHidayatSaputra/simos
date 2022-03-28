@@ -140,7 +140,7 @@ class MonitoringController extends Controller
         // $ortu = Siswa::FindOrFail($id);
         $ortu = DB::table('siswas')
                 ->join('orangtuas','orangtuas.id','=','siswas.id_ortu')
-                ->select('orangtuas.*')
+                ->select('orangtuas.*','siswas.*')
                 ->where('siswas.id',$id)
                 ->get()
                 ->toJson();

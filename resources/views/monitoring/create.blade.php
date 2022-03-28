@@ -35,8 +35,25 @@
                     </select>
                   </div>
                 </div>
-                <input type="text" name="ortu" id="ortu" class="form-control">
-
+                <div class="row mb-3">
+                  <label for="inputText" class="col-sm-2 col-form-label">Nis</label>
+                  <div class="col-sm-10">
+                    <input type="text" name="nis" id="nis" class="form-control">
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <label for="inputText" class="col-sm-2 col-form-label">Nama Siswa</label>
+                  <div class="col-sm-10">
+                    <input type="text" name="name" id="name" class="form-control">
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <label for="inputText" class="col-sm-2 col-form-label">No Ortu</label>
+                  <div class="col-sm-10">
+                    <input type="text" name="no_telp" id="no_telp" class="form-control">
+                  </div>
+                </div>
+                
                 <div class="row mb-3">
                   <label class="col-sm-2 col-form-label">Select Kode</label>
                   <div class="col-sm-10">
@@ -55,6 +72,12 @@
                   </div>
                 </div>
                 <div class="row mb-3">
+                  <label for="inputText" class="col-sm-2 col-form-label">Kode</label>
+                  <div class="col-sm-10">
+                    <input type="text" name="kode" id="kode" class="form-control">
+                  </div>
+                </div>
+                <div class="row mb-3">
                   <label for="inputText" class="col-sm-2 col-form-label">Tanggal</label>
                   <div class="col-sm-10">
                     <input type="text" name="tgl" value="<?php echo date('d-M-y'); ?>" id="tgl"  class="form-control">
@@ -66,8 +89,6 @@
                     <input type="text" name="keterangan" id="keterangan" class="form-control">
                   </div>
                 </div>
-                
-
                 <div class="row mb-3">
                   <label class="col-sm-2 col-form-label">Tombol Kirim</label>
                   <div class="col-sm-10">
@@ -99,6 +120,9 @@
     var skor = 0;
     var no_telp = [0];
     var deskripsi = 0;
+    var name = 0;
+    var kode = 0;
+    var nis = 0;
     $('#id_kode').on('change',function(){
       var id_kode = $(this).val();
       $.ajax({
@@ -108,6 +132,7 @@
           console.log(data);
           $('#skor').val(data.skor);
           $('#keterangan').val(data.deskripsi);
+          $('#kode').val(data.kode);
         }
       });
     });
@@ -120,7 +145,9 @@
         url : "{{route('monitoring.siswa')}}/" + id_siswa,
         success : function([data]){
           console.log(data);
-          $('#ortu').val(data.no_telp);
+          $('#no_telp').val(data.no_telp);
+          $('#nis').val(data.nis);
+          $('#name').val(data.name);
         },
         error: function(data){
         console.log(data);

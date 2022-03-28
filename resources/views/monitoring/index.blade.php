@@ -47,22 +47,19 @@
                     {{-- <td>{{$row->tgl}}</td> --}}
                     <td>{{$row->jenis}}</td>
                     @if( $row->jenis=="pelanggaran")
-                      @if($row->skor <= 500)
+                      @if($row->skor <= 500 )
                       <td>
                         <span class="badge bg-primary"><i class="bi bi-star me-1"></i> Aman </span>
                       </td>
-                      @endif
-                      @if($row->skor >= 500)
+                      @elseif($row->skor >= 500)
                       <td >
                         <span class="badge bg-info text-dark"><i class="bi bi-info-circle me-1"></i> SP 1 </span>
                       </td>
-                      @endif
-                      @if($row->skor >= 750)
+                      @elseif($row->skor >= 750)
                       <td >
                         <span class="badge bg-warning text-dark"><i class="bi bi-exclamation-triangle me-1"></i> SP 2 </span>
                       </td>
-                      @endif
-                      @if($row->skor >= 1000)
+                      @elseif($row->skor >= 1000)
                       <td class="bg-dark text-center text-white">
                         <span class="badge bg-danger"><i class="bi bi-exclamation-octagon me-1"></i> Di Keluarkan </span>
                       </td>
@@ -72,18 +69,15 @@
                       <td>
                         <span class="badge bg-success"><i class="bi bi-check-circle me-1"></i> Biasa </span>
                       </td>
-                      @endif
-                      @if($row->skor >= 1500)
+                      @elseif($row->skor >= 1500)
                       <td>
                         <span class="badge bg-primary"><i class="bi bi-star me-1"></i> Baik </span>
                       </td>
-                      @endif
-                      @if($row->skor >= 2000)
+                      @elseif($row->skor >= 2000)
                       <td>
                         <span class="badge bg-primary"><i class="bi bi-star me-1"></i> Sangat Baik </span>
                       </td>
-                      @endif
-                      @if($row->skor >= 2500)
+                      @elseif($row->skor >= 2500)
                       <td>
                         <span class="badge bg-light text-dark"><i class="bi bi-star me-1"></i> Student Of The Year </span>
                       </td>
