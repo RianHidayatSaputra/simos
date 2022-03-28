@@ -53,7 +53,7 @@
                     <div class="col-sm-12">
                       <div class="btn-group" role="group" aria-label="Basic mixed styles example">
                         <button class="btn btn-primary">Cari</button>
-                        <a href="" onclick="window.print()" class="btn btn-primary">Cetak</a>
+                        <a href="" onclick="window.print()"  class="btn btn-primary">Cetak</a>
                         {{-- <button type="button" onclick="window.print()" class="btn btn-success text-white">
                           Cetak
                         </button> --}}
