@@ -3,12 +3,12 @@
  <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Form Siswa</h1>
+      <h1>Form Monitoring</h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="{{route('simos')}}">Home</a></li>
           <li class="breadcrumb-item">Forms</li>
-          <li class="breadcrumb-item active">Siswa</li>
+          <li class="breadcrumb-item active">Monitoring</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
@@ -19,7 +19,7 @@
 
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">General Form Siswa</h5>
+              <h5 class="card-title">General Form Monitoring</h5>
 
               <!-- General Form Siswa -->
               <form action="{{route('monitoring.store')}}" method="POST">
@@ -35,7 +35,7 @@
                     </select>
                   </div>
                 </div>
-                <div class="row mb-3">
+                <div class="row mb-3" hidden>
                   <label for="inputText" class="col-sm-2 col-form-label">Nis</label>
                   <div class="col-sm-10">
                     <input type="text" name="nis" id="nis" class="form-control">
@@ -65,7 +65,7 @@
                     </select>
                   </div>
                 </div>
-                <div class="row mb-3">
+                <div class="row mb-3" hidden>
                   <label for="inputText" class="col-sm-2 col-form-label">Kode Skor</label>
                   <div class="col-sm-10">
                     <input type="text" name="skor" id="skor" class="form-control">
