@@ -30,13 +30,13 @@ class MonitoringRepository extends MonitoringsModel
     }
 
     public static function adddata(Request $request){
-        DB::table('monitorings')->insert([
-            'id_siswa' => $request->id_siswa,
-            'id_kode' => $request->id_kode,
-            'tgl' => $request->tgl,
-            'keterangan' => $request->keterangan,
-            'no_telp' => $request->no_telp,
-          ]);
+        // DB::table('monitorings')->insert([
+        //     'id_siswa' => $request->id_siswa,
+        //     'id_kode' => $request->id_kode,
+        //     'tgl' => $request->tgl,
+        //     'keterangan' => $request->keterangan,
+        //     'no_telp' => $request->no_telp,
+        //   ]);
   
   
         $data = [
@@ -45,7 +45,7 @@ class MonitoringRepository extends MonitoringsModel
             'number'  => $request->no_telp,
             'message' => 'NIS : ' . $request->nis ."\r\n".'Nama : ' . $request->name."\r\n". 'Keterangan : ' .'mendapatkan ' . $request->jenis.' dengan kode '.$request->kode.' yaitu '.$request->keterangan.' dengan point '.$request->skor,
         ];
-        // dd($data);
+        dd($data);
         
         $curl = curl_init();
         curl_setopt_array($curl, array(
@@ -137,12 +137,13 @@ class MonitoringRepository extends MonitoringsModel
                 ->get();
     }
     public static function cetak(){
-        return  $detail = DB::table('monitorings')
-        ->join('siswas','siswas.id' , '=' , 'monitorings.id_siswa')
-        ->join('kodes','kodes.id', '=' , 'monitorings.id_kode')
-        ->select('siswas.*','kodes.*','monitorings.*')
-        // ->where('jenis',)
-        ->get();
+        return Monitoring::query()
+        ->selectRaw('siswas.nis as nis,kodes.kode as kode,sum(kodes.skor) as skor,kodes.jenis as jenis,monitorings.tgl as tgl,siswas.nis as nis,kodes.kode as kode,kodes.jenis as jenis ')
+         ->join('siswas','siswas.id','=','monitorings.id_siswa')
+         ->join('kodes','kodes.id','=','monitorings.id_kode')
+         // ->where('kodes.jenis')
+         ->groupBy('siswas.nis','kodes.kode','kodes.jenis')
+         ->get();
     }
     public static function updatedata(Request $request){
         DB::table('monitorings')->where('id', $request->id)->update([
