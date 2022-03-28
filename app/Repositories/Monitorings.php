@@ -60,7 +60,7 @@ class Monitorings extends MonitoringsModel
         ->join('kodes','kodes.id','=','monitorings.id_kode')
         ->where('siswas.nis',$nis)
         // ->whereBetween('tgl',array($tglAwal, $tglAkhir))
-        ->whereBetween('tgl',[$tglAwal,$tglAkhir])
+        ->whereBetween('monitorings.tgl',[$tglAwal,$tglAkhir])
         ->groupBy('nis','jenis')
         ->get();
         return $data;
