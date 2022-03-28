@@ -17,11 +17,15 @@
           <div class="card">
             <div class="card-body">
               <h5 class="card-title">Monitoring</h5>
+              @if(DB::table('siswas')->where(['username'=>Session::get('username')])->first())
+              @elseif(DB::table('orangtuas')->where(['username'=>Session::get('username')])->first())
+              @else
               <div class="icon" style="float: right; margin-top: -5%; width: 10%;">
                 <button type="button" class="btn btn-primary text-white">
                   <a href="{{route('monitoring.create')}}" class="text-white">Add</a>
                 </button>
               </div>
+              @endif
              <!--  <p>Add lightweight datatables to your project with using the <a href="https://github.com/fiduswriter/Simple-DataTables" target="_blank">Simple DataTables</a> library. Just add <code>.datatable</code> class name to any table you wish to conver to a datatable</p> -->
               <!-- Table with stripped rows -->
               <div class="table-responsive-sm">
