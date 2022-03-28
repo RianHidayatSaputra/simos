@@ -60,21 +60,24 @@ class LoginController extends Controller
         }elseif($guru){
             if(Hash::check($password,$guru->password)){
                 session::put('username',$guru->username);
-                return redirect()->route('guru.dashboard');
+                // return redirect()->route('guru.dashboard');
+                return redirect()->route('admin.dashboard');
             }else{
                 return redirect()->route('login.view');
             }
         }elseif($orangtua){
             if(Hash::check($password, $orangtua->password)){
                 session::put('username',$orangtua->username);
-                return redirect()->route('orangtua.dashboard');
+                // return redirect()->route('orangtua.dashboard');
+                return redirect()->route('admin.dashboard');
             }else{
                 return redirect()->route('login.view');
             }
         }elseif($siswa){
             if(Hash::check($password, $siswa->password)){
                 session::put('username',$siswa->username);
-                return redirect()->route('siswa.dashboard');
+                // return redirect()->route('siswa.dashboard');
+                return redirect()->route('admin.dashboard');
             }else{
                 return redirect()->route('login.view');
             }

@@ -55,11 +55,13 @@ class Monitorings extends MonitoringsModel
             monitorings.tgl as tgl'
         )->join('siswas','siswas.id','=','monitorings.id_siswa')
         ->join('kodes','kodes.id','=','monitorings.id_kode')
+        ->leftJoin('rayons','rayons.id','=','siswas.id_rayon')
         ->whereBetween('tgl',[$tglAwal,$tglAkhir])
         ->where('nis',$nis)
         // ->whereBetween('monitorings.tgl',array($tglAwal, $tglAkhir))
         ->groupBy('nis','jenis','tgl')
         ->get();
+        dd($data);
         return $data;
     }
 
