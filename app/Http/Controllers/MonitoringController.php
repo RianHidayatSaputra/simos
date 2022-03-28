@@ -113,10 +113,12 @@ class MonitoringController extends Controller
     {
         if($request->ajax()){
             if($request->from_date != '' && $request->to_date != ''){
-                $data = DB::table('monitorings')
-                    ->join('siswas','siswas.id' , '=' , 'monitorings.id_siswa')
-                    ->join('kodes','kodes.id', '=' , 'monitorings.id_kode')
-                    ->select('siswas.*','kodes.*','monitorings.*')
+                $data = Monitoring::query()
+                   ->selectRaw('siswas.nis as nis,kodes.kode as kode,sum(kodes.skor) as skor,kodes.jenis as jenis,monitorings.tgl as tgl,siswas.nis as nis,kodes.kode as kode,kodes.jenis as jenis ')
+                    ->join('siswas','siswas.id','=','monitorings.id_siswa')
+                    ->join('kodes','kodes.id','=','monitorings.id_kode')
+                    // ->where('kodes.jenis')
+                    ->groupBy('siswas.nis','kodes.kode','kodes.jenis')
                     ->whereBetween('tgl', array($request->from_date, $request->to_date))
                     ->get();
         }else{
