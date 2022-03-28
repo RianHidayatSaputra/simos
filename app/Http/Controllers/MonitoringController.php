@@ -59,13 +59,15 @@ class MonitoringController extends Controller
      */
     public function show($nis)
     {
-        $detail['details'] = MonitoringRepository::details($nis)->where('jenis','pelanggaran');
+        // $detail['details'] = MonitoringRepository::details($nis)->where('jenis','pelanggaran');
+        $detail['details'] = MonitoringRepository::detailBaruPelanggaran($nis);
         // dd($detail);
         return view('monitoring.detail',$detail);
     }
     public function show2($nis)
     {
-        $detail['details'] = MonitoringRepository::details($nis)->where('jenis','prestasi');
+        // $detail['details'] = MonitoringRepository::details($nis)->where('jenis','prestasi');
+        $detail['details'] = MonitoringRepository::detailBaruPrestasi($nis);
         // dd($detail);
         return view('monitoring.detail',$detail);
     }

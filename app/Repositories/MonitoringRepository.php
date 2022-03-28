@@ -66,15 +66,35 @@ class MonitoringRepository extends MonitoringsModel
         // dd($response,$curl);
 
     }
-    public static function details($nis){
-        $detail = DB::table('monitorings')
-            ->join('siswas','siswas.id' , '=' , 'monitorings.id_siswa')
-            ->join('kodes','kodes.id', '=' , 'monitorings.id_kode')
-            ->select('siswas.*','kodes.*','monitorings.*')
-            ->where('siswas.nis','=',$nis)
-            // ->where('jenis',)
+    // public static function details($nis){
+    //     $detail = DB::table('monitorings')
+    //     ->selectRaw('siswas.nis as nis, kodes.kode as kode, kodes.skor as skor, monitorings.tgl as tgl, monitorings.keterangan as keterangan')
+    //         ->join('siswas','siswas.id' , '=' , 'monitorings.id_siswa')
+    //         ->join('kodes','kodes.id', '=' , 'monitorings.id_kode')
+    //         // ->select('siswas.*','kodes.*','monitorings.*')
+    //         ->where('siswas.nis','=',$nis)
+    //         // ->where('jenis',)
+    //         ->get();
+    //     return $detail;
+    // }
+    public static function detailBaruPelanggaran($nis){
+        return DB::table('monitorings')
+            ->selectRaw('siswas.nis as nis, kodes.kode as kode, kodes.skor as skor, monitorings.tgl as tgl, monitorings.keterangan as keterangan')
+            // ->select('siswas.*','kodes.*','monitorings.*')
+            ->join('siswas','siswas.id','=','monitorings.id_siswa')
+            ->join('kodes','kodes.id','=','monitorings.id_kode')
+            ->where('siswas.nis',$nis)
+            ->where('kodes.jenis','pelanggaran')
             ->get();
-        return $detail;
+    }
+    public static function detailBaruPrestasi($nis){
+        return Db::table('monitorings')
+            ->selectRaw('siswas.nis as nis, kodes.kode as kode, kodes.skor as skor, monitorings.tgl as tgl, monitorings.keterangan as keterangan')
+            ->join('kodes','kodes.id','=','monitorings.id_kode')
+            ->join('siswas','siswas.id','=','monitorings.id_siswa')
+            ->where('siswas.nis',$nis)
+            ->where('kodes.jenis','prestasi')
+            ->get();
     }
     public static function shownis(){
 

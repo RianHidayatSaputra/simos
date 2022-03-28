@@ -86,6 +86,7 @@
                 <div class="row mb-3">
                   <label for="inputText" class="col-sm-2 col-form-label">Tanggal</label>
                   <div class="col-sm-10">
+                    {{-- <input type="text" name="tgl" value="{{ date('d-m-Y'); }}" id="tgl"  class="form-control"> --}}
                     <input type="text" name="tgl" value="{{ date('Y-m-d'); }}" id="tgl"  class="form-control">
                   </div>
                 </div>
