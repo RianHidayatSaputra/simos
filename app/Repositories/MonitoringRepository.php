@@ -34,19 +34,21 @@ class MonitoringRepository extends MonitoringsModel
             'id_kode' => $request->id_kode,
             'tgl' => $request->tgl,
             'keterangan' => $request->keterangan,
-
-        ]);
-        dd($request);
+            'no_telp' => $request->no_telp,
+          ]);
+  
+  
         $data = [
-            'api_key' => 'e11ae28af57503455d6b4e37748e6d29f126776f',
+            'api_key' => 'fbb8bfcca4e815ee8ed5d04ec45e042fe722ab4e',
             'sender'  => '6285329623118',
             'number'  => $request->no_telp,
-            'message' => 'Pesan nya'
+            'message' => 'NIS : ' . $request->nis ."\r\n".'Nama : ' . $request->name."\r\n". 'Keterangan : ' .'mendapatkan ' . $request->jenis.' dengan kode '.$request->kode.' yaitu '.$request->keterangan.' dengan point '.$request->skor,
         ];
+        // dd($data);
         
         $curl = curl_init();
         curl_setopt_array($curl, array(
-          CURLOPT_URL => "https://wa.weddingcnk.com/api/send-message.php",
+          CURLOPT_URL => "https://cnk.gatewayku.my.id/api/send-message.php",
           CURLOPT_RETURNTRANSFER => true,
           CURLOPT_ENCODING => "",
           CURLOPT_MAXREDIRS => 10,
@@ -58,9 +60,10 @@ class MonitoringRepository extends MonitoringsModel
         );
         
         $response = curl_exec($curl);
-        
         curl_close($curl);
         echo $response;
+        // dd($response,$curl);
+
     }
     public static function details($nis){
         $detail = DB::table('monitorings')
