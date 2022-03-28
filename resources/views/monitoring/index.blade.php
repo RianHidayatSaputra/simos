@@ -273,22 +273,12 @@
                         @endif
                       @endif
                       
-                      <td>
-                          <a href="{{route('monitoring.edit',$row->id)}}" class="btn btn-sm btn-primary demo-google-material-icon"><i class="bi bi-pencil"></i></a>
-                          <a href="{{route('monitoring.delete',$row->id)}}" onclick="return confirm('apa kamu serius?')" class="btn btn-sm btn-danger demo-google-material-icon"><i class="bi bi-trash"></i>  </a>
-                          @if($row->jenis == 'pelanggaran')
-                          <a href="{{route('monitoring.detail',$row->nis)}}"  class="btn btn-sm btn-primary demo-google-material-icon" ><i class="bi bi-files"></i></a>
-                          @else 
-                          <a href="{{route('monitoring.detail2',$row->nis)}}"  class="btn btn-sm btn-primary demo-google-material-icon" ><i class="bi bi-files"></i></a>
-                          @endif
-                          {{-- <a href="" class="btn btn-sm btn-warning" ><i class="bi bi-cloud-download" ></i></a> --}}
-                        </td>
                     </tr>
                     @endforeach
                 </tbody>
                 @elseif(DB::table('orangtuas')->where(['username'=>Session::get('username')])->first())
                 <tbody>
-                  @foreach($monitoring->where('users.id_ortu',Session::get('ortuId')) as $row)
+                  @foreach($monitoring->where('id_ortu',Session::get('ortuId')) as $row)
                     <tr>
                       <th scope="row">{{$loop->iteration}}</th>
                       <td>{{$row->nis}}</td>
@@ -332,22 +322,14 @@
                           <span class="badge bg-light text-dark"><i class="bi bi-star me-1"></i> Student Of The Year </span>
                         </td>
                         @endif
+                        {{-- notting --}}
                       @endif
                       
-                      <td>
-                          <a href="{{route('monitoring.edit',$row->id)}}" class="btn btn-sm btn-primary demo-google-material-icon"><i class="bi bi-pencil"></i></a>
-                          <a href="{{route('monitoring.delete',$row->id)}}" onclick="return confirm('apa kamu serius?')" class="btn btn-sm btn-danger demo-google-material-icon"><i class="bi bi-trash"></i>  </a>
-                          @if($row->jenis == 'pelanggaran')
-                          <a href="{{route('monitoring.detail',$row->nis)}}"  class="btn btn-sm btn-primary demo-google-material-icon" ><i class="bi bi-files"></i></a>
-                          @else 
-                          <a href="{{route('monitoring.detail2',$row->nis)}}"  class="btn btn-sm btn-primary demo-google-material-icon" ><i class="bi bi-files"></i></a>
-                          @endif
-                          {{-- <a href="" class="btn btn-sm btn-warning" ><i class="bi bi-cloud-download" ></i></a> --}}
-                        </td>
                     </tr>
                     @endforeach
-                </tbody>
+                  </tbody>
                 @else
+                notting
                 @endif
               </table>
               </div>
