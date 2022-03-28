@@ -78,6 +78,12 @@
                   </div>
                 </div>
                 <div class="row mb-3">
+                  <label for="inputText" class="col-sm-2 col-form-label">Jenis</label>
+                  <div class="col-sm-10">
+                    <input type="text" name="jenis" id="jenis" class="form-control">
+                  </div>
+                </div>
+                <div class="row mb-3">
                   <label for="inputText" class="col-sm-2 col-form-label">Tanggal</label>
                   <div class="col-sm-10">
                     <input type="text" name="tgl" value="{{ date('d-m-Y'); }}" id="tgl"  class="form-control">
@@ -123,6 +129,7 @@
     var name = 0;
     var kode = 0;
     var nis = 0;
+    var jenis = 0;
     $('#id_kode').on('change',function(){
       var id_kode = $(this).val();
       $.ajax({
@@ -133,6 +140,7 @@
           $('#skor').val(data.skor);
           $('#keterangan').val(data.deskripsi);
           $('#kode').val(data.kode);
+          $('#jenis').val(data.jenis);
         }
       });
     });
