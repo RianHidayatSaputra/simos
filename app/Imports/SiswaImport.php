@@ -32,6 +32,7 @@ class SiswaImport implements ToModel, WithHeadingRow
                 'alamat'    => $row['alamat'],
                 'no_telp'   => $row['no_telepon'],
                 'username'  => $row['nama_ortu'],
+                'password' => Hash::make('123456'),
             ]);
         }
 

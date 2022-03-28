@@ -51,7 +51,7 @@
                     <th scope="col">NIS</th>
                     <th scope="col">Kode</th>
                     <th scope="col">Point</th>
-                    {{-- <th scope="col">Tanggal</th> --}}
+                    <th scope="col">Tanggal</th>
                     {{-- <th scope="col">Keterangan</th> --}}
                     <th scope="col">Status</th>
                   </tr>
@@ -93,7 +93,7 @@
 
       $('.input-daterange').datepicker({
       todayBtn: 'linked',
-      format: 'dd-mm-yy',
+      format: 'yyyy-mm-d',
       // format: 'd-m-y',
       autoclose: true
       });
@@ -120,6 +120,7 @@
           output += '<td>' + data[count].nis + '</td>';
           output += '<td>' + data[count].kode + '</td>';
           output += '<td>' + data[count].skor + '</td>';
+          output += '<td>' + data[count].tgl + '</td>';
           output += '<td>' + data[count].jenis + '</td></tr>';
         }
         $('tbody').html(output);
