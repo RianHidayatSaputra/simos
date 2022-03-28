@@ -27,7 +27,7 @@ class LoginController extends Controller
             'password'=>'required',
         ];
         $message = [
-            'username.required'=>'username wajib di isis',
+            'username.required'=>'username wajib di isi',
             'password.required'=>'password wajib di isi',
         ];
         $validate = Validator::make($request->all(),$rules,$message);
@@ -50,6 +50,15 @@ class LoginController extends Controller
         $siswa = DB::table('siswas')->where(['username'=>$username])->first();
         $orangtua = DB::table('orangtuas')->where(['username'=>$username])->first();
         $admin = DB::table('users')->where(['username'=>$username])->first();
+        $pembimbingRayon = DB::table('prayons')->where(['username'=>$username])->first();
+
+        /**
+         * --------------------------------
+         * query build
+         * --------------------------------
+         * $get ortus nis
+         */
+
         if($admin){
             if(Hash::check($password,$admin->password)){
                 session::put('username',$admin->username);
@@ -60,24 +69,44 @@ class LoginController extends Controller
         }elseif($guru){
             if(Hash::check($password,$guru->password)){
                 session::put('username',$guru->username);
-                return redirect()->route('guru.dashboard');
+                // return redirect()->route('guru.dashboard');
+                return redirect()->route('admin.dashboard');
             }else{
                 return redirect()->route('login.view');
             }
         }elseif($orangtua){
             if(Hash::check($password, $orangtua->password)){
                 session::put('username',$orangtua->username);
-                return redirect()->route('orangtua.dashboard');
+                session::put('ortuId',$orangtua->id);
+                // return redirect()->route('guru.dashboard');
+                return redirect()->route('admin.dashboard');
             }else{
                 return redirect()->route('login.view');
             }
         }elseif($siswa){
             if(Hash::check($password, $siswa->password)){
                 session::put('username',$siswa->username);
-                return redirect()->route('siswa.dashboard');
+                session::put('nis',$siswa->nis);
+                // return redirect()->route('siswa.dashboard');
+                return redirect()->route('admin.dashboard');
             }else{
                 return redirect()->route('login.view');
             }
+        }elseif($pembimbingRayon){
+            if(Hash::check($password,$pembimbingRayon->password)){
+                session::put('username',$pembimbingRayon->username);
+                return redirect()->route('admin.dashboard');
+            }else{
+                return redirect()->route('login.view');
+            }
+        }else{
+            return redirect()->route('login.view')->with('status','Username atau Email yang anda masukkan salah');
         }
+    }
+
+    public function logout()
+    {
+        Session::flush();
+        return redirect()->route('login.view');
     }
 }

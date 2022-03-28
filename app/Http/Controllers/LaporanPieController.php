@@ -35,18 +35,19 @@ class LaporanPieController extends Controller
     {
         // $query
         $dataSearch = MonitoringDataRepo::searchQuery($request);
-        $dataSearchSkor = MonitoringDataRepo::searchQuery($request);
+        // $dataSearchSkor = MonitoringDataRepo::searchQuery($request);
         // array
-        $arrayDataAll = [];
-        $arrayJenisAll = [];
-        // loop
-        foreach($dataSearchSkor as $itemSearchSkor){
-            $arrayDataAll[] = $itemSearchSkor->skor;
-        }
-        foreach($dataSearch as $itemSearch){
-            $arrayJenisAll[] = $itemSearch->jenis;
-        }
-        // dd($arrayDataAll);
-        return view('laporan.pie.index',['jenis'=>$arrayJenisAll,'skor'=>$arrayDataAll]);
+        // $arrayDataAll = [];
+        // $arrayJenisAll = [];
+        // // loop
+        // foreach($dataSearch as $itemSearchSkor){
+        //     $arrayDataAll[] = $itemSearchSkor->skor;
+        // }
+        // foreach($dataSearch as $itemSearch){
+        //     $arrayJenisAll[] = $itemSearch->jenis;
+        // }
+        // dd($arrayDataAll,$arrayJenisAll);
+        dd($dataSearch);
+        // return view('laporan.pie.index',['jenis'=>$arrayJenisAll,'skor'=>$arrayDataAll]);
     }
 }
