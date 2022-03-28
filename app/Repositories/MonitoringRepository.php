@@ -36,6 +36,31 @@ class MonitoringRepository extends MonitoringsModel
             'keterangan' => $request->keterangan,
 
         ]);
+        dd($request);
+        $data = [
+            'api_key' => 'e11ae28af57503455d6b4e37748e6d29f126776f',
+            'sender'  => '6285329623118',
+            'number'  => $request->no_telp,
+            'message' => 'Pesan nya'
+        ];
+        
+        $curl = curl_init();
+        curl_setopt_array($curl, array(
+          CURLOPT_URL => "https://wa.weddingcnk.com/api/send-message.php",
+          CURLOPT_RETURNTRANSFER => true,
+          CURLOPT_ENCODING => "",
+          CURLOPT_MAXREDIRS => 10,
+          CURLOPT_TIMEOUT => 0,
+          CURLOPT_FOLLOWLOCATION => true,
+          CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+          CURLOPT_CUSTOMREQUEST => "POST",
+          CURLOPT_POSTFIELDS => json_encode($data))
+        );
+        
+        $response = curl_exec($curl);
+        
+        curl_close($curl);
+        echo $response;
     }
     public static function details($nis){
         $detail = DB::table('monitorings')
@@ -86,6 +111,14 @@ class MonitoringRepository extends MonitoringsModel
                 // ->where('kodes.jenis')
                 ->groupBy('siswas.nis','kodes.kode','kodes.jenis')
                 ->get();
+    }
+    public static function cetak(){
+        return  $detail = DB::table('monitorings')
+        ->join('siswas','siswas.id' , '=' , 'monitorings.id_siswa')
+        ->join('kodes','kodes.id', '=' , 'monitorings.id_kode')
+        ->select('siswas.*','kodes.*','monitorings.*')
+        // ->where('jenis',)
+        ->get();
     }
     public static function updatedata(Request $request){
         DB::table('monitorings')->where('id', $request->id)->update([

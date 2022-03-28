@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Kode;
 use App\Models\Siswa;
+
 use App\Repositories\UsersRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -33,24 +34,24 @@ class DashboardController extends Controller
     }
     public function searchData(Request $request)
     {
-        $keywordTglAwal = $request->get('tanggal_awal');
-        $keywordTglAkhir = $request->get('tanggal_akhir');
-        $keywordNis = $request->get('nis');
-        $keywordRayon = $request->get('rayon');
-        $dataSeach = Kode::query()
-        ->selectRaw(
-            'sum(kodes.skor) as skor',
-            'kodes.jenis as jenis',
-        )
-        ->join('siswas','siswas.id','=','kodes.id')
-        // ->join('')
-        ->wheredate('created_at','>=',$keywordTglAwal)
-        ->whereDate('created_at','<=',$keywordTglAkhir)
-        ->where('nis','like','%'.$keywordNis.'%')
-        ->where('rayon','$keywordRayon')
-        // ->where('')
-        ->get()
-        ;
+        // $keywordTglAwal = $request->get('tanggal_awal');
+        // $keywordTglAkhir = $request->get('tanggal_akhir');
+        // $keywordNis = $request->get('nis');
+        // $keywordRayon = $request->get('rayon');
+        // $dataSeach = Kode::query()
+        // ->selectRaw(
+        //     'sum(kodes.skor) as skor',
+        //     'kodes.jenis as jenis',
+        // )
+        // ->join('siswas','siswas.id','=','kodes.id')
+        // // ->join('')
+        // ->wheredate('created_at','>=',$keywordTglAwal)
+        // ->whereDate('created_at','<=',$keywordTglAkhir)
+        // ->where('nis','like','%'.$keywordNis.'%')
+        // ->where('rayon','$keywordRayon')
+        // // ->where('')
+        // ->get()
+        // ;
     }
     public function test()
     {
@@ -61,10 +62,10 @@ class DashboardController extends Controller
         foreach($kodeModel as $itemData){
             $array[] = $itemData->jenis;
         }
-        dd(json_encode($array));
+        // dd(json_encode($array));
         $data = UsersRepository::hitung();
-        dd($data);
+        // dd($data);
 
-    	return view('backend.dashboard',$data);
+    	// return view('backend.dashboard',$data);
     }
 }

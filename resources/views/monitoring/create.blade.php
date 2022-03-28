@@ -25,20 +25,22 @@
               <form action="{{route('monitoring.store')}}" method="POST">
               	{{csrf_field()}}
                 <div class="row mb-3">
-                  <label class="col-sm-2 col-form-label">Select Nis</label>
+                  <label class="col-sm-2 col-form-label">Select siswa</label>
                   <div class="col-sm-10">
-                    <select name="id_siswa" id="id_siswa" class="form-select" aria-label="Default select example">
-                      <option selected>Options Nis</option>
-                      @foreach($siswa as $row)
-                      <option value="{{$row->id}}">{{$row->nis}}</option>
-                      @endforeach
+                    <select name="id_siswa" id="id_siswa" data-show-subtext="true" class="selectpicker" aria-label="Default select example" data-live-search="true">
+                        <option selected>Options siswa</option>
+                        @foreach($siswa as $row)
+                          <option value="{{$row->id}}">{{$row->nis}}</option>
+                        @endforeach
                     </select>
                   </div>
                 </div>
+                <input type="text" name="ortu" id="ortu" class="form-control">
+
                 <div class="row mb-3">
                   <label class="col-sm-2 col-form-label">Select Kode</label>
                   <div class="col-sm-10">
-                    <select name="id_kode" id="id_kode" class="form-select" aria-label="Default select example">
+                    <select name="id_kode" id="id_kode" class="selectpicker" aria-label="Default select example" data-live-search="true">
                       <option selected>Options Kode</option>
                       @foreach($kode as $row)
                       <option value="{{$row->id}}">{{$row->kode}}</option>
@@ -87,9 +89,16 @@
 @push('js')
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/datejs/1.0/date.min.js" integrity="sha512-/n/dTQBO8lHzqqgAQvy0ukBQ0qLmGzxKhn8xKrz4cn7XJkZzy+fAtzjnOQd5w55h4k1kUC+8oIe6WmrGUYwODA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.3/css/bootstrap-select.min.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.3/js/bootstrap-select.min.js"></script>
 <script>
   $('document').ready(function(){
     var skor = 0;
+    var no_telp = [0];
+    var deskripsi = 0;
     $('#id_kode').on('change',function(){
       var id_kode = $(this).val();
       $.ajax({
@@ -98,9 +107,27 @@
         success : function(data){
           console.log(data);
           $('#skor').val(data.skor);
+          $('#keterangan').val(data.deskripsi);
         }
       });
-    })
+    });
+
+    $('#id_siswa').on('change',function(){
+      var id_siswa = $(this).val();
+      $.ajax({
+        type : "GET",
+        dataType : "json",
+        url : "{{route('monitoring.siswa')}}/" + id_siswa,
+        success : function([data]){
+          console.log(data);
+          $('#ortu').val(data.no_telp);
+        },
+        error: function(data){
+        console.log(data);
+        }
+      });
+    });
+    
   })
 
 </script>

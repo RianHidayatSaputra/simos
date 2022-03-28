@@ -31,7 +31,9 @@
                 <div class="btn-group" role="group" aria-label="Basic mixed styles example">
                       <button type="button"  name="filter" id="filter" class="btn btn-info">Cari</button>
                       <button type="button"   name="refresh" id="refresh" class="btn btn-warning">Refresh</button>
-                      <button type="button"  onclick="window.print()" class="btn btn-success">Cetak</button>
+                      <button type="button" class="btn btn-primary text-white">
+                        <a href="{{route('laporan.keseluruhan.cetak')}}" target="_BLANK" class="text-white">Cetak</a>
+                      </button>
                     </div>
               </div>
             </div>

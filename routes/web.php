@@ -145,6 +145,7 @@ route::get('monitoring/detail/{nis}/pelanggaran', [MonitoringController::class, 
 route::get('monitoring/detail/{nis}/prestasi', [MonitoringController::class, 'show2'])->name('monitoring.detail2');
 route::get('monitoring/data/{tgl}', [MonitoringController::class, 'monitoring'])->name('monitoring.data');
 Route::post('monitoring/fetch_data', [MonitoringController::class, 'fetch_data'])->name('monitoring.fetch_data');
+Route::get('monitoring/siswa/{id?}', [MonitoringController::class, 'siswa'])->name('monitoring.siswa');
 
 //Route prayon
 route::get('prayon',[PrayonController::class, 'index'])->name('prayon.index');
@@ -184,6 +185,7 @@ route::get('pdf',[PrestasiController::class, 'print'])->name('print');
 route::get('laporan/pelanggaran',[PelanggaranController::class, 'index'])->name('laporan.pelanggaran.index');
 //Route laporan Keseluruhan
 route::get('laporan/keseluruhan',[KeseluruhanController::class, 'index'])->name('laporan.keseluruhan.index');
+route::get('laporan/keseluruhan/cetak',[KeseluruhanController::class, 'cetak'])->name('laporan.keseluruhan.cetak');
 // route::get('laporan/keseluruhan',[KeseluruhanController::class, 'serchtgl'])->name('laporan.keseluruhan.serchtgl');
 // laporan pie 
 Route::get('laporan/pie',[laporanpiecontroller::class,'getIndex'])->name('laporan.pie.index');
