@@ -29,6 +29,7 @@
               
 
               <!-- Table with stripped rows -->
+              <div class="table-responsive-sm">
               <table class="table datatable">
                 <thead>
                   <tr>
@@ -52,6 +53,7 @@
                   @endforeach
                 </tbody>
               </table>
+              </div>
               <!-- End Table with stripped rows -->
 
             </div>

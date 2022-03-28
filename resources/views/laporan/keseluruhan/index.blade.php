@@ -44,6 +44,7 @@
               </div>
              <!--  <p>Add lightweight datatables to your project with using the <a href="https://github.com/fiduswriter/Simple-DataTables" target="_blank">Simple DataTables</a> library. Just add <code>.datatable</code> class name to any table you wish to conver to a datatable</p> -->
               <!-- Table with stripped rows -->
+              <div class="table-responsive-sm">
               <table class="table datatable" id="datatable">
                 <thead>
                   <tr>
@@ -51,7 +52,7 @@
                     <th scope="col">NIS</th>
                     <th scope="col">Kode</th>
                     <th scope="col">Point</th>
-                    {{-- <th scope="col">Tanggal</th> --}}
+                    <th scope="col">Tanggal</th>
                     {{-- <th scope="col">Keterangan</th> --}}
                     <th scope="col">Status</th>
                   </tr>
@@ -69,6 +70,7 @@
                   @endforeach -->
                 </tbody>
               </table>
+              </div>
               <!-- End Table with stripped rows -->
               {{ csrf_field() }}
             </div>
@@ -93,7 +95,7 @@
 
       $('.input-daterange').datepicker({
       todayBtn: 'linked',
-      format: 'dd-mm-yy',
+      format: 'yyyy-mm-d',
       // format: 'd-m-y',
       autoclose: true
       });
@@ -120,6 +122,7 @@
           output += '<td>' + data[count].nis + '</td>';
           output += '<td>' + data[count].kode + '</td>';
           output += '<td>' + data[count].skor + '</td>';
+          output += '<td>' + data[count].tgl + '</td>';
           output += '<td>' + data[count].jenis + '</td></tr>';
         }
         $('tbody').html(output);
