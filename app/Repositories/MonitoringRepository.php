@@ -21,6 +21,7 @@ class MonitoringRepository extends MonitoringsModel
         // ->selectRaw('siswas.nis, siswas.name as name, sum(kodes.skor) as skor,monitorings.*,kodes.jenis')
         ->selectRaw('siswas.id as id,siswas.nis as nis, siswas.name as name, sum(kodes.skor) as skor, kodes.jenis as jenis')
         // ->join( 'monitorings','monitorings.id_kode', '=','kodes.id')
+        ->selectRaw('siswas.id as id,siswas.nis as nis, siswas.name as name, siswas.id_ortu as id_ortu, sum(kodes.skor) as skor, kodes.jenis as jenis')
             ->join('kodes','kodes.id','=','monitorings.id_kode')
             ->join( 'siswas','siswas.id','=','monitorings.id_siswa')
             // ->where('jenis','kodes.jenis')
