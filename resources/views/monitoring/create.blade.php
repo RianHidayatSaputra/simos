@@ -66,9 +66,9 @@
                   </div>
                 </div>
                 <div class="row mb-3" hidden>
-                  <label for="inputText" class="col-sm-2 col-form-label">Kode Skor</label>
+                  <!-- <label for="inputText" class="col-sm-2 col-form-label">Kode Skor</label> -->
                   <div class="col-sm-10">
-                    <input type="text" name="skor" id="skor" class="form-control">
+                    <input type="text" hidden name="skor" id="skor" class="form-control">
                   </div>
                 </div>
                 <div class="row mb-3">
