@@ -50,6 +50,15 @@ class LoginController extends Controller
         $siswa = DB::table('siswas')->where(['username'=>$username])->first();
         $orangtua = DB::table('orangtuas')->where(['username'=>$username])->first();
         $admin = DB::table('users')->where(['username'=>$username])->first();
+        $pembimbingRayon = DB::table('prayons')->where(['username'=>$username])->first();
+
+        /**
+         * --------------------------------
+         * query build
+         * --------------------------------
+         * $get ortus nis
+         */
+
         if($admin){
             if(Hash::check($password,$admin->password)){
                 session::put('username',$admin->username);
@@ -68,7 +77,8 @@ class LoginController extends Controller
         }elseif($orangtua){
             if(Hash::check($password, $orangtua->password)){
                 session::put('username',$orangtua->username);
-                // return redirect()->route('orangtua.dashboard');
+                session::put('ortuId',$orangtua->id);
+                // return redirect()->route('guru.dashboard');
                 return redirect()->route('admin.dashboard');
             }else{
                 return redirect()->route('login.view');
@@ -76,7 +86,15 @@ class LoginController extends Controller
         }elseif($siswa){
             if(Hash::check($password, $siswa->password)){
                 session::put('username',$siswa->username);
+                session::put('nis',$siswa->nis);
                 // return redirect()->route('siswa.dashboard');
+                return redirect()->route('admin.dashboard');
+            }else{
+                return redirect()->route('login.view');
+            }
+        }elseif($pembimbingRayon){
+            if(Hash::check($password,$pembimbingRayon->password)){
+                session::put('username',$pembimbingRayon->username);
                 return redirect()->route('admin.dashboard');
             }else{
                 return redirect()->route('login.view');
@@ -84,5 +102,11 @@ class LoginController extends Controller
         }else{
             return redirect()->route('login.view')->with('status','Username atau Email yang anda masukkan salah');
         }
+    }
+
+    public function logout()
+    {
+        Session::flush();
+        return redirect()->route('login.view');
     }
 }

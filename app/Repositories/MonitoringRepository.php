@@ -12,7 +12,7 @@ class MonitoringRepository extends MonitoringsModel
     // TODO : Make your own query methods
     public static function getAll(){
         return Monitoring::query()
-        ->selectRaw('siswas.id as id,siswas.nis as nis, siswas.name as name, sum(kodes.skor) as skor, kodes.jenis as jenis')
+        ->selectRaw('siswas.id as id,siswas.nis as nis, siswas.name as name, siswas.id_ortu as id_ortu, sum(kodes.skor) as skor, kodes.jenis as jenis')
             ->join('kodes','kodes.id','=','monitorings.id_kode')
             ->join( 'siswas','siswas.id','=','monitorings.id_siswa')
             ->groupBy('siswas.id','siswas.nis','kodes.jenis','siswas.name')
