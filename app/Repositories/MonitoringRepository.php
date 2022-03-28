@@ -45,7 +45,7 @@ class MonitoringRepository extends MonitoringsModel
             'number'  => $request->no_telp,
             'message' => 'NIS : ' . $request->nis ."\r\n".'Nama : ' . $request->name."\r\n". 'Keterangan : ' .'mendapatkan ' . $request->jenis.' dengan kode '.$request->kode.' yaitu '.$request->keterangan.' dengan point '.$request->skor,
         ];
-        dd($data);
+        // dd($data);
         
         $curl = curl_init();
         curl_setopt_array($curl, array(

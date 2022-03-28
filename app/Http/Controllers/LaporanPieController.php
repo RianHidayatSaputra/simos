@@ -50,4 +50,5 @@ class LaporanPieController extends Controller
         // dd($dataSearch);
         return view('laporan.pie.index',['jenis'=>$arrayJenisAll,'skor'=>$arrayDataAll]);
     }
+
 }
