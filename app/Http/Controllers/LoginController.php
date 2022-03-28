@@ -27,7 +27,7 @@ class LoginController extends Controller
             'password'=>'required',
         ];
         $message = [
-            'username.required'=>'username wajib di isis',
+            'username.required'=>'username wajib di isi',
             'password.required'=>'password wajib di isi',
         ];
         $validate = Validator::make($request->all(),$rules,$message);
@@ -78,6 +78,8 @@ class LoginController extends Controller
             }else{
                 return redirect()->route('login.view');
             }
+        }else{
+            return redirect()->route('login.view')->with('status','Username atau Email yang anda masukkan salah');
         }
     }
 }

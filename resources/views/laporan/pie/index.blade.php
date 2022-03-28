@@ -16,10 +16,11 @@
         <div class="col-lg-12">
           <div class="card">
             <div class="card-header">
-              <form action="{{url('laporan/pie/cari')}}" method="GET" >
+              {{-- <form action="{{url('laporan/pie/cari')}}" method="GET" > --}}
+              <form action="{{route('laporan.search.pie')}}" method="get" enctype="multipart/form-data">
                 {{-- @csrf --}}
                 <div class="row">
-                  <div class="col-lg-2 mb-3">
+                  <div class="col-lg-3 mb-3">
                     <label for="inputText"  class="col-form-label">NIS</label>
                     <div class="col-sm-12">
                       <input type="nember" name="nis" class="form-control">
@@ -31,29 +32,31 @@
                       <input type="text" name="rombel" class="form-control">
                     </div>
                   </div> --}}
-                  {{-- <div class="col-lg-2 mb-3">
+                  <div class="col-lg-3 mb-3">
                     <label for="inputText" class="col-form-label">Tgl Awal</label>
                     <div class="col-sm-12">
-                      <input type="text" name="tgl_awal" id="tgl_awal"class="form-control">
+                      <input type="date" name="tgl_awal" id="tgl_awal"class="form-control">
                     </div>
                   </div>
-                  <div class="col-lg-2 mb-3">
+                  <div class="col-lg-3 mb-3">
                     <label for="inputText" class="col-form-label">Tgl Akhir</label>
                     <div class="col-sm-12">
-                      <input type="text" name="tgl_akhir" id="tgl_akhir" class="form-control">
+                      <input type="date" name="tgl_akhir" id="tgl_akhir" class="form-control">
                     </div>
-                  </div> --}}
-                  <div class="col-lg-2 mb-3">
+                  </div>
+                  <div class="col-lg-3 mb-3">
                     <label for="" class="col-form-label" >Action</label>
                     <!-- <div class="col-sm-10">
                       <button class="btn btn-primary btn-sm">Cari</button>
                       <a href="" class="btn btn-success btn-sm">Cetak</a>
                     </div> -->
-                    <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                      <button type="button" class="btn btn-primary">Cari</button>
-                      <button type="button" onclick="window.print()" class="btn btn-success text-white">
-                        Cetak
-                      </button>
+                    <div class="col-sm-12">
+                      <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                        <button class="btn btn-primary">Cari</button>
+                        {{-- <button type="button" onclick="window.print()" class="btn btn-success text-white">
+                          Cetak
+                        </button> --}}
+                      </div>
                     </div>
                   </div>
                 </div>

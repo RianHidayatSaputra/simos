@@ -128,7 +128,7 @@ class MonitoringController extends Controller
     //     ->get();
             $data = MonitoringRepository::keseluruhan();
         }
-    //   return json_encode($data);
+      return json_encode($data);
     // dd($data);
      }
     }

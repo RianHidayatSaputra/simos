@@ -15,17 +15,17 @@
       <div class="row">
         <div class="col-lg-12">
           <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Laporan Keseluruhan</h5>
-              <div class="icon" style="float: right; margin-top: -5%; width: 10%;">
-                
-              </div>
-              <div class="input-group input-daterange">
-                <div class="col-md-4">
+            <div class="card-header">
+              <div class="input-daterange">
+                <div class="col-sm-4">
                   <input type="text" name="from_date" id="from_date" readonly class="form-control" placeholder="Start date">
                 </div>
-                <div class="input-group-addon">to</div>
-                <div class="col-md-4">
+                {{-- <div class="input-group-addon">to</div> --}}
+                <div class="col-sm-1" >
+                  <center>To</center>
+                </div>
+                {{-- <i>To</i> --}}
+                <div class="col-sm-4">
                   <input type="text" name="to_date" id="to_date" class="form-control" placeholder="finish date">
                 </div>
                 <div class="btn-group" role="group" aria-label="Basic mixed styles example">
@@ -33,6 +33,12 @@
                       <button type="button"   name="refresh" id="refresh" class="btn btn-warning">Refresh</button>
                       <button type="button"  onclick="window.print()" class="btn btn-success">Cetak</button>
                     </div>
+              </div>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Laporan Keseluruhan</h5>
+              <div class="icon" style="float: right; margin-top: -5%; width: 10%;">
+                
               </div>
              <!--  <p>Add lightweight datatables to your project with using the <a href="https://github.com/fiduswriter/Simple-DataTables" target="_blank">Simple DataTables</a> library. Just add <code>.datatable</code> class name to any table you wish to conver to a datatable</p> -->
               <!-- Table with stripped rows -->
@@ -86,6 +92,7 @@
       $('.input-daterange').datepicker({
       todayBtn: 'linked',
       format: 'dd-mm-yy',
+      // format: 'd-m-y',
       autoclose: true
       });
 
@@ -142,4 +149,4 @@
 
     </script>
 
-$endpush
+@endpush

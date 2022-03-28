@@ -115,7 +115,6 @@ route::get('kode/delete/{id}', [KodeController::class, 'destroy'])->name('kode.d
 route::get('kode/data/{id?}', [KodeController::class, 'kode'])->name('kode.data');
 route::get('kode/editdata/{id?}', [KodeController::class, 'kodedata'])->name('editdata.kodedata');
 
-
 //Route Orang tua
 route::get('ortu',[OrtuController::class, 'index'])->name('ortu.index');
 route::get('ortu/create', [OrtuController::class, 'create'])->name('ortu.create');
@@ -134,7 +133,6 @@ route::get('siswa/delete/{id}', [SiswaController::class, 'destroy'])->name('sisw
 route::get('siswa/data/{id?}', [SiswaController::class, 'monitoring'])->name('siswa.data');
 route::post('siswa/import', [SiswaController::class, 'import'])->name('siswa.import');
 route::get('siswa/export', [SiswaController::class, 'export'])->name('siswa.export');
-
 
 //Route Monitoring
 route::get('monitoring',[MonitoringController::class, 'index'])->name('monitoring.index');

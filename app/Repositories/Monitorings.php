@@ -37,13 +37,29 @@ class Monitorings extends MonitoringsModel
      */
     public static function searchQuery(Request $request)
     {
+        // var data 
+        $nis = $request->input('nis');
+        $tglAwal = $request->input('tgl_awal');
+        $tglAkhir = $request->input('tgl_akhir');
         // $data = Kode::query()
+        // $data = DB::table('monitorings')->selectRaw(
+        //     'sum(kodes.skor) as skor,
+        //     kodes.jenis as jenis',
+        // )->join('siswas','siswas.id','=','monitorings.id_siswa')
+        // ->join('kodes','kodes.id','=','monitorings.id_kode')
+        // ->where('nis',$_GET['nis'])->groupBy('kodes.jenis')->get();
+        // return $data;
         $data = DB::table('monitorings')->selectRaw(
             'sum(kodes.skor) as skor,
-            kodes.jenis as jenis',
+            kodes.jenis as jenis,
+            monitorings.tgl as tgl'
         )->join('siswas','siswas.id','=','monitorings.id_siswa')
         ->join('kodes','kodes.id','=','monitorings.id_kode')
-        ->where('nis',$_GET['nis'])->groupBy('kodes.jenis')->get();
+        ->whereBetween('tgl',[$tglAwal,$tglAkhir])
+        ->where('nis',$nis)
+        // ->whereBetween('monitorings.tgl',array($tglAwal, $tglAkhir))
+        ->groupBy('nis','jenis','tgl')
+        ->get();
         return $data;
     }
 
