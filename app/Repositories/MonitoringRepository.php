@@ -30,13 +30,13 @@ class MonitoringRepository extends MonitoringsModel
     }
 
     public static function adddata(Request $request){
-        // DB::table('monitorings')->insert([
-        //     'id_siswa' => $request->id_siswa,
-        //     'id_kode' => $request->id_kode,
-        //     'tgl' => $request->tgl,
-        //     'keterangan' => $request->keterangan,
-        //     'no_telp' => $request->no_telp,
-        //   ]);
+        DB::table('monitorings')->insert([
+            'id_siswa' => $request->id_siswa,
+            'id_kode' => $request->id_kode,
+            'tgl' => $request->tgl,
+            'keterangan' => $request->keterangan,
+            'no_telp' => $request->no_telp,
+          ]);
   
   
         $data = [
@@ -45,7 +45,7 @@ class MonitoringRepository extends MonitoringsModel
             'number'  => $request->no_telp,
             'message' => 'NIS : ' . $request->nis ."\r\n".'Nama : ' . $request->name."\r\n". 'Keterangan : ' .'mendapatkan ' . $request->jenis.' dengan kode '.$request->kode.' yaitu '.$request->keterangan.' dengan point '.$request->skor,
         ];
-        dd($data);
+        // dd($data);
         
         $curl = curl_init();
         curl_setopt_array($curl, array(
